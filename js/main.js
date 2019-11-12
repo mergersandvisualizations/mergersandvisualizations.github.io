@@ -14,6 +14,8 @@ var projection = d3.geoAlbersUsa()
     .translate([(width / 2), (height / 2)])
     .scale(800);
 
+var forceData = {"nodes":[], "links":[]};
+
 queue()
     .defer(d3.json, "data/states-10m.json")
     .defer(d3.csv, "data/cities-over-250k.csv")
@@ -22,11 +24,15 @@ queue()
         console.log(mapTopoUs)
         console.log(citiesTopo)
 
-        citiesTopo.forEach(function(d){
+        citiesTopo.forEach(function(d,i){
             d.latitude = +d.latitude
             d.longitude = +d.longitude
             d.POP_2010 = +d.POP_2010
+
+            forceData.nodes.push({"id":i+1, "name": d.NAME, "latitude": d.latitude, "longitude": d.longitude})
         })
+
+        console.log(forceData)
 
         var us = topojson.feature(mapTopoUs, mapTopoUs.objects.states).features
 
@@ -49,7 +55,7 @@ queue()
             .data(citiesTopo)
             .enter().append("circle")
             .attr("class", "city")
-            .attr("r", 5)
+            .attr("r", 5) // size will be by how big the company is
             .attr("fill", "yellow")
             .attr("transform", function(d) {
                 // console.log(d)
