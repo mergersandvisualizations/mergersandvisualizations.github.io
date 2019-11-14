@@ -1,25 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>D3 Project</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Tech Giants - CS171</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/agency.min.css" rel="stylesheet">
+
 </head>
-<body>
 
-    <div id="map-US"></div>
+<body id="page-top">
+
+<header class="masthead text-center text-white">
+    <div class="masthead-content">
+        <div class="container">
+            <h1 class="masthead-heading mb-5">How Today's Top 5 Tech Giants Rose Into Power</h1>
+            <h2 class="masthead-subheading mb-0">An Analysis Through the lens of Mergers & Acquisitions</h2>
+            <br><br>
+            <h2 class="masthead-subheading mb-0">Nicolas Lepore, Rebecca Lisk, Lin Zhu</h2>
+            <a href="#introduction" class="btn btn-primary btn-xl js-scroll-trigger rounded-pill mt-5">Learn More</a>
+        </div>
+    </div>
+    <div class="bg-circle-1 bg-circle"></div>
+    <div class="bg-circle-2 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div>
+    <div class="bg-circle-4 bg-circle"></div>
+</header>
 
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/queue.min.js"></script>
-    <script src="js/topojson.min.js"></script>
-    <script src="js/d3.min.js"></script>
-    <script src="js/d3-tip.js"></script>
-    <script src="js/d3-legend.min.js"></script>
+<section class="page-section" id="introduction">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading text-uppercase">The Rise of Big Tech</h2>
 
-    <script src="js/main.js"></script>
+                <h3>Key divisions of the industry over time + Key Trends - Lin</h3>
+                <br><br>
+
+                <h3>Linked view of the market caps of our top 5 tech giants (dynamic horizontal bar charts) - Rebecca</h3>
+                <br><br>
+
+                <h3>Linked view of a map of the USA in which the 5 tech giants pop up on the US map when they IPO, with tooltips which give the company name, IPO, industry, etc - Nick
+                </h3>
+                    <div id="map-US"></div>
+                <br><br>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="page-section" id="m&a">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading text-uppercase">Deals of a Lifetime</h2>
+
+                <h3>Key reasons for M&A (bar chart) - Lin</h3>
+                <br><br>
+
+                <h3>Volume of M&As over time - Lin</h3>
+                <br><br>
+
+                <h3>M&A non-temporal bubble chart (5 tech companies connected to their acquisitions) - Rebecca</h3>
+                <br><br>
+
+                <h3>M&A bubble chart over time - Nick</h3>
+                <br><br>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="page-section" id="hottakes">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading text-uppercase">Moving Forward</h2>
+
+                <h3>Hot Take #1</h3>
+                <br><br>
+
+
+                <h3>Hot Take #2</h3>
+                <br><br>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<!-- Team -->
+<section class="bg-light page-section" id="team">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+                <h3 class="section-subheading text-muted">You secretly wish you were us.</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img class="mx-auto rounded-circle" src="img/team/1.jpg" alt="">
+                    <h4>Nicolas Lepore</h4>
+                    <p class="text-muted">Harvard College '21</p>
+                    <ul class="list-inline social-buttons">
+                        <li class="list-inline-item">
+                            <a href="https://www.linkedin.com/in/nicolas-lepore-768153150/">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img class="mx-auto rounded-circle" src="img/team/2.jpg" alt="">
+                    <h4>Rebecca Lisk</h4>
+                    <p class="text-muted">Harvard College '21</p>
+                    <ul class="list-inline social-buttons">
+                        <li class="list-inline-item">
+                            <a href="https://www.linkedin.com/in/rebecca-lisk/">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="">
+                    <h4>Lin Zhu</h4>
+                    <p class="text-muted">Harvard College '21</p>
+                    <ul class="list-inline social-buttons">
+
+                        <li class="list-inline-item">
+                            <a href="https://www.linkedin.com/in/linzhu21/">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sources -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <a href="#">
+                    <img class="img-fluid d-block mx-auto" src="img/logos/envato.jpg" alt="">
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="#">
+                    <img class="img-fluid d-block mx-auto" src="img/logos/designmodo.jpg" alt="">
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="#">
+                    <img class="img-fluid d-block mx-auto" src="img/logos/themeforest.jpg" alt="">
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="#">
+                    <img class="img-fluid d-block mx-auto" src="img/logos/creative-market.jpg" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/queue.min.js"></script>
+<script src="js/topojson.min.js"></script>
+<script src="js/d3.min.js"></script>
+<script src="js/d3-tip.js"></script>
+<script src="js/d3-legend.min.js"></script>
+
+<script src="js/main.js"></script>
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Contact form JavaScript -->
+<script src="js/jqBootstrapValidation.js"></script>
+<script src="js/contact_me.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="js/agency.min.js"></script>
+
 </body>
+
 </html>
