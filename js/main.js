@@ -19,10 +19,16 @@ var forceData = {"nodes":[], "links":[]};
 queue()
     .defer(d3.json, "data/states-10m.json")
     .defer(d3.csv, "data/cities-over-250k.csv")
-    .await(function(error, mapTopoUs, citiesTopo) {
+    .defer(d3.csv, "data/aapl_marketcap_clean.csv")
+    .defer(d3.csv, "data/amzn_marketcap_clean.csv")
+    .defer(d3.csv, "data/fb_marketcap_clean.csv")
+    .defer(d3.csv, "data/googl_marketcap_clean.csv")
+    .defer(d3.csv, "data/msft_marketcap_clean.csv")
+    .await(function(error, mapTopoUs, citiesTopo, aaplMC, amznMC, fbMC, googlMC, msftMC) {
 
         console.log(mapTopoUs)
         console.log(citiesTopo)
+
 
         citiesTopo.forEach(function(d,i){
             d.latitude = +d.latitude
@@ -31,6 +37,37 @@ queue()
 
             forceData.nodes.push({"id":i+1, "name": d.NAME, "latitude": d.latitude, "longitude": d.longitude})
         })
+
+        aaplMC.forEach(function(d){
+            d.Date = new Date(d.Date)
+            d.MarketCap = +d.MarketCap
+        })
+
+        amznMC.forEach(function(d){
+            d.Date = new Date(d.Date)
+            d.MarketCap = +d.MarketCap
+        })
+
+        fbMC.forEach(function(d){
+            d.Date = new Date(d.Date)
+            d.MarketCap = +d.MarketCap
+        })
+
+        googlMC.forEach(function(d){
+            d.Date = new Date(d.Date)
+            d.MarketCap = +d.MarketCap
+        })
+
+        msftMC.forEach(function(d){
+            d.Date = new Date(d.Date)
+            d.MarketCap = +d.MarketCap
+        })
+
+        console.log(aaplMC)
+        console.log(amznMC)
+        console.log(fbMC)
+        console.log(googlMC)
+        console.log(msftMC)
 
         console.log(forceData)
 
