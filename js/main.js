@@ -26,10 +26,6 @@ var forceData = {"nodes":[], "links":[]};
 
 var aaplMC, amznMC, fbMC, googlMC, msftMC, cities, aaplCircle, amznCircle, fbCircle, googlCircle, msftCircle;
 
-var MCjs = {"aapl": [], "amzn": [], "fb": [], "googl": [], "msft": [], "adbe": [], "csco": [], "intc": [], "ibm": [], "crm": []};
-
-var byYearMC = [];
-
 queue()
     .defer(d3.json, "data/states-10m.json")
     .defer(d3.csv, "data/cities-over-250k.csv")
@@ -47,20 +43,7 @@ queue()
 
             forceData.nodes.push({"id":i+1, "name": d.NAME, "latitude": d.latitude, "longitude": d.longitude})
         })
-
-        console.log(byYearMC)
-
-        console.log(MCjs)
-
-        cities = citiesTopo
-
-        aaplMC = aaplMCt
-        amznMC = amznMCt
-        fbMC = fbMCt
-        googlMC = googlMCt
-        msftMC = msftMCt
-
-
+        
         console.log(forceData)
 
         var us = topojson.feature(mapTopoUs, mapTopoUs.objects.states).features
