@@ -41,8 +41,6 @@ MapVis.prototype.initVis = function(){
 
     vis.us = topojson.feature(vis.topo, vis.topo.objects.states).features
 
-    console.log(vis.us)
-
     vis.svg.append("g")
         .selectAll("path")
         .data(vis.us)
