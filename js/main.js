@@ -1,27 +1,4 @@
 
-var margin = {top: 0, right: 10, bottom: 0, left: 10};
-
-var width = 700 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
-
-var svg = d3.select("#map-US").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-var projection = d3.geoAlbersUsa()
-    .translate([(width / 2), (height / 2)])
-    .scale(800);
-
-var tool_tip = d3.tip()
-    .attr("class", "d3-tip")
-    .offset([-8, 0]);
-
-var circleScale = d3.scaleLinear()
-    .domain([0, 1200000000000])
-    .range([0,100])
-
 var forceData = {"nodes":[], "links":[]};
 
 var aaplMC, amznMC, fbMC, googlMC, msftMC, cities, aaplCircle, amznCircle, fbCircle, googlCircle, msftCircle;
@@ -34,8 +11,6 @@ queue()
         console.log(mapTopoUs)
         console.log(citiesTopo)
 
-        var count = 1980;
-
         citiesTopo.forEach(function(d,i){
             d.latitude = +d.latitude
             d.longitude = +d.longitude
@@ -43,78 +18,14 @@ queue()
 
             forceData.nodes.push({"id":i+1, "name": d.NAME, "latitude": d.latitude, "longitude": d.longitude})
         })
-        
+
         console.log(forceData)
 
-        var us = topojson.feature(mapTopoUs, mapTopoUs.objects.states).features
+        var mapVis = new MapVis("map-US", mapTopoUs, citiesTopo);
 
-        console.log(us)
 
-        svg.append("g")
-            .selectAll("path")
-            .data(us)
-            .enter()
-            .append("path")
-            .attr("d", d3.geoPath()
-                .projection(projection)
-            )
-            .attr("fill", function (d) { return "white"})
-            .attr("stroke", "black");
 
-        // just added cities here in case we need them to pinpoint startups
-        // comment out if unneeded
-        // svg.selectAll(".city")
-        //     .data(citiesTopo)
-        //     .enter().append("circle")
-        //     .attr("class", "city")
-        //     .attr("r", 5) // size will be by how big the company is
-        //     .attr("fill", "yellow")
-        //     .attr("transform", function(d) {
-        //         // console.log(d)
-        //         return "translate(" + projection([d.longitude, d.latitude]) + ")";
-        //     })
 
-        // also added city names
-        // comment out if unneeded
-        // svg.append("g")
-        //     .selectAll(".city")
-        //     .data(citiesTopo)
-        //     .enter()
-        //     .append("text")
-        //     .attr("class", "city")
-        //     .attr("transform", function(d) {
-        //         // console.log(d)
-        //         return "translate(" + projection([d.longitude, d.latitude]) + ")";
-        //     })
-        //     .text(function(d){
-        //         return d.NAME
-        //     })
-
-        // aaplCircle = svg.append("circle")
-        //     .attr("class", "aapl")
-        //     .attr("r", 0)
-        //
-        // amznCircle = svg.append("circle")
-        //     .attr("class", "amzn")
-        //     .attr("r", 0)
-        //
-        // fbCircle = svg.append("circle")
-        //     .attr("class", "fb")
-        //     .attr("r", 0)
-        //
-        // googlCircle = svg.append("circle")
-        //     .attr("class", "googl")
-        //     .attr("r", 0)
-        //
-        // msftCircle = svg.append("circle")
-        //     .attr("class", "msft")
-        //     .attr("r", 0)
-
-        // tool_tip.html(function(name, mc){
-        //     return name + "<br>Market Cap: " + d3.format("$.2s")(mc).replace(/G/, "B")
-        // })
-
-        svg.call(tool_tip);
 
         // inspiration from https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518
         var dataTime = d3.range(0, 40).map(function(d) {
@@ -153,124 +64,6 @@ queue()
 
     })
 
-var mcFormat = d3.format("$.2s")
 
-function updateMarketCap(currentDate) {
-
-    // var aaplCircle = svg.selectAll(".aapl")
-    //     .data(MCjs.aapl)
-    //
-    // console.log("Call")
-    //
-    // aaplCircle.enter().append("circle")
-    //     .attr("class", "corp")
-    //     .merge(MCjs.aapl)
-    //     // .transition()
-    //     .attr("r", MCjs.aapl) // size will be by how big the company is
-    //     .attr("fill", "red")
-    //     .attr("transform", function(d) {
-    //         // console.log(d)
-    //         return "translate(" + projection([-121.8949555, 37.3393857,]) + ")";
-    //         // return "translate(" + projection([d.longitude, d.latitude]) + ")";
-    //     })
-    //
-    // aaplCircle.remove();
-
-    // aaplCircle.remove();
-    // amznCircle.remove();
-    // fbCircle.remove();
-    // googlCircle.remove();
-    // msftCircle.remove();
-    //
-    // var aapl_date_index = currentDate.getFullYear() - 1980
-    // var amzn_date_index = currentDate.getFullYear() - 1997
-    // var fb_date_index = currentDate.getFullYear() - 2012
-    // var googl_date_index = currentDate.getFullYear() - 2004
-    // var msft_date_index = currentDate.getFullYear() - 1986
-    //
-    // aaplCircle = svg
-    //     .append("circle")
-    //     .attr("class", "aapl")
-    //     .attr("r", function(){
-    //         return circleScale(MCjs.aapl[aapl_date_index]["marketcap"])
-    //     }) // size will be by how big the company is
-    //     .attr("fill", "red")
-    //     .attr("transform", "translate(" + projection([-121.8949555, 37.3393857]) + ")")
-    //     // .on("mouseover", tool_tip.html("Apple<br>Market Cap: " +
-    //     //     mcFormat(MCjs.aapl[aapl_date_index]["marketcap"]).replace(/G/,"B")).show)
-    //     // .on("mouseout", tool_tip.hide);
-    //
-    // amznCircle = svg
-    //     .append("circle")
-    //     .attr("class", "amzn")
-    //     .attr("r", function(){
-    //         if (MCjs.amzn[amzn_date_index] == undefined) {
-    //             return 0
-    //         } else {
-    //             return circleScale(MCjs.amzn[amzn_date_index]["marketcap"])
-    //         }
-    //     }) // size will be by how big the company is
-    //     .attr("fill", "red")
-    //     .attr("transform", "translate(" + projection([-122.33207080000, 47.60620950000]) + ")")
-    //     // .on("mouseover", tool_tip.html(function(){
-    //     //     if (MCjs.amzn[amzn_date_index] == undefined) {
-    //     //         return "Amazon<br>Market Cap: "
-    //     //     } else {
-    //     //         return "Amazon<br>Market Cap: " +
-    //     //             mcFormat(MCjs.amzn[amzn_date_index]["marketcap"]).replace(/G/,"B")
-    //     //     }
-    //     // }).show)
-    //     // .on("mouseout", tool_tip.hide);
-    //
-    // fbCircle = svg
-    //     .append("circle")
-    //     .attr("class", "fb")
-    //     .attr("r", function(){
-    //         if (MCjs.fb[fb_date_index] == undefined) {
-    //             return 0
-    //         } else {
-    //             return circleScale(MCjs.fb[fb_date_index]["marketcap"])
-    //         }
-    //     }) // size will be by how big the company is
-    //     .attr("fill", "red")
-    //     .attr("transform", "translate(" + projection([-121.8949555, 37.3393857,]) + ")")
-    //     // .on("mouseover", tool_tip.html("Facebook<br>Market Cap: " +
-    //     //     mcFormat(MCjs.fb[fb_date_index]["marketcap"]).replace(/G/,"B")).show)
-    //     // .on("mouseout", tool_tip.hide);
-    //
-    // googlCircle = svg
-    //     .append("circle")
-    //     .attr("class", "googl")
-    //     .attr("r", function(){
-    //         if (MCjs.googl[googl_date_index] == undefined) {
-    //             return 0
-    //         } else {
-    //             return circleScale(MCjs.googl[googl_date_index]["marketcap"])
-    //         }
-    //     }) // size will be by how big the company is
-    //     .attr("fill", "red")
-    //     .attr("transform", "translate(" + projection([-121.8949555, 37.3393857,]) + ")")
-    //     // .on("mouseover", tool_tip.html("Google<br>Market Cap: " +
-    //     //     mcFormat(MCjs.aapl[googl_date_index]["marketcap"]).replace(/G/,"B")).show)
-    //     // .on("mouseout", tool_tip.hide);
-    //
-    // msftCircle = svg
-    //     .append("circle")
-    //     .attr("class", "msft")
-    //     .attr("r", function(){
-    //         if (MCjs.msft[msft_date_index] == undefined) {
-    //             return 0
-    //         } else {
-    //             return circleScale(MCjs.msft[msft_date_index]["marketcap"])
-    //         }
-    //     }) // size will be by how big the company is
-    //     .attr("fill", "red")
-    //     .attr("transform", "translate(" + projection([-122.33207080000, 47.60620950000]) + ")")
-    //     // .on("mouseover", tool_tip.html("Microsoft<br>Market Cap: " +
-    //     //     mcFormat(MCjs.msft[msft_date_index]["marketcap"]).replace(/G/,"B")).show)
-    //     // .on("mouseout", tool_tip.hide);
-
-
-}
 
 
