@@ -26,7 +26,9 @@ var forceData = {"nodes":[], "links":[]};
 
 var aaplMC, amznMC, fbMC, googlMC, msftMC, cities, aaplCircle, amznCircle, fbCircle, googlCircle, msftCircle;
 
-var MCjs = {"aapl": [], "amzn": [], "fb": [], "googl": [], "msft": []};
+var MCjs = {"aapl": [], "amzn": [], "fb": [], "googl": [], "msft": [], "adbe": [], "csco": [], "intc": [], "ibm": [], "crm": []};
+
+var byYearMC = [];
 
 queue()
     .defer(d3.json, "data/states-10m.json")
@@ -36,7 +38,12 @@ queue()
     .defer(d3.csv, "data/fb_marketcap_clean.csv")
     .defer(d3.csv, "data/googl_marketcap_clean.csv")
     .defer(d3.csv, "data/msft_marketcap_clean.csv")
-    .await(function(error, mapTopoUs, citiesTopo, aaplMCt, amznMCt, fbMCt, googlMCt, msftMCt) {
+    .defer(d3.csv, "data/adbe_marketcap_clean.csv")
+    .defer(d3.csv, "data/csco_marketcap_clean.csv")
+    .defer(d3.csv, "data/ibm_marketcap_clean.csv")
+    .defer(d3.csv, "data/intc_marketcap_clean.csv")
+    .defer(d3.csv, "data/crm_marketcap_clean.csv")
+    .await(function(error, mapTopoUs, citiesTopo, aaplMCt, amznMCt, fbMCt, googlMCt, msftMCt, ad, ci, ib, int, sa) {
 
         console.log(mapTopoUs)
         console.log(citiesTopo)
@@ -104,6 +111,134 @@ queue()
             }
         })
 
+        count = 1986
+
+        ad.forEach(function(d){
+            d.Date = new Date(d.Date)
+            d.MarketCap = +d.MarketCap
+            if (count == d.Date.getFullYear()) {
+                count += 1
+                MCjs.adbe.push({"year": new Date(d.Date.getFullYear(), 0, 1), "marketcap": d.MarketCap})
+            }
+        })
+
+        count = 1990
+
+        ci.forEach(function(d){
+            d.Date = new Date(d.Date)
+            d.MarketCap = +d.MarketCap
+            if (count == d.Date.getFullYear()) {
+                count += 1
+                MCjs.csco.push({"year": new Date(d.Date.getFullYear(), 0, 1), "marketcap": d.MarketCap})
+            }
+        })
+
+        count = 1979
+
+        ib.forEach(function(d){
+            d.Date = new Date(d.Date)
+            d.MarketCap = +d.MarketCap
+            if (count == d.Date.getFullYear()) {
+                count += 1
+                MCjs.ibm.push({"year": new Date(d.Date.getFullYear(), 0, 1), "marketcap": d.MarketCap})
+            }
+        })
+
+        count = 1979
+
+        int.forEach(function(d){
+            d.Date = new Date(d.Date)
+            d.MarketCap = +d.MarketCap
+            if (count == d.Date.getFullYear()) {
+                count += 1
+                MCjs.intc.push({"year": new Date(d.Date.getFullYear(), 0, 1), "marketcap": d.MarketCap})
+            }
+        })
+
+        count = 2004
+
+        sa.forEach(function(d){
+            d.Date = new Date(d.Date)
+            d.MarketCap = +d.MarketCap
+            if (count == d.Date.getFullYear()) {
+                count += 1
+                MCjs.crm.push({"year": new Date(d.Date.getFullYear(), 0, 1), "marketcap": d.MarketCap})
+            }
+        })
+
+        var aaplAns = 0, amznAns = 0, fbAns = 0, googlAns = 0, msftAns = 0, adbeAns = 0, crmAns = 0, cscoAns = 0, ibmAns = 0, intcAns = 0;
+
+        for (var i=1979; i < 2020; i++) {
+            MCjs.aapl.forEach(function(d){
+                if (i == d.year.getFullYear()) {
+                    aaplAns = d.marketcap
+                }
+            })
+
+            MCjs.amzn.forEach(function(d){
+                if (i == d.year.getFullYear()) {
+                    amznAns = d.marketcap
+                }
+            })
+
+            MCjs.fb.forEach(function(d){
+                if (i == d.year.getFullYear()) {
+                    fbAns = d.marketcap
+                }
+            })
+
+            MCjs.googl.forEach(function(d){
+                if (i == d.year.getFullYear()) {
+                    googlAns = d.marketcap
+                }
+            })
+
+            MCjs.msft.forEach(function(d){
+                if (i == d.year.getFullYear()) {
+                    msftAns = d.marketcap
+                }
+            })
+
+
+
+            MCjs.adbe.forEach(function(d){
+                if (i == d.year.getFullYear()) {
+                    adbeAns = d.marketcap
+                }
+            })
+
+            MCjs.crm.forEach(function(d){
+                if (i == d.year.getFullYear()) {
+                    crmAns = d.marketcap
+                }
+            })
+
+            MCjs.csco.forEach(function(d){
+                if (i == d.year.getFullYear()) {
+                    cscoAns = d.marketcap
+                }
+            })
+
+            MCjs.ibm.forEach(function(d){
+                if (i == d.year.getFullYear()) {
+                    ibmAns = d.marketcap
+                }
+            })
+
+            MCjs.intc.forEach(function(d){
+                if (i == d.year.getFullYear()) {
+                    intcAns = d.marketcap
+                }
+            })
+
+            byYearMC.push({"year": i, "aapl": aaplAns, "amzn": amznAns, "fb": fbAns, "googl": googlAns, "msft": msftAns,
+                "adbe": adbeAns, "crm": crmAns, "csco": cscoAns, "ibm": ibmAns, "intc": intcAns})
+
+            aaplAns = 0, amznAns = 0, fbAns = 0, googlAns = 0, msftAns = 0, adbeAns = 0, crmAns = 0, cscoAns = 0, ibmAns = 0, intcAns = 0;
+        }
+
+        console.log(byYearMC)
+
         console.log(MCjs)
 
         cities = citiesTopo
@@ -161,25 +296,25 @@ queue()
         //         return d.NAME
         //     })
 
-        aaplCircle = svg.append("circle")
-            .attr("class", "aapl")
-            .attr("r", 0)
-
-        amznCircle = svg.append("circle")
-            .attr("class", "amzn")
-            .attr("r", 0)
-
-        fbCircle = svg.append("circle")
-            .attr("class", "fb")
-            .attr("r", 0)
-
-        googlCircle = svg.append("circle")
-            .attr("class", "googl")
-            .attr("r", 0)
-
-        msftCircle = svg.append("circle")
-            .attr("class", "msft")
-            .attr("r", 0)
+        // aaplCircle = svg.append("circle")
+        //     .attr("class", "aapl")
+        //     .attr("r", 0)
+        //
+        // amznCircle = svg.append("circle")
+        //     .attr("class", "amzn")
+        //     .attr("r", 0)
+        //
+        // fbCircle = svg.append("circle")
+        //     .attr("class", "fb")
+        //     .attr("r", 0)
+        //
+        // googlCircle = svg.append("circle")
+        //     .attr("class", "googl")
+        //     .attr("r", 0)
+        //
+        // msftCircle = svg.append("circle")
+        //     .attr("class", "msft")
+        //     .attr("r", 0)
 
         // tool_tip.html(function(name, mc){
         //     return name + "<br>Market Cap: " + d3.format("$.2s")(mc).replace(/G/, "B")
@@ -247,99 +382,99 @@ function updateMarketCap(currentDate) {
     //
     // aaplCircle.remove();
 
-    aaplCircle.remove();
-    amznCircle.remove();
-    fbCircle.remove();
-    googlCircle.remove();
-    msftCircle.remove();
-
-    var aapl_date_index = currentDate.getFullYear() - 1980
-    var amzn_date_index = currentDate.getFullYear() - 1997
-    var fb_date_index = currentDate.getFullYear() - 2012
-    var googl_date_index = currentDate.getFullYear() - 2004
-    var msft_date_index = currentDate.getFullYear() - 1986
-
-    aaplCircle = svg
-        .append("circle")
-        .attr("class", "aapl")
-        .attr("r", function(){
-            return circleScale(MCjs.aapl[aapl_date_index]["marketcap"])
-        }) // size will be by how big the company is
-        .attr("fill", "red")
-        .attr("transform", "translate(" + projection([-121.8949555, 37.3393857]) + ")")
-        // .on("mouseover", tool_tip.html("Apple<br>Market Cap: " +
-        //     mcFormat(MCjs.aapl[aapl_date_index]["marketcap"]).replace(/G/,"B")).show)
-        // .on("mouseout", tool_tip.hide);
-
-    amznCircle = svg
-        .append("circle")
-        .attr("class", "amzn")
-        .attr("r", function(){
-            if (MCjs.amzn[amzn_date_index] == undefined) {
-                return 0
-            } else {
-                return circleScale(MCjs.amzn[amzn_date_index]["marketcap"])
-            }
-        }) // size will be by how big the company is
-        .attr("fill", "red")
-        .attr("transform", "translate(" + projection([-122.33207080000, 47.60620950000]) + ")")
-        // .on("mouseover", tool_tip.html(function(){
-        //     if (MCjs.amzn[amzn_date_index] == undefined) {
-        //         return "Amazon<br>Market Cap: "
-        //     } else {
-        //         return "Amazon<br>Market Cap: " +
-        //             mcFormat(MCjs.amzn[amzn_date_index]["marketcap"]).replace(/G/,"B")
-        //     }
-        // }).show)
-        // .on("mouseout", tool_tip.hide);
-
-    fbCircle = svg
-        .append("circle")
-        .attr("class", "fb")
-        .attr("r", function(){
-            if (MCjs.fb[fb_date_index] == undefined) {
-                return 0
-            } else {
-                return circleScale(MCjs.fb[fb_date_index]["marketcap"])
-            }
-        }) // size will be by how big the company is
-        .attr("fill", "red")
-        .attr("transform", "translate(" + projection([-121.8949555, 37.3393857,]) + ")")
-        // .on("mouseover", tool_tip.html("Facebook<br>Market Cap: " +
-        //     mcFormat(MCjs.fb[fb_date_index]["marketcap"]).replace(/G/,"B")).show)
-        // .on("mouseout", tool_tip.hide);
-
-    googlCircle = svg
-        .append("circle")
-        .attr("class", "googl")
-        .attr("r", function(){
-            if (MCjs.googl[googl_date_index] == undefined) {
-                return 0
-            } else {
-                return circleScale(MCjs.googl[googl_date_index]["marketcap"])
-            }
-        }) // size will be by how big the company is
-        .attr("fill", "red")
-        .attr("transform", "translate(" + projection([-121.8949555, 37.3393857,]) + ")")
-        // .on("mouseover", tool_tip.html("Google<br>Market Cap: " +
-        //     mcFormat(MCjs.aapl[googl_date_index]["marketcap"]).replace(/G/,"B")).show)
-        // .on("mouseout", tool_tip.hide);
-
-    msftCircle = svg
-        .append("circle")
-        .attr("class", "msft")
-        .attr("r", function(){
-            if (MCjs.msft[msft_date_index] == undefined) {
-                return 0
-            } else {
-                return circleScale(MCjs.msft[msft_date_index]["marketcap"])
-            }
-        }) // size will be by how big the company is
-        .attr("fill", "red")
-        .attr("transform", "translate(" + projection([-122.33207080000, 47.60620950000]) + ")")
-        // .on("mouseover", tool_tip.html("Microsoft<br>Market Cap: " +
-        //     mcFormat(MCjs.msft[msft_date_index]["marketcap"]).replace(/G/,"B")).show)
-        // .on("mouseout", tool_tip.hide);
+    // aaplCircle.remove();
+    // amznCircle.remove();
+    // fbCircle.remove();
+    // googlCircle.remove();
+    // msftCircle.remove();
+    //
+    // var aapl_date_index = currentDate.getFullYear() - 1980
+    // var amzn_date_index = currentDate.getFullYear() - 1997
+    // var fb_date_index = currentDate.getFullYear() - 2012
+    // var googl_date_index = currentDate.getFullYear() - 2004
+    // var msft_date_index = currentDate.getFullYear() - 1986
+    //
+    // aaplCircle = svg
+    //     .append("circle")
+    //     .attr("class", "aapl")
+    //     .attr("r", function(){
+    //         return circleScale(MCjs.aapl[aapl_date_index]["marketcap"])
+    //     }) // size will be by how big the company is
+    //     .attr("fill", "red")
+    //     .attr("transform", "translate(" + projection([-121.8949555, 37.3393857]) + ")")
+    //     // .on("mouseover", tool_tip.html("Apple<br>Market Cap: " +
+    //     //     mcFormat(MCjs.aapl[aapl_date_index]["marketcap"]).replace(/G/,"B")).show)
+    //     // .on("mouseout", tool_tip.hide);
+    //
+    // amznCircle = svg
+    //     .append("circle")
+    //     .attr("class", "amzn")
+    //     .attr("r", function(){
+    //         if (MCjs.amzn[amzn_date_index] == undefined) {
+    //             return 0
+    //         } else {
+    //             return circleScale(MCjs.amzn[amzn_date_index]["marketcap"])
+    //         }
+    //     }) // size will be by how big the company is
+    //     .attr("fill", "red")
+    //     .attr("transform", "translate(" + projection([-122.33207080000, 47.60620950000]) + ")")
+    //     // .on("mouseover", tool_tip.html(function(){
+    //     //     if (MCjs.amzn[amzn_date_index] == undefined) {
+    //     //         return "Amazon<br>Market Cap: "
+    //     //     } else {
+    //     //         return "Amazon<br>Market Cap: " +
+    //     //             mcFormat(MCjs.amzn[amzn_date_index]["marketcap"]).replace(/G/,"B")
+    //     //     }
+    //     // }).show)
+    //     // .on("mouseout", tool_tip.hide);
+    //
+    // fbCircle = svg
+    //     .append("circle")
+    //     .attr("class", "fb")
+    //     .attr("r", function(){
+    //         if (MCjs.fb[fb_date_index] == undefined) {
+    //             return 0
+    //         } else {
+    //             return circleScale(MCjs.fb[fb_date_index]["marketcap"])
+    //         }
+    //     }) // size will be by how big the company is
+    //     .attr("fill", "red")
+    //     .attr("transform", "translate(" + projection([-121.8949555, 37.3393857,]) + ")")
+    //     // .on("mouseover", tool_tip.html("Facebook<br>Market Cap: " +
+    //     //     mcFormat(MCjs.fb[fb_date_index]["marketcap"]).replace(/G/,"B")).show)
+    //     // .on("mouseout", tool_tip.hide);
+    //
+    // googlCircle = svg
+    //     .append("circle")
+    //     .attr("class", "googl")
+    //     .attr("r", function(){
+    //         if (MCjs.googl[googl_date_index] == undefined) {
+    //             return 0
+    //         } else {
+    //             return circleScale(MCjs.googl[googl_date_index]["marketcap"])
+    //         }
+    //     }) // size will be by how big the company is
+    //     .attr("fill", "red")
+    //     .attr("transform", "translate(" + projection([-121.8949555, 37.3393857,]) + ")")
+    //     // .on("mouseover", tool_tip.html("Google<br>Market Cap: " +
+    //     //     mcFormat(MCjs.aapl[googl_date_index]["marketcap"]).replace(/G/,"B")).show)
+    //     // .on("mouseout", tool_tip.hide);
+    //
+    // msftCircle = svg
+    //     .append("circle")
+    //     .attr("class", "msft")
+    //     .attr("r", function(){
+    //         if (MCjs.msft[msft_date_index] == undefined) {
+    //             return 0
+    //         } else {
+    //             return circleScale(MCjs.msft[msft_date_index]["marketcap"])
+    //         }
+    //     }) // size will be by how big the company is
+    //     .attr("fill", "red")
+    //     .attr("transform", "translate(" + projection([-122.33207080000, 47.60620950000]) + ")")
+    //     // .on("mouseover", tool_tip.html("Microsoft<br>Market Cap: " +
+    //     //     mcFormat(MCjs.msft[msft_date_index]["marketcap"]).replace(/G/,"B")).show)
+    //     // .on("mouseout", tool_tip.hide);
 
 
 }
