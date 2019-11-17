@@ -164,8 +164,6 @@ BarchartMC.prototype.updateVis = function(){
 BarchartMC.prototype.onSelectionChange = function(selection){
     var vis = this;
 
-    console.log(selection)
-
     vis.row = vis.data[selection - 1979]
 
     vis.wrangleData();

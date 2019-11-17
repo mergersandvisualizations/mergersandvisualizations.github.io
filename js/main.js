@@ -3,7 +3,7 @@ var forceData = {"nodes":[], "links":[]};
 
 var aaplMC, amznMC, fbMC, googlMC, msftMC, cities, aaplCircle, amznCircle, fbCircle, googlCircle, msftCircle;
 
-var time;
+var time, pause = false;
 
 queue()
     .defer(d3.json, "data/states-10m.json")
@@ -68,18 +68,26 @@ queue()
 
 
         $("#playbutton").on("click", function(){
-            console.log("yo")
-            var count = 1980
-            time = setInterval(function(){
-                count += 1
-                // year = new Date(count, 0, 1)
-                sliderTime.default(count)
-                barchartMC.onSelectionChange(count)
-                d3.select('p#value-time').text(count);
-                if (count >= 2019) {
-                    clearInterval(time)
-                }
-            }, 500)
+            if (!pause) {
+                var count = sliderTime.value()
+                pause = !pause
+                $("#playbutton").html("Pause").css("background-color", "red")
+                time = setInterval(function(){
+                    count += 1
+                    // year = new Date(count, 0, 1)
+                    sliderTime.default(count)
+                    barchartMC.onSelectionChange(count)
+                    d3.select('p#value-time').text(count);
+                    if (count >= 2019) {
+                        clearInterval(time)
+                    }
+                }, 500)
+            } else {
+                pause = !pause
+                $("#playbutton").html("Play").css("background-color", "green")
+                clearInterval(time)
+            }
+
         })
     })
 
