@@ -30,26 +30,28 @@ queue()
 
         // inspiration from https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518
         var dataTime = d3.range(0, 41).map(function(d) {
-            return new Date(1980 + d, 0, 1);
+            return 1979 + d;
         });
 
         var dataStepTime = d3.range(0, 41, 5).map(function(d) {
-            return new Date(1980 + d, 0, 1);
+            return 1980 + d;
         });
 
         var sliderTime = d3
             .sliderBottom()
             .min(d3.min(dataTime))
             .max(d3.max(dataTime))
-            .step(1000 * 60 * 60 * 24 * 365)
+            // .step(1000 * 60 * 60 * 24 * 365)
+            .step(1)
             .width(700)
-            .tickFormat(d3.timeFormat('%Y'))
-            .tickValues(dataStepTime)
-            .default(new Date(1979, 0, 1))
+            // .tickFormat(d3.timeFormat('%Y'))
+            .tickFormat(d3.format("d"))
+            // .tickValues(dataStepTime)
+            .default(1979)
             .on('onchange', val => {
                 clearInterval(time)
                 barchartMC.onSelectionChange(val)
-                d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
+                d3.select('p#value-time').text(val);
             });
 
         var gTime = d3
@@ -62,7 +64,7 @@ queue()
 
         gTime.call(sliderTime);
 
-        d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
+        d3.select('p#value-time').text(sliderTime.value());
 
 
         $("#playbutton").on("click", function(){
@@ -70,10 +72,10 @@ queue()
             var count = 1980
             time = setInterval(function(){
                 count += 1
-                year = new Date(count, 0, 1)
-                sliderTime.default(year)
-                barchartMC.onSelectionChange(year)
-                d3.select('p#value-time').text(d3.timeFormat('%Y')(year));
+                // year = new Date(count, 0, 1)
+                sliderTime.default(count)
+                barchartMC.onSelectionChange(count)
+                d3.select('p#value-time').text(count);
                 if (count >= 2019) {
                     clearInterval(time)
                 }

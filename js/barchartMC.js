@@ -96,8 +96,6 @@ BarchartMC.prototype.updateVis = function(){
 
     vis.row = vis.row.sort(function(a, b){ return b[1] - a[1]})
 
-    console.log(vis.row.map(function(d) { return d[0]}))
-
     vis.rect = vis.svg.selectAll("rect")
         .data(vis.row, function(d) {
             return d[0]
@@ -118,9 +116,6 @@ BarchartMC.prototype.updateVis = function(){
     vis.yAxisContain.transition()
         .duration(500)
         .call(vis.yAxis);
-
-
-    console.log(vis.row)
 
     vis.rect
         .enter()
@@ -171,7 +166,7 @@ BarchartMC.prototype.onSelectionChange = function(selection){
 
     console.log(selection)
 
-    vis.row = vis.data[selection.getFullYear() - 1979]
+    vis.row = vis.data[selection - 1979]
 
     vis.wrangleData();
 }
