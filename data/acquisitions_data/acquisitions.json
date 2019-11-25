@@ -1,12 +1,19 @@
 {
   "nodes": [
     {
+      "id": 0,
+      "name": "root",
+      "date": "01-Jan-60"
+    },
+    {
       "id": 1,
       "name": "Microsoft",
       "country": "United States",
       "date": "01-Jan-80",
       "price": 1130000000000,
       "category": "company",
+      "fx": 120,
+      "fy": 100
     },
     {
       "id": 2,
@@ -15,6 +22,8 @@
       "date": "01-Jan-80",
       "price": 1193000000000,
       "category": "company",
+      "fx": 780,
+      "fy": 100
     },
     {
       "id": 3,
@@ -23,6 +32,8 @@
       "date": "01-Jan-80",
       "price": 863000000000,
       "category": "company",
+      "fx": 80,
+      "fy": 600
     },
     {
       "id": 4,
@@ -31,6 +42,8 @@
       "date": "01-Jan-80",
       "price": 555000000000,
       "category": "company",
+      "fx": 800,
+      "fy": 600
     },
     {
       "id": 5,
@@ -39,6 +52,8 @@
       "date": "01-Jan-80",
       "price": 909000000000,
       "category": "company",
+      "fx": 500,
+      "fy": 800
     },
     {
       "id": 6,
@@ -450,7 +465,7 @@
       "acquirer": "Amazon",
       "name": "MindCorps Incorporated",
       "country": "United States",
-      "date": "1/1/99",
+      "date": "1-Jan-99",
       "price": 0,
       "category": "analytics"
     },
@@ -666,7 +681,7 @@
       "acquirer": "Apple",
       "name": "SoundJam MP",
       "country": "United States",
-      "date": "1/1/00",
+      "date": "1-Jan-00",
       "price": 0,
       "category": "saas"
     },
@@ -765,7 +780,7 @@
       "acquirer": "Apple",
       "name": "Bluefish Labs",
       "country": "United States",
-      "date": "1/1/01",
+      "date": "1-Jan-01",
       "price": 0,
       "category": "saas"
     },
@@ -990,7 +1005,7 @@
       "acquirer": "Google",
       "name": "Pyra Labs",
       "country": "United States",
-      "date": "Feb-03",
+      "date": "01-Feb-03",
       "price": 0,
       "category": "content"
     },
@@ -1017,7 +1032,7 @@
       "acquirer": "Google",
       "name": "Applied Semantics",
       "country": "United States",
-      "date": "Apr-03",
+      "date": "01-Apr-03",
       "price": 102000000,
       "category": "saas"
     },
@@ -1026,7 +1041,7 @@
       "acquirer": "Google",
       "name": "Neotonic Software",
       "country": "United States",
-      "date": "Apr-03",
+      "date": "01-Apr-03",
       "price": 0,
       "category": "saas"
     },
@@ -1071,7 +1086,7 @@
       "acquirer": "Google",
       "name": "Sprinks",
       "country": "United States",
-      "date": "Oct-03",
+      "date": "01-Oct-03",
       "price": 0,
       "category": "commerce"
     },
@@ -1080,7 +1095,7 @@
       "acquirer": "Google",
       "name": "Genius Labs",
       "country": "United States",
-      "date": "Oct-03",
+      "date": "01-Oct-03",
       "price": 0,
       "category": "saas"
     },
@@ -1143,7 +1158,7 @@
       "acquirer": "Google",
       "name": "ZipDash",
       "country": "United States",
-      "date": "Sep-04",
+      "date": "01-Sep-04",
       "price": 0,
       "category": "saas"
     },
@@ -1152,7 +1167,7 @@
       "acquirer": "Google",
       "name": "Where2",
       "country": "Australia",
-      "date": "Oct-04",
+      "date": "01-Oct-04",
       "price": 0,
       "category": "saas"
     },
@@ -1179,7 +1194,7 @@
       "acquirer": "Amazon",
       "name": "smallparts.com",
       "country": "United States",
-      "date": "1/1/05",
+      "date": "1-Jan-05",
       "price": 0,
       "category": "commerce"
     },
@@ -1188,7 +1203,7 @@
       "acquirer": "Apple",
       "name": "SchemaSoft",
       "country": "Canada",
-      "date": "Mar-05",
+      "date": "01-Mar-05",
       "price": 0,
       "category": "saas"
     },
@@ -1215,7 +1230,7 @@
       "acquirer": "Apple",
       "name": "FingerWorks",
       "country": "United States",
-      "date": "Apr-05",
+      "date": "01-Apr-05",
       "price": 0,
       "category": "hardware"
     },
@@ -1287,7 +1302,7 @@
       "acquirer": "Google",
       "name": "Reqwireless",
       "country": "Canada",
-      "date": "Jul-05",
+      "date": "01-Jul-05",
       "price": 0,
       "category": "saas"
     },
@@ -1350,7 +1365,7 @@
       "acquirer": "Google",
       "name": "Skia",
       "country": "United States",
-      "date": "Nov-05",
+      "date": "01-Nov-05",
       "price": 0,
       "category": "saas"
     },
@@ -2646,7 +2661,7 @@
       "acquirer": "Google",
       "name": "Zetawire",
       "country": "Canada",
-      "date": "Aug-10",
+      "date": "01-Aug-10",
       "price": 0,
       "category": "saas"
     },
@@ -3276,7 +3291,7 @@
       "acquirer": "Google",
       "name": "WIMM Labs",
       "country": "United States",
-      "date": "1/1/12",
+      "date": "1-Jan-12",
       "price": 0,
       "category": "hardware"
     },
@@ -3609,7 +3624,7 @@
       "acquirer": "Apple",
       "name": "Novauris Technologies",
       "country": "United Kingdom",
-      "date": "1/1/13",
+      "date": "1-Jan-13",
       "price": 0,
       "category": "ai"
     },
@@ -3618,7 +3633,7 @@
       "acquirer": "Apple",
       "name": "OttoCat",
       "country": "United States",
-      "date": "1/1/13",
+      "date": "1-Jan-13",
       "price": 0,
       "category": "search"
     },
@@ -3672,7 +3687,7 @@
       "acquirer": "Facebook",
       "name": "osmeta",
       "country": "United States",
-      "date": "Mar-13",
+      "date": "01-Mar-13",
       "price": 0,
       "category": "saas"
     },
@@ -3681,7 +3696,7 @@
       "acquirer": "Facebook",
       "name": "Storylane (Mixtent)",
       "country": "United States",
-      "date": "Mar-13",
+      "date": "01-Mar-13",
       "price": 0,
       "category": "social"
     },
@@ -3987,7 +4002,7 @@
       "acquirer": "Apple",
       "name": "Acunu",
       "country": "United States",
-      "date": "Dec-13",
+      "date": "01-Dec-13",
       "price": 0,
       "category": "content"
     },
@@ -4095,7 +4110,7 @@
       "acquirer": "Apple",
       "name": "Dryft",
       "country": "United States",
-      "date": "1/1/14",
+      "date": "1-Jan-14",
       "price": 0,
       "category": "saas"
     },
@@ -4689,7 +4704,7 @@
       "acquirer": "Apple",
       "name": "Camel Audio",
       "country": "United Kingdom",
-      "date": "Jan-15",
+      "date": "01-Jan-15",
       "price": 0,
       "category": "media"
     },
@@ -4842,7 +4857,7 @@
       "acquirer": "Apple",
       "name": "Coherent Navigation",
       "country": "United States",
-      "date": "Apr-15",
+      "date": "01-Apr-15",
       "price": 0,
       "category": "saas"
     },
@@ -4905,7 +4920,7 @@
       "acquirer": "Apple",
       "name": "Metaio",
       "country": "Germany",
-      "date": "May-15",
+      "date": "01-May-15",
       "price": 0,
       "category": "saas"
     },
@@ -5013,7 +5028,7 @@
       "acquirer": "Apple",
       "name": "Mapsense",
       "country": "United States",
-      "date": "Sep-15",
+      "date": "01-Sep-15",
       "price": 25000000,
       "category": "analytics"
     },
@@ -5022,7 +5037,7 @@
       "acquirer": "Apple",
       "name": "VocalIQ",
       "country": "United Kingdom",
-      "date": "Sep-15",
+      "date": "01-Sep-15",
       "price": 0,
       "category": "saas"
     },
@@ -5031,7 +5046,7 @@
       "acquirer": "Apple",
       "name": "Perceptio",
       "country": "United States",
-      "date": "Sep-15",
+      "date": "01-Sep-15",
       "price": 0,
       "category": "ai"
     },
@@ -5139,7 +5154,7 @@
       "acquirer": "Apple",
       "name": "Faceshift",
       "country": "Switzerland",
-      "date": "Nov-15",
+      "date": "01-Nov-15",
       "price": 0,
       "category": "saas"
     },
@@ -5562,7 +5577,7 @@
       "acquirer": "Facebook",
       "name": "Zurich Eye",
       "country": "Switzerland",
-      "date": "Nov-16",
+      "date": "01-Nov-16",
       "price": 0,
       "category": "hardware"
     },
@@ -5868,7 +5883,7 @@
       "acquirer": "Facebook",
       "name": "Fayteq AG",
       "country": "Germany",
-      "date": "Aug-17",
+      "date": "01-Aug-17",
       "price": 0,
       "category": "ai"
     },
@@ -5940,7 +5955,7 @@
       "acquirer": "Apple",
       "name": "init.ai",
       "country": "United States",
-      "date": "Oct-17",
+      "date": "01-Oct-17",
       "price": 0,
       "category": "saas"
     },
@@ -5949,7 +5964,7 @@
       "acquirer": "Apple",
       "name": "PowerbyProxi",
       "country": "New Zealand",
-      "date": "Oct-17",
+      "date": "01-Oct-17",
       "price": 0,
       "category": "hardware"
     },
@@ -6030,7 +6045,7 @@
       "acquirer": "Apple",
       "name": "Spektral",
       "country": "Denmark",
-      "date": "Dec-17",
+      "date": "01-Dec-17",
       "price": 30000000,
       "category": "hardware"
     },
@@ -6048,7 +6063,7 @@
       "acquirer": "Apple",
       "name": "Laserlike",
       "country": "United States",
-      "date": "1/1/18",
+      "date": "1-Jan-18",
       "price": 0,
       "category": "ai"
     },
@@ -6057,7 +6072,7 @@
       "acquirer": "Apple",
       "name": "Silk Labs",
       "country": "United States",
-      "date": "1/1/18",
+      "date": "1-Jan-18",
       "price": 0,
       "category": "ai"
     },
@@ -6066,7 +6081,7 @@
       "acquirer": "Apple",
       "name": "Tueo Health",
       "country": "United States",
-      "date": "1/1/18",
+      "date": "1-Jan-18",
       "price": 0,
       "category": "hardware"
     },
@@ -6075,7 +6090,7 @@
       "acquirer": "Apple",
       "name": "Silicon Valley Data Science",
       "country": "United States",
-      "date": "Jan-18",
+      "date": "01-Jan-18",
       "price": 0,
       "category": "analytics"
     },
@@ -6264,7 +6279,7 @@
       "acquirer": "Facebook",
       "name": "Bloomsbury AI",
       "country": "United Kingdom",
-      "date": "Jul-18",
+      "date": "01-Jul-18",
       "price": 30000000,
       "category": "ai"
     },
@@ -6480,7 +6495,7 @@
       "acquirer": "Facebook",
       "name": "Chainspace",
       "country": "United Kingdom",
-      "date": "Feb-19",
+      "date": "01-Feb-19",
       "price": 0,
       "category": "saas"
     },
@@ -6561,7 +6576,7 @@
       "acquirer": "Amazon",
       "name": "Amiato",
       "country": "United States",
-      "date": "May-19",
+      "date": "01-May-19",
       "price": 0,
       "category": "saas"
     },
@@ -6696,7 +6711,7 @@
       "acquirer": "Amazon",
       "name": "Yap",
       "country": "United States",
-      "date": "Sep-19",
+      "date": "01-Sep-19",
       "price": 0,
       "category": "saas"
     },
@@ -6705,7 +6720,7 @@
       "acquirer": "Amazon",
       "name": "Biba Systems",
       "country": "United States",
-      "date": "Sep-19",
+      "date": "01-Sep-19",
       "price": 0,
       "category": "saas"
     },
@@ -6750,7 +6765,7 @@
       "acquirer": "Amazon",
       "name": "Dispatch",
       "country": "United States",
-      "date": "Nov-19",
+      "date": "01-Nov-19",
       "price": 0,
       "category": "saas"
     },
@@ -6759,7 +6774,7 @@
       "acquirer": "Amazon",
       "name": "OurHouse.com",
       "country": "United States",
-      "date": "Dec-19",
+      "date": "01-Dec-19",
       "price": 0,
       "category": "commerce"
     }
