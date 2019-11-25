@@ -15,7 +15,7 @@ p {
 }
 
 a {
-    color: #fed136;
+    color: #D0D1D2;
 }
 
 a:hover {
@@ -23,7 +23,7 @@ a:hover {
 }
 
 .text-primary {
-    color: #fed136 !important;
+    color: #D0D1D2 !important;
 }
 
 h1,
@@ -38,7 +38,7 @@ h6 {
 }
 
 .page-section {
-    padding: 100px 0;
+    padding: 20fpx 0;
 }
 
 .page-section h2.section-heading {
@@ -59,17 +59,17 @@ h6 {
 
 @media (min-width: 768px) {
     section {
-        padding: 150px 0;
+        padding: 75px 0;
     }
 }
 
 ::-moz-selection {
-    background: #fed136;
+    background: #D0D1D2;
     text-shadow: none;
 }
 
 ::selection {
-    background: #fed136;
+    background: #D0D1D2;
     text-shadow: none;
 }
 
@@ -122,13 +122,13 @@ img::-moz-selection {
     text-transform: uppercase;
     color: white;
     border: 0;
-    background-color: #fed136;
+    background-color: #D0D1D2;
     font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     /*font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';*/
 }
 
 #mainNav .navbar-brand {
-    color: #fed136;
+    color: #D0D1D2;
     font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     /*font-family: 'Kaushan Script', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';*/
 }
@@ -148,7 +148,7 @@ img::-moz-selection {
 }
 
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
-    color: #fed136;
+    color: #D0D1D2;
 }
 
 @media (min-width: 992px) {
@@ -215,7 +215,8 @@ header.masthead {
     padding-top: calc(7rem + 72px);
     padding-bottom: 7rem;
     /*background: linear-gradient(0deg, lightskyblue 20%, cornflowerblue 100%);*/
-    background: linear-gradient(to top, rgba(22, 22, 22, 0.5) 10%, rgba(22, 22, 22, 0.3) 90%, white 100%), url("../img/map-image.jpg");
+    background: linear-gradient(to top, rgba(22, 22, 22, 0.2) 0%, rgba(22, 22, 22, 0.6) 50%, royalblue 100%), url("../img/map-image.jpg");
+    /*background: linear-gradient(to top, rgba(22, 22, 22, 0.5) 10%, rgba(22, 22, 22, 0.3) 90%, white 100%), url("../img/map-image.jpg");*/
     /*background-image: ;*/
     background-repeat: no-repeat;
     background-position: center center;
@@ -515,7 +516,7 @@ header.masthead .bg-circle-4 {
     color: white;
     border: 7px solid #e9ecef;
     border-radius: 100%;
-    background-color: #fed136;
+    background-color: #D0D1D2;
 }
 
 .timeline > li .timeline-image h4 {
@@ -686,7 +687,7 @@ section#contact .form-group textarea.form-control {
 }
 
 section#contact .form-control:focus {
-    border-color: #fed136;
+    border-color: #D0D1D2;
     box-shadow: none;
 }
 
@@ -752,7 +753,7 @@ ul.social-buttons li a {
 }
 
 ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover {
-    background-color: #fed136;
+    background-color: #D0D1D2;
 }
 
 .tooltip-title {
@@ -811,16 +812,29 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 }
 
 
-@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
-
-body {
-    margin: 10px;
-}
 .col-sm-2{
-    width:20%;
-    float: left;
+    width:100%;
+    /*float: left;*/
 }
 img{
-    width:100%;
-    height:auto;
+    width:110px;
+    height:100px;
+    border-radius: 10px;
 }
+
+.row{
+    align-content: center;
+}
+.tooltipLine circle {
+    fill: #F1F3F3;
+    stroke: #69b3a2;
+    stroke-width: 5px;
+}
+
+.hover-line {
+    stroke: #69b3a2;
+    stroke-width: 2px;
+    stroke-dasharray: 3,3;
+}
+
+

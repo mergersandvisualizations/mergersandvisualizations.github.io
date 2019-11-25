@@ -2,11 +2,23 @@
 
 var margin = {top: 50, bottom: 60, left: 60, right: 130};
 var width2 = 800 - margin.left - margin.right;
-var height2 = 500 - margin.top - margin.bottom;
+var height2 = 300 - margin.top - margin.bottom;
+
+
+var industries = {
+    "semi": "Semiconductor",
+    "consumerelectronics": "Cnsumr Electronics",
+    "cybersecurity": "Cybersecurity",
+    "saas": "SaaS",
+    "telecom": "Telecom",
+    "digitalmarket": "Digital Ads",
+    "bigdata": "Big Data",
+    "esports": "Esports"
+};
 
 // x y scales
 var x = d3.scaleLinear()
-    .domain([1998, 2025])
+    .domain([1998, 2022])
     .range([0, width2]);
 
 var y = d3.scaleLinear()
@@ -14,6 +26,7 @@ var y = d3.scaleLinear()
     .range([height2, 0]);
 
 var line = d3.line()
+    .curve(d3.curveMonotoneX)
     .x(d => x(d.year))
     .y(d => y(d.amount));
 
@@ -25,7 +38,12 @@ var fundingChart = d3.select('#funding-chart')
     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
 var tooltip = d3.select('#tooltip');
-var tooltipLine = fundingChart.append('line');
+var tooltipLine = fundingChart.append('line')
+    .attr("class", "x-hover-line hover-line")
+    .attr("class", "y-hover-line hover-line");
+
+tooltipLine.append("circle")
+    .attr("r", 7.5);
 
 // Add the axes and a title
 var xAxis = d3.axisBottom(x)
@@ -47,13 +65,13 @@ fundingChart.append('g')
 let fundingData, tipBox;
 d3.csv("data/trendRevenue.csv", function(error, csv) {
     var fundingjson = [];
-    var colors = ['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00'];
+    var colors = ["#08306b", "#4292c6", "#6baed6", "#08519c", "#deebf7", "#2171b5", "#c6dbef", "#b8cad6"];
     csv.forEach(function(d, index){
         fundingjson.push(
             {
                 "source": d["sector"],
                 "color": colors[index],
-                "2025_funding": +d["2025"],
+                "2022_funding": +d["2022"],
                 "funding": [
                     {"year": 1998, "amount": +d["1998"]},
                     {"year": 1999, "amount": +d["1999"]},
@@ -79,10 +97,7 @@ d3.csv("data/trendRevenue.csv", function(error, csv) {
                     {"year": 2019, "amount": +d["2019"]},
                     {"year": 2020, "amount": +d["2020"]},
                     {"year": 2021, "amount": +d["2021"]},
-                    {"year": 2022, "amount": +d["2022"]},
-                    {"year": 2023, "amount": +d["2023"]},
-                    {"year": 2024, "amount": +d["2024"]},
-                    {"year": 2025, "amount": +d["2025"]}
+                    {"year": 2022, "amount": +d["2022"]}
                 ]
             }
         );
@@ -101,7 +116,7 @@ d3.csv("data/trendRevenue.csv", function(error, csv) {
     fundingChart.selectAll()
         .data(fundingData).enter()
         .append('text')
-        .html(d => d.source)
+        .html(d => industries[d.source])
         .attr('fill', d => d.color)
         .attr('stroke', d => d.color)
         .attr('alignment-baseline', 'middle')
@@ -109,35 +124,33 @@ d3.csv("data/trendRevenue.csv", function(error, csv) {
         .attr('dx', '.2em')
         .attr('y', function(d){
                 if (d["source"] == "digitalmarket"){
-                    return y(d["2025_funding"]) + 13;
+                    return y(d["2022_funding"]) + 4;
                 }
                 else{
-                    return y(d["2025_funding"]);
+                    return y(d["2022_funding"]) ;
                 }
                 })
         .attr('font-size', 13);
 
     fundingChart.append("text")
         .attr("class", "axis-title")
-        .attr("x", -50)
+        .attr("x", 0)
         .attr("y", -20)
         .attr("font-size", 15)
         .attr("dy", ".1em")
         // .style("text-anchor", "end")
-        .text("Funding in millions USD")
-        .attr("fill", "white")
-        .attr("stroke", "white");
+        .text("Revenue ($ Bil USD) of Tech Verticals grows with chip computing power and big data")
+        .attr("fill", "black");
 
     fundingChart.append("text")
         .attr("class", "axis-title")
-        .attr("x", 320)
-        .attr("y", height2 + 50)
+        .attr("x", 300)
+        .attr("y", height2 + 40)
         .attr("font-size", 15)
         .attr("dy", ".1em")
         // .style("text-anchor", "end")
         .text("Year")
-        .attr("fill", "white")
-        .attr("stroke", "white");
+        .attr("fill", "black");
 
     tipBox = fundingChart.append('rect')
         .attr('width', width2)
@@ -161,6 +174,7 @@ function drawTooltip() {
         return b.funding.find(h => h.year == year).amount - a.funding.find(h => h.year == year).amount;
     });
 
+
     tooltipLine.attr('stroke', '#515254')
         .attr('x1', x(year))
         .attr('x2', x(year))
@@ -181,7 +195,7 @@ function drawTooltip() {
         .html(d =>
             "<div class=\"tg-wrap\"><table class=\"tg\">\n" +
             "  <tr>\n" +
-            "    <td class=\"tg-0a7q\">" + "<b>" + d.source + "</b>" +"</td>\n" +
+            "    <td class=\"tg-0a7q\">" + "<b>" + industries[d.source] + "</b>" +"</td>\n" +
             "    <td class=\"tg-0a7q\">" + ': $' + d.funding.find(h => h.year == year).amount + ' Bil USD' + "</td>\n" +
             "  </tr>\n" +
             "</table></div>"
