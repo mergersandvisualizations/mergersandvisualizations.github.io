@@ -1,16 +1,15 @@
 
 var forceData = {"nodes":[], "links":[]};
 
-var aaplMC, amznMC, fbMC, googlMC, msftMC, cities, aaplCircle, amznCircle, fbCircle, googlCircle, msftCircle;
-
-var time, pause = false;
+var time, time2, pause, pause2, toggle = false;
 
 queue()
     .defer(d3.json, "data/states-10m.json")
     .defer(d3.csv, "data/cities-over-250k.csv")
     .defer(d3.json, "data/byYearMC.json")
-    .await(function(error, mapTopoUs, citiesTopo, byYearMC) {
-
+    .defer(d3.json, "data/acquisitions_data/acquisitions.json")
+    .defer(d3.json, "data/acquisitions_data/return.json")
+    .await(function(error, mapTopoUs, citiesTopo, byYearMC, acqData, ret) {
         var MyEventHandler = {};
 
         citiesTopo.forEach(function(d,i){
@@ -21,10 +20,10 @@ queue()
             forceData.nodes.push({"id":i+1, "name": d.NAME, "latitude": d.latitude, "longitude": d.longitude})
         })
 
+
         var mapVis = new MapVis("map-US", mapTopoUs, citiesTopo);
         var barchartMC = new BarchartMC("MC-barchart", byYearMC)
-
-
+        var acquisitionForce = new AcquisitionForce("acq-force", acqData, ret)
 
 
 
@@ -51,11 +50,21 @@ queue()
             .on('onchange', val => {
                 clearInterval(time)
                 barchartMC.onSelectionChange(val)
-                d3.select('p#value-time').text(val);
+                acquisitionForce.onSelectionChange(val)
+                d3.select('.value-time').text(val);
+                d3.select('.value-time2').text(val);
             });
 
         var gTime = d3
-            .select('div#slider-time')
+            .select('.slider-time')
+            .append('svg')
+            .attr('width', 900)
+            .attr('height', 100)
+            .append('g')
+            .attr('transform', 'translate(15,30)');
+
+        var gTime2 = d3
+            .select('.slider-time2')
             .append('svg')
             .attr('width', 900)
             .attr('height', 100)
@@ -63,8 +72,10 @@ queue()
             .attr('transform', 'translate(15,30)');
 
         gTime.call(sliderTime);
+        gTime2.call(sliderTime);
 
-        d3.select('p#value-time').text(sliderTime.value());
+        d3.select('.value-time').text(sliderTime.value());
+        d3.select('.value-time2').text(sliderTime.value());
 
 
         $("#playbutton").on("click", function(){
@@ -77,7 +88,7 @@ queue()
                     // year = new Date(count, 0, 1)
                     sliderTime.default(count)
                     barchartMC.onSelectionChange(count)
-                    d3.select('p#value-time').text(count);
+                    d3.select('.value-time').text(count);
                     if (count >= 2019) {
                         clearInterval(time)
                     }
@@ -87,7 +98,39 @@ queue()
                 $("#playbutton").html("Play").css("background-color", "green")
                 clearInterval(time)
             }
+        })
 
+        $("#force-together").on("click", function() {
+            acquisitionForce.forceTogether()
+            if (!toggle) {
+                $("#force-together").html("Center").css("background-color", "blue")
+                toggle = !toggle
+            } else {
+                $("#force-together").html("Scatter").css("background-color", "green")
+                toggle = !toggle
+            }
+        })
+
+        $("#playbutton2").on("click", function(){
+            if (!pause2) {
+                var count2 = sliderTime.value()
+                pause2 = !pause2
+                $("#playbutton2").html("Pause").css("background-color", "red")
+                time2 = setInterval(function(){
+                    count2 += 1
+                    // year = new Date(count, 0, 1)
+                    sliderTime.default(count2)
+                    acquisitionForce.onSelectionChange(count2)
+                    d3.select('.value-time2').text(count2);
+                    if (count2 >= 2019) {
+                        clearInterval(time2)
+                    }
+                }, 500)
+            } else {
+                pause2 = !pause2
+                $("#playbutton2").html("Play").css("background-color", "green")
+                clearInterval(time2)
+            }
         })
     });
 
