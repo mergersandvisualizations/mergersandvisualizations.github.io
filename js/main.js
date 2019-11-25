@@ -9,7 +9,9 @@ queue()
     .defer(d3.json, "data/byYearMC.json")
     .defer(d3.json, "data/acquisitions_data/acquisitions.json")
     .defer(d3.json, "data/acquisitions_data/return.json")
-    .await(function(error, mapTopoUs, citiesTopo, byYearMC, acqData, ret) {
+    .defer(d3.csv, "data/company_reception.csv")
+    .defer(d3.csv, "data/monopoly_feeling.csv")
+    .await(function(error, mapTopoUs, citiesTopo, byYearMC, acqData, ret, comp_feel, mono_feel) {
         var MyEventHandler = {};
 
         citiesTopo.forEach(function(d,i){
@@ -20,10 +22,27 @@ queue()
             forceData.nodes.push({"id":i+1, "name": d.NAME, "latitude": d.latitude, "longitude": d.longitude})
         })
 
+        comp_feel.forEach(function(d){
+            d.Very_positive = +d.Very_positive
+            d.Rather_positive = +d.Rather_positive
+            d.Neutral = +d.Neutral
+            d.Rather_negative = +d.Rather_negative
+            d.Very_negative = +d.Very_negative
+            d.Not_answered = +d.Not_answered
+        })
+
+        mono_feel.forEach(function(d) {
+            d.very_worried = +d.very_worried
+            d.concerned = +d.concerned
+            d.dont_feel_good = +d.dont_feel_good
+            d.dont_care = +d.dont_care
+            d.dont_know = +d.dont_know
+        })
 
         var mapVis = new MapVis("map-US", mapTopoUs, citiesTopo);
         var barchartMC = new BarchartMC("MC-barchart", byYearMC)
         var acquisitionForce = new AcquisitionForce("acq-force", acqData, ret)
+        var perception = new Perception("perception-area", comp_feel, mono_feel)
 
 
 
@@ -128,7 +147,7 @@ queue()
 
         $("#playbutton2").on("click", function(){
             if (!pause2) {
-                var count2 = sliderTime.value()
+                var count2 = sliderTime2.value()
                 pause2 = !pause2
                 $("#playbutton2").html("Pause").css("background-color", "red")
                 time2 = setInterval(function(){

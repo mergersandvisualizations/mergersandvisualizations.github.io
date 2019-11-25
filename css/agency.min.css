@@ -837,4 +837,7 @@ img{
     stroke-dasharray: 3,3;
 }
 
+.legend {
+    font-size: 10px;
+}
 

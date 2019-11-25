@@ -88,12 +88,7 @@ AcquisitionForce.prototype.wrangleData = function(){
 AcquisitionForce.prototype.updateVis = function(){
     var vis = this;
 
-    console.log("yo")
-
     vis.acquired = vis.data.nodes.slice(5, 752)
-    console.log(vis.acquired)
-
-    console.log(d3.max(vis.acquired, function(d) {return d.price}))
 
     // 1) INITIALIZE FORCE-LAYOUT
 
@@ -104,8 +99,6 @@ AcquisitionForce.prototype.updateVis = function(){
         .force("center", d3.forceCenter().x(vis.width/2).y(vis.height/2))
         // .force("x", d3.forceX().x(vis.width/2).strength(0.2))
         // .force("y", d3.forceY().y(vis.height/2).strength(0.02));
-
-    console.log(vis.data.nodes)
 
     // vis.force = d3.forceSimulation(vis.data.nodes)
     //     .force("charge", d3.forceManyBody().strength(-5).distanceMax(100))
