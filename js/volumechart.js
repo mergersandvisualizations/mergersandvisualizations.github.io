@@ -3,19 +3,19 @@ var width = 700 - margin.left - margin.right;
 var height = 500 - margin.top - margin.bottom;
 
 // x y scales
-var x = d3.scaleLinear()
+var x_vol = d3.scaleLinear()
     .domain([1985, 2020])
     .range([0, width]);
 
-var y = d3.scaleLinear()
+var y_vol = d3.scaleLinear()
     .range([height, 0]);
 
 // Add the axes and a title
-var xAxis = d3.axisBottom(x)
+var xAxis_vol = d3.axisBottom(x_vol)
     .ticks(16)
     .tickFormat(d3.format('.4'));
 
-var yAxis = d3.axisLeft(y);
+var yAxis_vol = d3.axisLeft(y_vol);
 
 // volumeChart = svg
 var volumeChart = d3.select("#volume-chart").append("svg")
@@ -41,12 +41,12 @@ d3.csv("data/acquisitions_data/acquisition_volume.csv", function(error, data) {
         d.Value = +d.Value;
     });
 
-    y.domain([0, d3.max(data, function(d) { return d.Number; })]);
+    y_vol.domain([0, d3.max(data, function(d) { return d.Number; })]);
 
     volumeChart.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
-        .call(xAxis)
+        .call(xAxis_vol)
         .selectAll("text")
         .style("text-anchor", "end")
         .attr("dx", "-.8em")
@@ -55,7 +55,7 @@ d3.csv("data/acquisitions_data/acquisition_volume.csv", function(error, data) {
 
     volumeChart.append("g")
         .attr("class", "y axis")
-        .call(yAxis)
+        .call(yAxis_vol)
         .append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
@@ -67,10 +67,10 @@ d3.csv("data/acquisitions_data/acquisition_volume.csv", function(error, data) {
         .data(data)
         .enter().append("rect")
         .attr("class","bar")
-        .attr("x", function(d) { return x(d.Year); })
+        .attr("x", function(d) { return x_vol(d.Year); })
         .attr("width", 15)
-        .attr("y", function(d) { return y(d.Number); })
-        .attr("height", function(d) { return height - y(d.Number); })
+        .attr("y", function(d) { return y_vol(d.Number); })
+        .attr("height", function(d) { return height - y_vol(d.Number); })
         .on('mouseover', tip.show)
         .on('mouseout', tip.hide);
 
