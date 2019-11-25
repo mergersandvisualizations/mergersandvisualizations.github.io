@@ -20,7 +20,7 @@ AcquisitionForce.prototype.initVis = function(){
 
     vis.margin = { top: 20, right: 20, bottom: 20, left: 20 };
 
-    vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right,
+    vis.width = $("#" + vis.parentElement).width() - 100 - vis.margin.left - vis.margin.right,
         vis.height = vis.width * 0.8 - vis.margin.top - vis.margin.bottom;
 
     // SVG drawing area
@@ -33,7 +33,7 @@ AcquisitionForce.prototype.initVis = function(){
     vis.circleScale = d3.scaleLinear()
         // .base(10000)
         .domain([1, 26200000000])
-        .range([1,30])
+        .range([3,30])
 
     vis.switch = true
 
@@ -58,6 +58,10 @@ AcquisitionForce.prototype.initVis = function(){
     vis.dateParse = d3.timeParse("%d-%b-%y");
 
     vis.update = vis.data.links
+
+    vis.tool_tip = d3.tip()
+        .attr("class", "d3-tip")
+        .offset([-8, 0]);
 
     // (Filter, aggregate, modify data)
     vis.wrangleData();
@@ -148,6 +152,8 @@ AcquisitionForce.prototype.updateVis = function(){
         })
         .style("stroke", "black")
         .style("stroke-width", 0.15)
+        .on('mouseover', vis.tool_tip.show)
+        .on('mouseout', vis.tool_tip.hide)
         .call(d3.drag()
             .on("start", dragStarted)
             .on("drag", dragging)
@@ -193,6 +199,16 @@ AcquisitionForce.prototype.updateVis = function(){
         d.fx = null;
         d.fy = null;
     }
+
+    vis.tool_tip.html(function(d) {
+        if (d.price == 0) {
+            return d.name;
+        } else {
+            return d.name + "<br/>Value: " + d3.format(".2s")(d.price).replace("G", "B");
+        }
+    });
+
+    vis.svg.call(vis.tool_tip);
 }
 
 
