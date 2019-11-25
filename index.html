@@ -22,6 +22,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/agency.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
@@ -176,9 +177,19 @@
 
                 <h3>Volume of M&As over time</h3>
                 <br><br>
+                <div class="row">
+                    <div id="volume-chart"></div>
+                </div>
 
                 <h3>M&A bubble chart over time, showing the top 100 acquisitions made by the top 5 tech giants - Nick</h3>
                 <br><br>
+                <div class="row align-items-center">
+                    <button type="button" class="btn btn-success" id="playbutton2">Play</button>
+                    <div class="col-sm-2"><p class="value-time2"></p></div>
+                    <div class="col-sm"><div class="slider-time2"></div>Blue indicates missing price data. Drag a node if simulation gets stuck.</div>
+                </div>
+                <button type="button" class="btn btn-success" id="force-together">Scatter</button>
+                <div id="acq-force"></div>
 
             </div>
         </div>
@@ -309,6 +320,9 @@
 <script src="js/mapVis.js"></script>
 <script src="js/barchartMC.js"></script>
 <script src="js/trendRevenue.js"></script>
+<script src="js/volumechart.js"></script>
+<script src="js/acquisitionForce.js"></script>
+
 
 
 <!-- Bootstrap core JavaScript -->
