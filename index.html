@@ -62,7 +62,7 @@
     <div class="masthead-content">
         <div class="container">
             <h1 class="masthead-heading mb-5">The Rise of Today's Top 5 Tech Giants</h1>
-            <h2 class="masthead-subheading mb-0">An Analysis Through the lens of Mergers & Acquisitions</h2>
+            <h2 class="masthead-subheading mb-0">An analysis of merger and acquisitions</h2>
             <br><br>
 <!--            <h2 class="masthead-subheading mb-0">Nicolas Lepore, Rebecca Lisk, Lin Zhu</h2>-->
 <!--            <a href="#introduction" class="btn btn-primary btn-xl js-scroll-trigger rounded-pill mt-5">Learn More</a>-->
@@ -75,36 +75,47 @@
 
     <div class="container">
         <div class="row text-center">
-            <div class="col-sm-2" *ngFor="let smiley of agtContentService.smileys">
+            <div class="col-sm-2">
                 <figure>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz8_UB3u0k_jn5y2-tBf5H-oUazNO8KsR85pZzyi7yPVHZ3Dc"/>
-                    <figcaption></figcaption>
+                    <a href="https://www.microsoft.com" target="_blank">
+                        <img src="img/microsoft.jpg"/>
+                    </a>
+                    <figcaption>Mkt Cap: $tn</figcaption>
                 </figure>
             </div>
-            <div class="col-sm-2" *ngFor="let smiley of agtContentService.smileys">
+            <div class="col-sm-2">
                 <figure>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz8_UB3u0k_jn5y2-tBf5H-oUazNO8KsR85pZzyi7yPVHZ3Dc"/>
-                    <figcaption></figcaption>
+                    <a href="https://www.apple.com" target="_blank">
+                    <img src="img/apple.png"/>
+                    </a>
+                    <figcaption>Mkt Cap: $tn</figcaption>
                 </figure>
             </div>
-            <div class="col-sm-2" *ngFor="let smiley of agtContentService.smileys">
+            <div class="col-sm-2">
                 <figure>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz8_UB3u0k_jn5y2-tBf5H-oUazNO8KsR85pZzyi7yPVHZ3Dc"/>
-                    <figcaption></figcaption>
+                    <a href="https://www.amazon.com" target="_blank">
+                    <img src="img/amazon.jpg"/>
+                    </a>
+                    <figcaption>Mkt Cap: $tn</figcaption>
                 </figure>
             </div>
-            <div class="col-sm-2" *ngFor="let smiley of agtContentService.smileys">
+            <div class="col-sm-2">
                 <figure>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz8_UB3u0k_jn5y2-tBf5H-oUazNO8KsR85pZzyi7yPVHZ3Dc"/>
-                    <figcaption></figcaption>
+                    <a href="https://www.facebook.com" target="_blank">
+                    <img src="img/facebook.png"/>
+                    </a>
+                    <figcaption>Mkt Cap: $tn</figcaption>
                 </figure>
             </div>
-            <div class="col-sm-2" *ngFor="let smiley of agtContentService.smileys">
+            <div class="col-sm-2">
                 <figure>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz8_UB3u0k_jn5y2-tBf5H-oUazNO8KsR85pZzyi7yPVHZ3Dc"/>
-                    <figcaption></figcaption>
+                    <a href="https://www.google.com" target="_blank">
+                    <img src="img/google.jpg"/>
+                    </a>
+                    <figcaption>Mkt Cap: $tn</figcaption>
                 </figure>
             </div>
+
         </div>
     </div>
 
@@ -115,17 +126,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading text-uppercase">The Rise of Big Tech</h2>
-
-                <h3>Revenue ($ Bil USD) of Tech Verticals Grows with Trends of Faster Computing Chip Technologies and Rise of Big Data </h3>
-
-                <div class="row">
-                    <div id="funding-chart"></div>
-                    <div id='tooltip' style='padding:2px'></div>
-                </div>
+                <h2 class="section-heading text-uppercase">Market Conditions</h2>
 
 
-                <br><br>
 
 <!--                <h3>Linked view of the market caps of our top 5 tech giants (dynamic horizontal bar charts) - Rebecca</h3>-->
 <!--                <br><br>-->
@@ -137,14 +140,19 @@
 <!--                    <div class="col-sm-2"><p id="value-simple"></p></div>-->
 <!--                    <div class="col-sm"><div id="time-slider"></div></div>-->
 <!--                </div>-->
-                <h2>Today's big tech giants rise to market power as IBM's growth stagnates</h2>
+<!--                <h2>Today's big tech giants rise to market power as IBM's growth stagnates</h2>-->
                 <div class="row align-items-center">
-                    <button type="button" class="btn btn-success" id="playbutton">Play</button>
-                    <div class="col-sm-2"><p class="value-time"></p></div>
-                    <div class="col-sm"><div class="slider-time"></div></div>
+                    <div class="row">
+                        <button type="button" class="btn btn-success" id="playbutton">Play</button>
+                        <p id="value-time"></p>
+                        <div id="slider-time"></div>
+                    </div>
                 </div>
+                <div class="row">
+                    <div id="funding-chart"></div>
+                    <div id='tooltip' style='padding:2px'></div>
                     <div id="MC-barchart"></div>
-
+                </div>
 
                 <h3>The tech giants form their HQ's on the west and east coasts - click on a company and more info about the company will show up on display.</h3>-->
 

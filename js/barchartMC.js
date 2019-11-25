@@ -16,10 +16,9 @@ BarchartMC = function(_parentElement, _data){
 BarchartMC.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = { top: 20, right: 20, bottom: 200, left: 60 };
-
-    vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right,
-        vis.height = 500 - vis.margin.top - vis.margin.bottom;
+    vis.margin = {top: 50, bottom: 60, left: 60, right: 130};
+    vis.width = 800 - vis.margin.left - vis.margin.right;
+    vis.height = 300 - vis.margin.top - vis.margin.bottom;
 
     // SVG drawing area
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -134,23 +133,23 @@ BarchartMC.prototype.updateVis = function(){
         .attr("height", vis.x.bandwidth())
         .attr("fill", function(d){
             if (d[0] == "fb") {
-                return "#3b5998"
+                return "#6baed6"
             } if (d[0] == "aapl") {
-                return "#7d7d7d"
+                return "#2171b5"
             } else if (d[0] == "amzn") {
-                return "#ff9900"
+                return "#08519c"
             } else if (d[0] == "msft") {
-                return "black"
+                return "#08306b"
             } else if (d[0] == "googl") {
-                return "#3cba54"
+                return "#4292c6"
             } else if (d[0] == "adbe") {
-                return "#ff0000"
+                return "#deebf7"
             } else if (d[0] == "csco") {
-                return "#C5112E"
+                return "#c6dbef"
             } else if (d[0] == "ibm") {
-                return "#1F70C1"
+                return "#9ecae1"
             } else if (d[0] == "intc") {
-                return "#0071c5"
+                return "#1F70C1"
             } else if (d[0] == "crm") {
                 return "#21A0DF"
             }
