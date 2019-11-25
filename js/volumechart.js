@@ -66,7 +66,7 @@ d3.csv("data/acquisitions_data/acquisition_volume.csv", function(error, data) {
     volumeChart.selectAll(".bar")
         .data(data)
         .enter().append("rect")
-        .attr("class","bar")
+        .attr("class","bar_vol")
         .attr("x", function(d) { return x_vol(d.Year); })
         .attr("width", 15)
         .attr("y", function(d) { return y_vol(d.Number); })

@@ -1,15 +1,15 @@
-.bar {
+.bar_vol {
     fill: steelblue;
 }
 
-.bar:hover {
+.bar_vol:hover {
     fill: lightsteelblue ;
 }
 
 .d3-tip {
     line-height: 1;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 12px;x
     padding: 12px;
     background: rgba(0, 0, 0, 0.8);
     color: #fff;
