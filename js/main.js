@@ -50,8 +50,23 @@ queue()
             .on('onchange', val => {
                 clearInterval(time)
                 barchartMC.onSelectionChange(val)
-                acquisitionForce.onSelectionChange(val)
                 d3.select('.value-time').text(val);
+            });
+
+        var sliderTime2 = d3
+            .sliderBottom()
+            .min(d3.min(dataTime))
+            .max(d3.max(dataTime))
+            // .step(1000 * 60 * 60 * 24 * 365)
+            .step(1)
+            .width(700)
+            // .tickFormat(d3.timeFormat('%Y'))
+            .tickFormat(d3.format("d"))
+            // .tickValues(dataStepTime)
+            .default(1979)
+            .on('onchange', val => {
+                clearInterval(time2)
+                acquisitionForce.onSelectionChange(val)
                 d3.select('.value-time2').text(val);
             });
 
@@ -72,7 +87,7 @@ queue()
             .attr('transform', 'translate(15,30)');
 
         gTime.call(sliderTime);
-        gTime2.call(sliderTime);
+        gTime2.call(sliderTime2);
 
         d3.select('.value-time').text(sliderTime.value());
         d3.select('.value-time2').text(sliderTime.value());
