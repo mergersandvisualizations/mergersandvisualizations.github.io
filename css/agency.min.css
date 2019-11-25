@@ -822,6 +822,13 @@ img{
     border-radius: 10px;
 }
 
+#pyramid{
+
+    width:70%;
+    height:70%;
+
+}
+
 .row{
     align-content: center;
 }
@@ -837,4 +844,9 @@ img{
     stroke-dasharray: 3,3;
 }
 
-
+#container {
+    min-width: 320px;
+    max-width: 600px;
+    height: 400px;
+    margin: 0 auto;
+}
