@@ -11,9 +11,7 @@
       "country": "United States",
       "date": "01-Jan-80",
       "price": 1130000000000,
-      "category": "company",
-      "fx": 120,
-      "fy": 100
+      "category": "company"
     },
     {
       "id": 2,
@@ -21,9 +19,7 @@
       "country": "United States",
       "date": "01-Jan-80",
       "price": 1193000000000,
-      "category": "company",
-      "fx": 780,
-      "fy": 100
+      "category": "company"
     },
     {
       "id": 3,
@@ -31,9 +27,7 @@
       "country": "United States",
       "date": "01-Jan-80",
       "price": 863000000000,
-      "category": "company",
-      "fx": 80,
-      "fy": 600
+      "category": "company"
     },
     {
       "id": 4,
@@ -41,9 +35,7 @@
       "country": "United States",
       "date": "01-Jan-80",
       "price": 555000000000,
-      "category": "company",
-      "fx": 800,
-      "fy": 600
+      "category": "company"
     },
     {
       "id": 5,
@@ -51,9 +43,7 @@
       "country": "United States",
       "date": "01-Jan-80",
       "price": 909000000000,
-      "category": "company",
-      "fx": 500,
-      "fy": 800
+      "category": "company"
     },
     {
       "id": 6,
