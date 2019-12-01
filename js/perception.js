@@ -39,7 +39,7 @@ Perception.prototype.initVis = function(){
     vis.x = d3.scaleBand()
         .domain(vis.compData.map(function(d) {return d.Company}))
         .rangeRound([0, vis.width])
-        .paddingInner(0.3);
+        .paddingInner(0.4);
 
     vis.y = d3.scaleLinear()
         .domain([0, 100])
@@ -135,9 +135,9 @@ Perception.prototype.updateVis = function(){
         .data(function(d) { return d; })
         .enter()
         .append("rect")
-        .attr("x", function(d) { console.log(d); return vis.x(d.data.Company); })
-        .attr("y", function(d) { return vis.y(d[0] + d[1]); })
-        .attr("height", function(d) { return vis.y(d[0]) - vis.y(d[0] + d[1]); })
+        .attr("x", function(d) { return vis.x(d.data.Company); })
+        .attr("y", function(d) { return vis.y(d[1]); })
+        .attr("height", function(d) { return vis.y(d[0]) - vis.y(d[1]); })
         .attr("width", vis.x.bandwidth())
         .on('mouseover', vis.tool_tip.show)
         .on('mouseout', vis.tool_tip.hide);

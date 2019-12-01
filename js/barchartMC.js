@@ -16,8 +16,8 @@ BarchartMC = function(_parentElement, _data){
 BarchartMC.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = {top: 50, bottom: 60, left: 60, right: 130};
-    vis.width = 800 - vis.margin.left - vis.margin.right;
+    vis.margin = {top: 50, bottom: 60, left: 100, right: 130};
+    vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
     vis.height = 300 - vis.margin.top - vis.margin.bottom;
 
     // SVG drawing area
@@ -45,7 +45,30 @@ BarchartMC.prototype.initVis = function(){
     //     .scale(vis.y);
 
     vis.xAxis = d3.axisLeft()
-        .scale(vis.x);
+        .scale(vis.x)
+        .tickFormat(function(d) {
+            if (d == "fb") {
+                return "Facebook"
+            } if (d == "aapl") {
+                return "Apple"
+            } else if (d == "amzn") {
+                return "Amazon"
+            } else if (d == "msft") {
+                return "Microsoft"
+            } else if (d == "googl") {
+                return "Google"
+            } else if (d == "adbe") {
+                return "Adobe"
+            } else if (d == "csco") {
+                return "Cisco"
+            } else if (d == "ibm") {
+                return "IBM"
+            } else if (d == "intc") {
+                return "Intel"
+            } else if (d == "crm") {
+                return "Salesforce"
+            }
+        });
 
     vis.yAxis = d3.axisTop()
         .tickFormat(d3.format("$.2s"))
@@ -58,6 +81,13 @@ BarchartMC.prototype.initVis = function(){
     vis.yAxisContain = vis.svg.append("g")
         .attr("class", "axis y-axis");
 
+    vis.tool_tip = d3.tip()
+        .attr("class", "d3-tip")
+        .offset([-8, 0]);
+
+    vis.tool_tip.html(function(d) { return (d[0]).toUpperCase() + "<br/>MktCap: " + d3.format('.2s')(d[1]).replace(/G/, 'B'); });
+
+    vis.svg.call(vis.tool_tip);
 
     // (Filter, aggregate, modify data)
     vis.wrangleData();
@@ -127,33 +157,37 @@ BarchartMC.prototype.updateVis = function(){
         // .attr("y", function(d) { return vis.y(d[1]); })
         // .attr("width", vis.x.bandwidth())
         // .attr("height", function(d) { return vis.height - vis.y(d[1]); })
-        .attr("x", 0)//function(d) {return vis.x(d[0]);})
+        .attr("x", 0) //function(d) {return vis.x(d[0]);})
         .attr("y", function(d) { return vis.x(d[0]); })
         .attr("width", function(d) { return vis.y(d[1]); })
         .attr("height", vis.x.bandwidth())
         .attr("fill", function(d){
             if (d[0] == "fb") {
-                return "#6baed6"
+                return "#3b5998"
             } if (d[0] == "aapl") {
-                return "#2171b5"
+                return "#7d7d7d"
             } else if (d[0] == "amzn") {
-                return "#08519c"
+                return "#ff9900"
             } else if (d[0] == "msft") {
-                return "#08306b"
+                return "black"
             } else if (d[0] == "googl") {
-                return "#4292c6"
+                return "#3cba54"
             } else if (d[0] == "adbe") {
-                return "#deebf7"
+                return "#ff0000"
             } else if (d[0] == "csco") {
-                return "#c6dbef"
+                return "#C5112E"
             } else if (d[0] == "ibm") {
-                return "#9ecae1"
-            } else if (d[0] == "intc") {
                 return "#1F70C1"
+            } else if (d[0] == "intc") {
+                return "#0071c5"
             } else if (d[0] == "crm") {
                 return "#21A0DF"
             }
-        });
+        })
+
+     vis.rect
+        .on('mouseover', vis.tool_tip.show)
+        .on('mouseout', vis.tool_tip.hide);
 
     vis.rect.exit().remove();
 
