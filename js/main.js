@@ -11,7 +11,8 @@ queue()
     .defer(d3.json, "data/acquisitions_data/return.json")
     .defer(d3.csv, "data/company_reception.csv")
     .defer(d3.csv, "data/monopoly_feeling.csv")
-    .await(function(error, mapTopoUs, citiesTopo, byYearMC, acqData, ret, comp_feel, mono_feel) {
+    .defer(d3.csv, "data/pyramid.csv")
+    .await(function(error, mapTopoUs, citiesTopo, byYearMC, acqData, ret, comp_feel, mono_feel, pyr) {
         var MyEventHandler = {};
 
         citiesTopo.forEach(function(d,i){
@@ -43,6 +44,7 @@ queue()
         var barchartMC = new BarchartMC("MC-barchart", byYearMC)
         var acquisitionForce = new AcquisitionForce("acq-force", acqData, ret)
         var perception = new Perception("perception-area", comp_feel, mono_feel)
+        var pyramid = new Pyramid("pyramid-area", pyr)
 
 
 
