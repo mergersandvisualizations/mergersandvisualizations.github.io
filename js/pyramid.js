@@ -15,7 +15,7 @@ Pyramid.prototype.initVis = function(){
     var vis = this;
 
     vis.margin = {top: 10, bottom: 10, left: 10, right: 10};
-    vis.width = $("#" + vis.parentElement).width() - 200 - vis.margin.left - vis.margin.right;
+    vis.width = $("#" + vis.parentElement).width() - 500 - vis.margin.left - vis.margin.right;
     vis.height = 450 - vis.margin.top - vis.margin.bottom;
 
     // SVG drawing area
