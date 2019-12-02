@@ -1,4 +1,4 @@
-var margin = {top: 0, bottom: 60, left: 40, right: 40};
+var margin = {top: 0, bottom: 80, left: 70, right: 40};
 var width = 700 - margin.left - margin.right;
 var height = 500 - margin.top - margin.bottom;
 
@@ -53,14 +53,25 @@ d3.csv("data/acquisitions_data/acquisition_volume.csv", function(error, data) {
         .attr("dy", "-.55em")
         .attr("transform", "rotate(-90)" );
 
+    // text label for the x axis
+    volumeChart.append("text")
+        .attr("transform",
+            "translate(" + (width/2) + " ," +
+            (height + margin.top + 55) + ")")
+        .style("text-anchor", "middle")
+        .text("Year");
+
     volumeChart.append("g")
         .attr("class", "y axis")
-        .call(yAxis_vol)
-        .append("text")
+        .call(yAxis_vol);
+
+    // text label for the y axis
+    volumeChart.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 6)
-        .attr("dy", ".71em")
-        .style("text-anchor", "end")
+        .attr("y", 0 - margin.left)
+        .attr("x",0 - (height / 2))
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
         .text("Number of Acquisitions");
 
     volumeChart.selectAll(".bar")
