@@ -18,7 +18,7 @@ var idMap = {"Microsoft": 1, "Apple": 2, "Amazon": 3, "Alphabet": 4, "Google": 4
 AcquisitionForce.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = { top: 20, right: 20, bottom: 20, left: 20 };
+    vis.margin = { top: 0, right: 20, bottom: 20, left: 20 };
 
     vis.width = $("#" + vis.parentElement).width() - 100 - vis.margin.left - vis.margin.right,
         vis.height = vis.width * 0.8 - vis.margin.top - vis.margin.bottom;

@@ -17,7 +17,7 @@ Perception.prototype.initVis = function(){
     var vis = this;
 
     vis.margin = {top: 10, bottom: 60, left: 60, right: 150};
-    vis.width = 800 - vis.margin.left - vis.margin.right;
+    vis.width = $("#" + vis.parentElement).width() - 200 - vis.margin.left - vis.margin.right;
     vis.height = 400 - vis.margin.top - vis.margin.bottom;
 
     // SVG drawing area
@@ -27,19 +27,13 @@ Perception.prototype.initVis = function(){
         .append("g")
         .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
-    vis.svg.append("defs").append("clipPath")
-        .attr("id", "clip")
-        .append("rect")
-        .attr("width", vis.width)
-        .attr("height", vis.height);
-
     vis.compData.sort(function(a, b) { return b.Very_positive - a.Very_positive; });
 
     // Scales and axes
     vis.x = d3.scaleBand()
         .domain(vis.compData.map(function(d) {return d.Company}))
         .rangeRound([0, vis.width])
-        .paddingInner(0.4);
+        .paddingInner(0.3);
 
     vis.y = d3.scaleLinear()
         .domain([0, 100])
@@ -77,9 +71,10 @@ Perception.prototype.initVis = function(){
 
     vis.svg.append("g")
         .attr("class", "legend")
-        .attr("transform", "translate(620,200)");
+        .attr("transform", "translate(" + (vis.width + 10) + ",200)");
 
     vis.legend = d3.legendColor()
+        .labels(["Very Positive", "Rather Positive", "Neutral", "Rather Negative", "Very Negative", 'Not Answered'])
         .shapeWidth(20);
 
     vis.legend

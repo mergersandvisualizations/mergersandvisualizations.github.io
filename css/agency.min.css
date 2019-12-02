@@ -854,3 +854,12 @@ img{
     height: 400px;
     margin: 0 auto;
 }
+
+#amazon_pic {
+    background-color: black;
+}
+
+#microsoft_pic {
+    background-color: white;
+}
+
