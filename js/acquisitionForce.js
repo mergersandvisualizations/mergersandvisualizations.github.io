@@ -18,7 +18,7 @@ var idMap = {"Microsoft": 1, "Apple": 2, "Amazon": 3, "Alphabet": 4, "Google": 4
 AcquisitionForce.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = { top: 0, right: 20, bottom: 20, left: 20 };
+    vis.margin = { top: 0, right: 20, bottom: 20, left: 100 };
 
     vis.width = $("#" + vis.parentElement).width() - 100 - vis.margin.left - vis.margin.right,
         vis.height = vis.width * 0.8 - vis.margin.top - vis.margin.bottom;
@@ -34,6 +34,26 @@ AcquisitionForce.prototype.initVis = function(){
         // .base(10000)
         .domain([1, 26200000000])
         .range([3,30])
+
+    vis.colorScale = d3.scaleOrdinal()
+        .domain(['saas', 'hardware', 'social', 'content', 'commerce', 'media', 'analytics', 'chips', 'security', 'search'])
+        .range(['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a'])
+
+    vis.svg.append("g")
+        .attr("class", "legend")
+        .attr("transform", "translate(" + (-80) + ",80)");
+
+    vis.legend = d3.legendColor()
+        .labels(["SaaS", "Hardware", "Social", "Content", "Commerce", 'Media', 'Analytics', 'Chips', 'Security', 'Search'])
+        .shapeWidth(20);
+
+    vis.legend
+        .title("Industry")
+        .labelFormat(d3.format(".2s"))
+        .scale(vis.colorScale);
+
+    vis.svg.select(".legend")
+        .call(vis.legend);
 
     vis.switch = true
 
@@ -120,7 +140,7 @@ AcquisitionForce.prototype.updateVis = function(){
                 if (d.price != 0) {
                     return vis.circleScale(d.price)
                 } else {
-                    return vis.circleScale(100000000)
+                    return vis.circleScale(1000000000)
                 }
             }
         })
@@ -137,11 +157,12 @@ AcquisitionForce.prototype.updateVis = function(){
                 } else if (d.name == "Alphabet") {
                     return "#3cba54"
                 }
-            } else if (d.price == 0) {
-                return "blue"
             } else {
-                return "red"
+                return vis.colorScale(d.category)
             }
+            // } else {
+            //     return "red"
+            // }
         })
         .style("stroke", "black")
         .style("stroke-width", 0.15)
