@@ -56,9 +56,9 @@ Perception.prototype.initVis = function(){
 
     vis.colorScale = d3.scaleOrdinal()
         .domain(["Very_positive","Rather_positive","Neutral","Rather_negative","Very_negative","Not_answered"])
-        .range(['#1a9641','#a6d96a','#ffffbf','#fdae61','#d7191c', 'white']);
+        .range(['#1a9641','#a6d96a','#ffffbf','#fdae61','#d7191c', '#D3D3D3']);
 
-    vis.colors = ['#1a9641','#a6d96a','#ffffbf','#fdae61','#d7191c', 'white']
+    vis.colors = ['#1a9641','#a6d96a','#ffffbf','#fdae61','#d7191c', '#D3D3D3']
 
     // vis.dataCategories = vis.x.domain();
     vis.dataCategories = ["Very_positive","Rather_positive","Neutral","Rather_negative","Very_negative","Not_answered"]

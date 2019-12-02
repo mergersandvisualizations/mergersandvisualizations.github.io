@@ -223,6 +223,42 @@ AcquisitionForce.prototype.updateVis = function(){
     });
 
     vis.svg.call(vis.tool_tip);
+
+    vis.svg.append('image')
+        .attr('href', 'img/amazon_a.png')
+        .attr('x', vis.data.nodes[3].fx - 20)
+        .attr('y', vis.data.nodes[3].fy - 20)
+        .attr('width', 40)
+        .attr('height', 40)
+
+    vis.svg.append('image')
+        .attr('href', 'img/facebook.png')
+        .attr('x', vis.data.nodes[5].fx - 20)
+        .attr('y', vis.data.nodes[5].fy - 20)
+        .attr('width', 40)
+        .attr('height', 40)
+
+    vis.svg.append('image')
+        .attr('href', 'img/google_g.png')
+        .attr('x', vis.data.nodes[4].fx - 20)
+        .attr('y', vis.data.nodes[4].fy - 20)
+        .attr('width', 40)
+        .attr('height', 40)
+
+    vis.svg.append('image')
+        .attr('href', 'img/apple.svg')
+        .attr('x', vis.data.nodes[2].fx - 20)
+        .attr('y', vis.data.nodes[2].fy - 25)
+        .attr('width', 40)
+        .attr('height', 45)
+
+    vis.svg.append('image')
+        .attr('href', 'img/microsoft-simple.png')
+        .attr('x', vis.data.nodes[1].fx - 20)
+        .attr('y', vis.data.nodes[1].fy - 20)
+        .attr('width', 40)
+        .attr('height', 40)
+
 }
 
 
