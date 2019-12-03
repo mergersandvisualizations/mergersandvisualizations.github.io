@@ -72,6 +72,8 @@ BarchartMC.prototype.initVis = function(){
 
     vis.yAxis = d3.axisTop()
         .tickFormat(d3.format("$.2s"))
+        // .ticks(9)
+        // .tickValues([0, 100, 200, 300, 400, 500, 600, 700, 800])
         .scale(vis.y);
 
     vis.xAxisContain = vis.svg.append("g")
