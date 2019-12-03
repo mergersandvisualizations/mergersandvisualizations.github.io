@@ -16,7 +16,7 @@ Perception = function(_parentElement, _comp, _mono){
 Perception.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = {top: 10, bottom: 60, left: 60, right: 150};
+    vis.margin = {top: 10, bottom: 30, left: 30, right: 120};
     vis.width = $("#" + vis.parentElement).width() - 200 - vis.margin.left - vis.margin.right;
     vis.height = 400 - vis.margin.top - vis.margin.bottom;
 

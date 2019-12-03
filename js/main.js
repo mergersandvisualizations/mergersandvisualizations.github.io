@@ -45,6 +45,7 @@ queue()
         var acquisitionForce = new AcquisitionForce("acq-force", acqData, ret)
         var perception = new Perception("perception-area", comp_feel, mono_feel)
         var pyramid = new Pyramid("pyramid-area", pyr)
+        var piechart = new Piechart("pie-area", [14,31,22,15,18], [45, 37, 18])
 
 
 
