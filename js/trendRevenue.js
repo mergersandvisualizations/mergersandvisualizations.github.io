@@ -2,7 +2,7 @@
 
 var margin = {top: 50, bottom: 60, left: 60, right: 130};
 var width2 = 800 - margin.left - margin.right;
-var height2 = 300 - margin.top - margin.bottom;
+var height2 = 400 - margin.top - margin.bottom;
 
 
 var industries = {

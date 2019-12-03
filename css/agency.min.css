@@ -794,7 +794,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 .navbar-custom {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    background-color: rgba(0, 0, 0, 1);
+    background-color: rgba(0, 0, 0, .85);
 }
 
 .navbar-custom .navbar-brand {
