@@ -1,6 +1,6 @@
-var margin = {top: 0, bottom: 80, left: 70, right: 40};
+var margin = {top: 20, bottom: 80, left: 70, right: 0};
 var width = 700 - margin.left - margin.right;
-var height = 500 - margin.top - margin.bottom;
+var height = 550 - margin.top - margin.bottom;
 
 // x y scales
 var x_vol = d3.scaleLinear()

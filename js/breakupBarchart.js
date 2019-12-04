@@ -45,15 +45,14 @@ BreakupBarchart.prototype.initVis = function(){
         .scale(vis.y);
 
     vis.color = d3.scaleOrdinal()
-        //.range(['#d0d1e6','#a6bddb','#74a9cf','#2b8cbe','#045a8d','#ffffff']);
-        .range(['#1a9641','#a6d96a','#fdae61','#d7191c','#fff8a6','#ffffff']);
+        .range(['#1a9641','#a6d96a','#fdae61','#d7191c','#D3D3D3','#ffffff']);
 
 
     vis.tool_tip = d3.tip()
         .attr("class", "d3-tip");
     // .offset([-8, 0]);
 
-    vis.tool_tip.html(function(d) {return d.value; });
+    vis.tool_tip.html(function(d) {return "" + d.value + "%"; });
 
     vis.svg.call(vis.tool_tip);
 
