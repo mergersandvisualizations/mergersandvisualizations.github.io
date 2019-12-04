@@ -13,7 +13,7 @@ BreakupBarchart = function(_parentElement, _data){
 BreakupBarchart.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = {top: 50, bottom: 60, left: 100, right: 130};
+    vis.margin = {top: 50, bottom: 30, left: 100, right: 130};
     vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right - 200;
     vis.height = 450 - vis.margin.top - vis.margin.bottom;
 
