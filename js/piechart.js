@@ -66,7 +66,7 @@ Piechart.prototype.initVis = function(){
         .attr("class", "d3-tip")
     // .offset([-8, 0]);
 
-    vis.tool_tip.html(function(d) {return d.data });
+    vis.tool_tip.html(function(d) {return d.data + "%" });
 
     vis.svg.call(vis.tool_tip);
 
@@ -101,12 +101,9 @@ Piechart.prototype.wrangleData = function(){
     vis.path2 = vis.svg.selectAll("path2")
         .data(vis.pie(vis.total_data))
 
-    console.log(vis.pie(vis.total_data))
-
     vis.path2.enter().append("path")
         .attr("class", "path2")
         .attr("fill", function(d, i) {
-            console.log(d)
             return vis.colorScale2(i)
         })
         .attr("d", vis.arc2)
