@@ -65,7 +65,7 @@ fundingChart.append('g')
 let fundingData, tipBox;
 d3.csv("data/trendRevenue.csv", function(error, csv) {
     var fundingjson = [];
-    var colors = ['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#a65628','#f781bf']
+    var colors = ['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#999999','#a65628','#f781bf']
     // var colors = ["#08306b", "#4292c6", "#6baed6", "#08519c", "#deebf7", "#2171b5", "#c6dbef", "#b8cad6"];
     csv.forEach(function(d, index){
         fundingjson.push(
