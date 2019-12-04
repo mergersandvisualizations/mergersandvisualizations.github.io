@@ -1,0 +1,91 @@
+[
+  {
+    "category": "Democrat",
+    "values": [
+      {
+        "value": 29,
+        "rate": "Strongly support"
+      },
+      {
+        "value": 34,
+        "rate": "Somewhat support"
+      },
+      {
+        "value": 12,
+        "rate": "Somewhat oppose"
+      },
+      {
+        "value": 5,
+        "rate": "Strongly oppose"
+      },
+      {
+        "value": 20,
+        "rate": "Not sure"
+      },
+      {
+        "value": 0,
+        "rate": ""
+      }
+    ]
+  },
+
+  {
+    "category": "Republican",
+    "values": [
+      {
+        "value": 29,
+        "rate": "Strongly support"
+      },
+      {
+        "value": 31,
+        "rate": "Somewhat support"
+      },
+      {
+        "value": 13,
+        "rate": "Somewhat oppose"
+      },
+      {
+        "value": 6,
+        "rate": "Strongly oppose"
+      },
+      {
+        "value": 21,
+        "rate": "Not sure"
+      },
+      {
+        "value": 0,
+        "rate": ""
+      }
+    ]
+  },
+
+  {
+    "category": "Independent",
+    "values": [
+      {
+        "value": 32,
+        "rate": "Strongly support"
+      },
+      {
+        "value": 34,
+        "rate": "Somewhat support"
+      },
+      {
+        "value": 12,
+        "rate": "Somewhat oppose"
+      },
+      {
+        "value": 6,
+        "rate": "Strongly oppose"
+      },
+      {
+        "value": 16,
+        "rate": "Not sure"
+      },
+      {
+        "value": 0,
+        "rate": ""
+      }
+    ]
+  }
+]

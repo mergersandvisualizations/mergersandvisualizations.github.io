@@ -11,7 +11,8 @@ queue()
     .defer(d3.json, "data/acquisitions_data/return.json")
     .defer(d3.csv, "data/company_reception.csv")
     .defer(d3.csv, "data/monopoly_feeling.csv")
-    .await(function(error, mapTopoUs, citiesTopo, byYearMC, acqData, ret, comp_feel, mono_feel) {
+    .defer(d3.json, "data/breakupBarchart.json")
+    .await(function(error, mapTopoUs, citiesTopo, byYearMC, acqData, ret, comp_feel, mono_feel, breakup_barchart) {
         var MyEventHandler = {};
 
         citiesTopo.forEach(function(d,i){
@@ -37,13 +38,14 @@ queue()
             d.dont_feel_good = +d.dont_feel_good
             d.dont_care = +d.dont_care
             d.dont_know = +d.dont_know
-        })
+        });
 
         var mapVis = new MapVis("map-US", mapTopoUs, citiesTopo);
-        var barchartMC = new BarchartMC("MC-barchart", byYearMC)
-        var acquisitionForce = new AcquisitionForce("acq-force", acqData, ret)
-        var perception = new Perception("perception-area", comp_feel, mono_feel)
+        var barchartMC = new BarchartMC("MC-barchart", byYearMC);
+        var acquisitionForce = new AcquisitionForce("acq-force", acqData, ret);
+        var perception = new Perception("perception-area", comp_feel, mono_feel);
 
+        var breakupBarchart = new BreakupBarchart("breakup-barchart", breakup_barchart);
 
 
         // inspiration from https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518
