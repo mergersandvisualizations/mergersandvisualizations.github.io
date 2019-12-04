@@ -141,4 +141,13 @@ BreakupBarchart.prototype.initVis = function(){
         .text(function(d) {return d; });
 
     vis.legend.transition().duration(500).delay(function(d,i){ return 1300 + 100 * i; }).style("opacity","1")
+
+    vis.svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left + 30)
+        .attr("x", 0 - (height / 2) + 30)
+        .attr("dy", "1em")
+        .style("font-size", "10px")
+        .style("text-anchor", "middle")
+        .text("Percentage of Survey");
 };
