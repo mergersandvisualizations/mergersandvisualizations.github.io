@@ -16,7 +16,7 @@ Perception = function(_parentElement, _comp, _mono){
 Perception.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = {top: 10, bottom: 60, left: 60, right: 150};
+    vis.margin = {top: 10, bottom: 30, left: 100, right: 120};
     vis.width = $("#" + vis.parentElement).width() - 200 - vis.margin.left - vis.margin.right;
     vis.height = 400 - vis.margin.top - vis.margin.bottom;
 
@@ -56,9 +56,9 @@ Perception.prototype.initVis = function(){
 
     vis.colorScale = d3.scaleOrdinal()
         .domain(["Very_positive","Rather_positive","Neutral","Rather_negative","Very_negative","Not_answered"])
-        .range(['#1a9641','#a6d96a','#ffffbf','#fdae61','#d7191c', 'white']);
+        .range(['#1a9641','#a6d96a','#ffffbf','#fdae61','#d7191c', '#D3D3D3']);
 
-    vis.colors = ['#1a9641','#a6d96a','#ffffbf','#fdae61','#d7191c', 'white']
+    vis.colors = ['#1a9641','#a6d96a','#ffffbf','#fdae61','#d7191c', '#D3D3D3']
 
     // vis.dataCategories = vis.x.domain();
     vis.dataCategories = ["Very_positive","Rather_positive","Neutral","Rather_negative","Very_negative","Not_answered"]
@@ -89,7 +89,7 @@ Perception.prototype.initVis = function(){
         .attr("class", "d3-tip")
         // .offset([-8, 0]);
 
-    vis.tool_tip.html(function(d) {return d[1] - d[0] });
+    vis.tool_tip.html(function(d) {return (d[1] - d[0]) + "%" });
 
     vis.svg.call(vis.tool_tip);
 
@@ -136,6 +136,15 @@ Perception.prototype.updateVis = function(){
         .attr("width", vis.x.bandwidth())
         .on('mouseover', vis.tool_tip.show)
         .on('mouseout', vis.tool_tip.hide);
+
+    vis.svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left + 30)
+        .attr("x", 0 - (height / 2) + 30)
+        .attr("dy", "1em")
+        .style("font-size", "10px")
+        .style("text-anchor", "middle")
+        .text("Percentage of Survey");
 }
 
 

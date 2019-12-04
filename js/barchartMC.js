@@ -18,7 +18,7 @@ BarchartMC.prototype.initVis = function(){
 
     vis.margin = {top: 50, bottom: 60, left: 100, right: 130};
     vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
-    vis.height = 300 - vis.margin.top - vis.margin.bottom;
+    vis.height = 500 - vis.margin.top - vis.margin.bottom;
 
     // SVG drawing area
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -35,7 +35,7 @@ BarchartMC.prototype.initVis = function(){
     vis.y = d3.scaleLinear()
         .range([0, vis.width])
         // .range([vis.height, 0])
-        // .domain([0, 849500000000]);
+        .domain([0, 849500000000]);
 
     // vis.xAxis = d3.axisBottom()
     //     .scale(vis.x);
@@ -72,6 +72,8 @@ BarchartMC.prototype.initVis = function(){
 
     vis.yAxis = d3.axisTop()
         .tickFormat(d3.format("$.2s"))
+        // .ticks(9)
+        // .tickValues([0, 100, 200, 300, 400, 500, 600, 700, 800])
         .scale(vis.y);
 
     vis.xAxisContain = vis.svg.append("g")
@@ -131,7 +133,7 @@ BarchartMC.prototype.updateVis = function(){
         });
 
     vis.x.domain(vis.row.map(function(d) { return d[0]}))
-    vis.y.domain([0, d3.max(vis.row, function(d) { return d[1]})]);
+    // vis.y.domain([0, d3.max(vis.row, function(d) { return d[1]})]);
 
     vis.xAxis.scale(vis.x);
     vis.yAxis.scale(vis.y);

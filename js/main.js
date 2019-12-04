@@ -11,8 +11,10 @@ queue()
     .defer(d3.json, "data/acquisitions_data/return.json")
     .defer(d3.csv, "data/company_reception.csv")
     .defer(d3.csv, "data/monopoly_feeling.csv")
+    .defer(d3.csv, "data/pyramid.csv")
     .defer(d3.json, "data/breakupBarchart.json")
-    .await(function(error, mapTopoUs, citiesTopo, byYearMC, acqData, ret, comp_feel, mono_feel, breakup_barchart) {
+    .await(function(error, mapTopoUs, citiesTopo, byYearMC, acqData, ret, comp_feel, mono_feel, pyr, breakup_barchart) {
+
         var MyEventHandler = {};
 
         citiesTopo.forEach(function(d,i){
@@ -41,10 +43,11 @@ queue()
         });
 
         var mapVis = new MapVis("map-US", mapTopoUs, citiesTopo);
-        var barchartMC = new BarchartMC("MC-barchart", byYearMC);
-        var acquisitionForce = new AcquisitionForce("acq-force", acqData, ret);
-        var perception = new Perception("perception-area", comp_feel, mono_feel);
-
+        var barchartMC = new BarchartMC("MC-barchart", byYearMC)
+        var acquisitionForce = new AcquisitionForce("acq-force", acqData, ret)
+        var perception = new Perception("perception-area", comp_feel, mono_feel)
+        var pyramid = new Pyramid("pyramid-area", pyr)
+        var piechart = new Piechart("pie-area", [14,31,22,15,18], [45, 37, 18])
         var breakupBarchart = new BreakupBarchart("breakup-barchart", breakup_barchart);
 
 

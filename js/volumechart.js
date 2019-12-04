@@ -48,10 +48,10 @@ d3.csv("data/acquisitions_data/acquisition_volume.csv", function(error, data) {
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis_vol)
         .selectAll("text")
-        .style("text-anchor", "end")
-        .attr("dx", "-.8em")
-        .attr("dy", "-.55em")
-        .attr("transform", "rotate(-90)" );
+            .style("text-anchor", "end")
+            .attr("dx", "-.9em")
+            .attr("dy", "-.1em")
+            .attr("transform", "rotate(-45)" );
 
     // text label for the x axis
     volumeChart.append("text")
