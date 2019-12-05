@@ -138,8 +138,8 @@ section h2 {
 
 @media (min-width: 992px) {
     #mainNav {
-        border-color: transparent;
-        background-color: transparent;
+        border-color: rgba(0, 0, 0, 0.7);
+        background-color: rgba(0, 0, 0, 0.7);
     }
     #mainNav .navbar-brand {
         color: fade(white, 70%);
