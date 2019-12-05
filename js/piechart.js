@@ -16,9 +16,11 @@ Piechart.prototype.initVis = function(){
     var vis = this;
 
     vis.margin = {top: 20, bottom: 20, left: 0, right: 100};
-    vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
-    vis.height = vis.width - 650 - vis.margin.top - vis.margin.bottom;
-    vis.radius = Math.min(vis.width, vis.height) / 2
+    // vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
+    // vis.height = vis.width - 650 - vis.margin.top - vis.margin.bottom;
+    vis.width = 500;
+    vis.height = 250;
+    vis.radius = Math.min(vis.width, vis.height) / 2.2
 
     // SVG drawing area
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -48,7 +50,7 @@ Piechart.prototype.initVis = function(){
 
     vis.svg.append("g")
         .attr("class", "legend")
-        .attr("transform", "translate(" + (vis.width * (2/10)) + "," + (-50) + ")");
+        .attr("transform", "translate(" + (vis.width * (3/10)) + "," + (-50) + ")");
 
     vis.legend = d3.legendColor()
         .labels(["Very Worried", "Concerned", "Don't Feel Good", "Don't Care", "Don't Know", 'Negative', 'Positive'])

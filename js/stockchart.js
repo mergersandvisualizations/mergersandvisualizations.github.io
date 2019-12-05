@@ -63,8 +63,8 @@ Stockchart.prototype.initVis = function(){
 
     vis.svg.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 0 - margin.left + 30)
-        .attr("x", 0 - (height / 2) + 30)
+        .attr("y", 0 - margin.left +10 )
+        .attr("x", 0 - (height / 2) + 20)
         .attr("dy", "1em")
         .style("font-size", "10px")
         .style("text-anchor", "middle")
