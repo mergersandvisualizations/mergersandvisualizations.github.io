@@ -18,7 +18,7 @@ Perception.prototype.initVis = function(){
 
     vis.margin = {top: 10, bottom: 30, left: 100, right: 120};
     vis.width = $("#" + vis.parentElement).width() - 200 - vis.margin.left - vis.margin.right;
-    vis.height = 400 - vis.margin.top - vis.margin.bottom;
+    vis.height = vis.width - 300 - vis.margin.top - vis.margin.bottom;
 
     // SVG drawing area
     vis.svg = d3.select("#" + vis.parentElement).append("svg")

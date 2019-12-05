@@ -16,8 +16,8 @@ Stockchart.prototype.initVis = function(){
 
     vis.margin = {top: 10, bottom: 20, left: 50, right: 10};
     // vis.width = 600 - vis.margin.left - vis.margin.right;
-    vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
-    vis.height = 500 - vis.margin.top - vis.margin.bottom;
+    vis.width = $("#" + vis.parentElement).width() - 100 - vis.margin.left - vis.margin.right;
+    vis.height = vis.width - 400 - vis.margin.top - vis.margin.bottom;
 
     // SVG drawing area
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -170,7 +170,7 @@ Stockchart.prototype.updateVis = function(){
             if (d[vis.selectedChartData] == ''){
                 return 0;
             } else {
-                return 1.5;
+                return 2;
             }});
 
     vis.circle = vis.svg.selectAll("circle")

@@ -17,7 +17,7 @@ Piechart.prototype.initVis = function(){
 
     vis.margin = {top: 20, bottom: 20, left: 0, right: 100};
     vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
-    vis.height = 400 - vis.margin.top - vis.margin.bottom;
+    vis.height = vis.width - 650 - vis.margin.top - vis.margin.bottom;
     vis.radius = Math.min(vis.width, vis.height) / 2
 
     // SVG drawing area
@@ -48,7 +48,7 @@ Piechart.prototype.initVis = function(){
 
     vis.svg.append("g")
         .attr("class", "legend")
-        .attr("transform", "translate(" + (vis.width * (3/10)) + "," + (0) + ")");
+        .attr("transform", "translate(" + (vis.width * (2/10)) + "," + (-50) + ")");
 
     vis.legend = d3.legendColor()
         .labels(["Very Worried", "Concerned", "Don't Feel Good", "Don't Care", "Don't Know", 'Negative', 'Positive'])
