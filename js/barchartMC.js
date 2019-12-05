@@ -16,7 +16,7 @@ BarchartMC = function(_parentElement, _data){
 BarchartMC.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = {top: 50, bottom: 60, left: 100, right: 130};
+    vis.margin = {top: 20, bottom: 60, left: 100, right: 130};
     vis.width = $("#" + vis.parentElement).width() - 100 - vis.margin.left - vis.margin.right;
     vis.height = vis.width - 300 - vis.margin.top - vis.margin.bottom;
 
