@@ -75,6 +75,9 @@
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#hottakes">Impact</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#team">Team</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -284,8 +287,9 @@
                             Starting in 2016, with the growth of SaaS, Big Data, and Cybersecurity that are driven by cognitive technologies
                             such as machine learning, robotic process automation, natural language processing, and neural nets, the race of
                             tech companies to integrate such powerful data to innovate and gain market power is evident.
-                            Source: https://www2.deloitte.com/us/en/insights/focus/tech-trends/2019/executive-summary.html
+
                         </p>
+                        <i style="font-size: 10px">Source: https://www2.deloitte.com/us/en/insights/focus/tech-trends/2019/executive-summary.html</i>
 
                     </div>
                 </div>
@@ -298,11 +302,11 @@
 
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold">Market Capitalization</h6>
+                        <h6 class="m-0 font-weight-bold">Tech Giants Rise in Market Share In Only 10 years</h6>
                     </div>
                     <div class="card-body">
 
-                            <p>add "Q1" after the year, try and align the text and buttons, make button smaller if possible</p>
+<!--                            <p>add "Q1" after the year, try and align the text and buttons, make button smaller if possible</p>-->
                             <div class="row">
                                 <button type="button" class="btn btn-success" id="playbutton">Play</button>&nbsp
                                 <p>Select Start Year: </p>
@@ -324,21 +328,21 @@
 
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold">Stock Price</h6>
+                    <h6 class="m-0 font-weight-bold">Tech Giants' Stocks Experience Steeper Growth than the General Market (S&P500) and Broader Tech Market (VGT)</h6>
                 </div>
                 <div class="card-body">
 
                     <div class="row">
 
-                        <p>add "Q1" after the year, try and align the text and buttons, make button smaller if possiblfa</p>
+                        <p></p>
                         <div class="col-sm-2"></div>
                         <div class="col-sm-6" id="leftside">
-                            <h2 class="text-left">Stock Prices</h2>
+                            <h3 class="text-left">Stock Prices</h3>
 
                             <!-- Select box to choose the ranking type -->
                             <form class="form-inline">
                                 <div class="form-group">
-                                    <label for="chart-data"> Display: </label>
+                                    <label for="chart-data"> Select Stock: </label>
 
                                     <select class="form-control" id="chart-data" onchange="updateStocks()">
                                         <option value="AAPL">AAPL</option>
@@ -354,14 +358,32 @@
                             </form>
                         </div>
                     </div>
-                    <div id="stockchart-area"></div>
+
+                    <div class="row h-100">
+                        <div class="col-lg-6 my-auto">
+                            <div id="stockchart-area"></div>
+                        </div>
+
+                        <div class="col-lg-6 my-auto">
+                            <p class="text-left">To provide further context for the tech giants’ rise to “giant” status, we have included a chart of the stock prices over the last few decades for the big 5 companies as well as for the S&P 500 and VGT (Vanguard Information Tech), an exchange focusing on technology companies. Click through the dropdown menu options to see interesting patterns in the stock prices over time.
+                                <br><br>By comparing the growth of the 5 tech giants to the general market and the overall tech market, we can see how quickly they have grown.
+                                We can see company-level stock prices,
+                                such as the 20% drop in Facebook’s stock price and corresponding $120 bn loss in 2018 following a slew of scandals, and the meteoric rise in Amazon’s stock between 2015 and 2018 following Amazon’s launch of new products and expansion into previously unpenetrated markets. </p>
+
+                        </div>
+
+                    </div>
+
+
+
 
                     <br>
-                    <p class="text-left">To provide further context for the tech giants’ rise to “giant” status, we have included a chart of the stock prices over the last few decades for the big 5 companies as well as for the S&P 500 and VGT (Vanguard Information Tech), an exchange focusing on technology companies. Click through the dropdown menu options to see interesting patterns in the stock prices over time, such as the 20% drop in Facebook’s stock price and corresponding $120 bn loss in 2018 following a slew of scandals, and the meteoric rise in Amazon’s stock between 2015 and 2018 following Amazon’s launch of new products and expansion into previously unpenetrated markets. </p>
-
 
 
                 </div>
+
+                <i style="font-size: 10px">Source: Yahoo Finance</i> <br>
+
 
 
             </div>
