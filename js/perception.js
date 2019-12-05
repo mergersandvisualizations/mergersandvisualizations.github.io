@@ -17,8 +17,10 @@ Perception.prototype.initVis = function(){
     var vis = this;
 
     vis.margin = {top: 10, bottom: 30, left: 100, right: 120};
-    vis.width = $("#" + vis.parentElement).width() - 200 - vis.margin.left - vis.margin.right;
-    vis.height = vis.width - 300 - vis.margin.top - vis.margin.bottom;
+    // vis.width = $("#" + vis.parentElement).width() - 200 - vis.margin.left - vis.margin.right;
+    // vis.height = vis.width - 300 - vis.margin.top - vis.margin.bottom;
+    vis.width = 350;
+    vis.height = 220;
 
     // SVG drawing area
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -71,7 +73,7 @@ Perception.prototype.initVis = function(){
 
     vis.svg.append("g")
         .attr("class", "legend")
-        .attr("transform", "translate(" + (vis.width + 10) + ",200)");
+        .attr("transform", "translate(" + (vis.width + 10) + ",100)");
 
     vis.legend = d3.legendColor()
         .labels(["Very Positive", "Rather Positive", "Neutral", "Rather Negative", "Very Negative", 'Not Answered'])
