@@ -13,7 +13,8 @@ queue()
     .defer(d3.csv, "data/monopoly_feeling.csv")
     .defer(d3.csv, "data/pyramid.csv")
     .defer(d3.json, "data/breakupBarchart.json")
-    .await(function(error, mapTopoUs, citiesTopo, byYearMC, acqData, ret, comp_feel, mono_feel, pyr, breakup_barchart) {
+    .defer(d3.csv, "data/stockchart.csv")
+    .await(function(error, mapTopoUs, citiesTopo, byYearMC, acqData, ret, comp_feel, mono_feel, pyr, breakup_barchart, stockchart) {
 
         var MyEventHandler = {};
 
@@ -49,6 +50,7 @@ queue()
         var pyramid = new Pyramid("pyramid-area", pyr)
         var piechart = new Piechart("pie-area", [14,31,22,15,18], [45, 37, 18])
         var breakupBarchart = new BreakupBarchart("breakup-barchart", breakup_barchart);
+        // var stockchart = new stockchart("stockchart-area", stockchart);
 
 
         // inspiration from https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518
