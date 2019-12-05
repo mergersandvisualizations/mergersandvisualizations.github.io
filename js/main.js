@@ -3,6 +3,7 @@ var forceData = {"nodes":[], "links":[]};
 
 var time, time2, pause, pause2, toggle = false;
 var stockchart;
+var count = 0;
 
 queue()
     .defer(d3.json, "data/states-10m.json")
@@ -16,8 +17,6 @@ queue()
     .defer(d3.json, "data/breakupBarchart.json")
     .defer(d3.csv, "data/stockchart.csv")
     .await(function(error, mapTopoUs, citiesTopo, byYearMC, acqData, ret, comp_feel, mono_feel, pyr, breakup_barchart, stkcht) {
-
-        var MyEventHandler = {};
 
         citiesTopo.forEach(function(d,i){
             d.latitude = +d.latitude
@@ -42,6 +41,22 @@ queue()
             d.dont_feel_good = +d.dont_feel_good
             d.dont_care = +d.dont_care
             d.dont_know = +d.dont_know
+        });
+
+        stkcht.forEach(function(d){
+            // Convert string to 'date object'
+            d.YEAR = d3.timeParse("%m/%d/%y")(d.YEAR);
+
+            // Convert numeric values to 'numbers'
+            d.AAPL = +d.AAPL;
+            d.AMZN = +d.AMZN;
+            d.MSFT = +d.MSFT;
+            d.FB = +d.FB;
+            d.GOOG = +d.GOOG;
+            d.SP500 = +d.SP500;
+            d.VGT = +d.VGT;
+            d.ID = count;
+            count += 1
         });
 
         var mapVis = new MapVis("map-US", mapTopoUs, citiesTopo);

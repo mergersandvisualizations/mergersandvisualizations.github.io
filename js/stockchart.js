@@ -14,9 +14,9 @@ Stockchart = function(_parentElement, _data){
 Stockchart.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = {top: 10, bottom: 20, left: 20, right: 10};
-    vis.width = 600 - vis.margin.left - vis.margin.right;
-    // vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
+    vis.margin = {top: 10, bottom: 20, left: 50, right: 10};
+    // vis.width = 600 - vis.margin.left - vis.margin.right;
+    vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
     vis.height = 500 - vis.margin.top - vis.margin.bottom;
 
     // SVG drawing area
@@ -45,9 +45,10 @@ Stockchart.prototype.initVis = function(){
 
 
     vis.tool_tip = d3.tip()
-        .attr("class", "3-tip")
-        .html(function (d){return (vis.formatDate(d.YEAR) + "<br>" + "AAPL: " + d.AAPL);})
-        .offset([-30,0]);
+        .attr("class", "d3-tip")
+        .offset([-8,0]);
+
+    vis.tool_tip.html(function (d){return (vis.formatDate(d.YEAR) + "<br>" + vis.selectedChartData + ": " + d[vis.selectedChartData]);});
 
     vis.svg.call(vis.tool_tip);
 
@@ -58,18 +59,14 @@ Stockchart.prototype.initVis = function(){
     vis.yGroup = vis.svg.append("g")
         .attr("class", "axis y-axis");
 
-
-
-
-    vis.circle = vis.svg.selectAll("circle")
-        .data(vis.filteredData);
-
-    vis.circle
-        .on("mouseover", vis.tool_tip.show)
-        .on("mouseout", vis.tool_tip.hide);
-    // .on("click", function(d){showEdition(d);});
-
-    vis.circle.exit().remove();
+    vis.svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left + 30)
+        .attr("x", 0 - (height / 2) + 30)
+        .attr("dy", "1em")
+        .style("font-size", "10px")
+        .style("text-anchor", "middle")
+        .text("Price ($ USD)");
 
   // (Filter, aggregate, modify data)
     vis.wrangleData();
@@ -83,22 +80,6 @@ Stockchart.prototype.initVis = function(){
 
 Stockchart.prototype.wrangleData = function(){
     var vis = this;
-
-    vis.data.forEach(function(d){
-        // Convert string to 'date object'
-        d.YEAR = vis.parseDate(d.YEAR);
-
-        // Convert numeric values to 'numbers'
-        d.AAPL = +d.AAPL;
-        d.AMZN = +d.AMZN;
-        d.MSFT = +d.MSFT;
-        d.FB = +d.FB;
-        d.GOOG = +d.GOOG;
-        d.SP500 = +d.SP500;
-        d.VGT = +d.VGT;
-    });
-
-
 
     vis.updateVis();
 }
@@ -132,28 +113,58 @@ Stockchart.prototype.updateVis = function(){
         return (value["YEAR"] >= vis.parseDate(vis.fromDate)) && (value["YEAR"] <= vis.parseDate(vis.toDate)) ;
     });
 
+    console.log(vis.selectedChartData)
+
 
     vis.x.domain([vis.parseDate(vis.fromDate), vis.parseDate(vis.toDate)]);
     vis.y.domain([0, d3.max(vis.filteredData, function(d) { return d[vis.selectedChartData]; })]);
 
     vis.line = d3.line()
         .curve(d3.curveMonotoneX)
-        .x(function(d) { return vis.x(d["YEAR"]); })
+        .x(function(d) { return vis.x(d.YEAR); })
         .y(function(d) { return vis.y(d[vis.selectedChartData]); });
 
-    vis.path.datum(vis.filteredData)
+    vis.path.datum(vis.filteredData, function(d) { return d.ID; })
         .transition()
         .duration(800)
         .attr("d", vis.line)
         .attr("stroke", function(d){
             if (d[vis.selectedChartData] == ''){
                 return "transparent"
+            } else if (vis.selectedChartData == 'AAPL'){
+                return "#7d7d7d"
+            } else if (vis.selectedChartData == 'AMZN'){
+                return "#ff9900"
+            } else if (vis.selectedChartData == 'MSFT'){
+                return "black"
+            } else if (vis.selectedChartData == 'FB'){
+                return "#3b5998"
+            } else if (vis.selectedChartData == 'GOOG'){
+                return "#3cba54"
+            } else if (vis.selectedChartData == 'S&P500'){
+                return "#ff0000"
+            } else if (vis.selectedChartData == 'VGT'){
+                return "#21A0DF"
             } else {
                 return "blue"
             }})
         .attr("fill", function(d){
             if (d[vis.selectedChartData] == ''){
                 return "transparent"
+            } else if (vis.selectedChartData == 'AAPL'){
+                return "#7d7d7d"
+            } else if (vis.selectedChartData == 'AMZN'){
+                return "#ff9900"
+            } else if (vis.selectedChartData == 'MSFT'){
+                return "black"
+            } else if (vis.selectedChartData == 'FB'){
+                return "#3b5998"
+            } else if (vis.selectedChartData == 'GOOG'){
+                return "#3cba54"
+            } else if (vis.selectedChartData == 'S&P500'){
+                return "#ff0000"
+            } else if (vis.selectedChartData == 'VGT'){
+                return "#21A0DF"
             } else {
                 return "blue"
             }})
@@ -161,41 +172,112 @@ Stockchart.prototype.updateVis = function(){
             if (d[vis.selectedChartData] == ''){
                 return 0;
             } else {
-                return .5;
+                return 1.5;
             }});
 
-    vis.tool_tip = d3.tip()
-        .attr("class", "3-tip")
-        .html(function (d){return (vis.formatDate(d.YEAR) + "<br>" + vis.selectedChartData + ": " + d[vis.selectedChartData]);});
-
-    vis.svg.call(vis.tool_tip);
-
     vis.circle = vis.svg.selectAll("circle")
-        .data(vis.filteredData);
-
-    vis.circle
-        .on("mouseover", vis.tool_tip.show)
-        .on("mouseout", vis.tool_tip.hide)
-    // .on("click", function(d){showEdition(d);});
+        .data(vis.filteredData, function(d){
+            return d.ID
+        });
 
     vis.circle.exit().remove();
 
     vis.circle.enter().append("circle")
-        .attr("fill", "blue")
-        .attr("stroke", "blue")
+        .attr("fill", function(d){
+            if (d[vis.selectedChartData] == ''){
+                return "transparent"
+            } else if (vis.selectedChartData == 'AAPL'){
+                return "#7d7d7d"
+            } else if (vis.selectedChartData == 'AMZN'){
+                return "#ff9900"
+            } else if (vis.selectedChartData == 'MSFT'){
+                return "black"
+            } else if (vis.selectedChartData == 'FB'){
+                return "#3b5998"
+            } else if (vis.selectedChartData == 'GOOG'){
+                return "#3cba54"
+            } else if (vis.selectedChartData == 'S&P500'){
+                return "#ff0000"
+            } else if (vis.selectedChartData == 'VGT'){
+                return "#21A0DF"
+            } else {
+                return "blue"
+            }})
+        .attr("stroke", function(d){
+            if (d[vis.selectedChartData] == ''){
+                return "transparent"
+            } else if (vis.selectedChartData == 'AAPL'){
+                return "#7d7d7d"
+            } else if (vis.selectedChartData == 'AMZN'){
+                return "#ff9900"
+            } else if (vis.selectedChartData == 'MSFT'){
+                return "black"
+            } else if (vis.selectedChartData == 'FB'){
+                return "#3b5998"
+            } else if (vis.selectedChartData == 'GOOG'){
+                return "#3cba54"
+            } else if (vis.selectedChartData == 'S&P500'){
+                return "#ff0000"
+            } else if (vis.selectedChartData == 'VGT'){
+                return "#21A0DF"
+            } else {
+                return "blue"
+            }})
         .attr("class", "circle")
         .attr("cx", function(d) { return vis.x(d["YEAR"]); })
         .attr("cy", function(d) { return vis.y(d[vis.selectedChartData]); })
-        .attr("r", 2)
+        .attr("r", 3)
         .merge(vis.circle)
         .transition()
         .duration(800)
         .attr("class", "circle")
-        .attr("fill", function(d){if (d[vis.selectedChartData] == ''){return "transparent"}else{return "blue"}})
-        .attr("stroke", function(d){if (d[vis.selectedChartData] == ''){return "transparent"}else{return "blue"}})
+        .attr("fill", function(d){
+            if (d[vis.selectedChartData] == ''){
+                return "transparent"
+            } else if (vis.selectedChartData == 'AAPL'){
+                return "#7d7d7d"
+            } else if (vis.selectedChartData == 'AMZN'){
+                return "#ff9900"
+            } else if (vis.selectedChartData == 'MSFT'){
+                return "black"
+            } else if (vis.selectedChartData == 'FB'){
+                return "#3b5998"
+            } else if (vis.selectedChartData == 'GOOG'){
+                return "#3cba54"
+            } else if (vis.selectedChartData == 'S&P500'){
+                return "#ff0000"
+            } else if (vis.selectedChartData == 'VGT'){
+                return "#21A0DF"
+            } else {
+                return "blue"
+            }})
+        .attr("stroke", function(d){
+            if (d[vis.selectedChartData] == ''){
+                return "transparent"
+            } else if (vis.selectedChartData == 'AAPL'){
+                return "#7d7d7d"
+            } else if (vis.selectedChartData == 'AMZN'){
+                return "#ff9900"
+            } else if (vis.selectedChartData == 'MSFT'){
+                return "black"
+            } else if (vis.selectedChartData == 'FB'){
+                return "#3b5998"
+            } else if (vis.selectedChartData == 'GOOG'){
+                return "#3cba54"
+            } else if (vis.selectedChartData == 'S&P500'){
+                return "#ff0000"
+            } else if (vis.selectedChartData == 'VGT'){
+                return "#21A0DF"
+            } else {
+                return "blue"
+            }})
         .attr("cx", function(d) { return vis.x(d["YEAR"]); })
         .attr("cy", function(d) { return vis.y(d[vis.selectedChartData]); })
-        .attr("r", 2);
+        .attr("r", 3)
+
+    vis.circle
+        .on("mouseover", vis.tool_tip.show)
+        .on("mouseout", vis.tool_tip.hide)
 
     vis.circle.exit().remove();
 

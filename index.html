@@ -249,51 +249,51 @@
                         <i style="font-size: 10px">Source: MorningStar (via WolframAlpha)</i>
 
 
-                        </div>
-
-
                     </div>
+
+
                 </div>
 
-            <div class="row">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold">Stock Price</h6>
+                </div>
+                <div class="card-body">
 
-                <div class="col-sm-6" id="leftside">
-                    <h2>Stock Prices</h2>
+                    <div class="row">
 
-                    <!-- Select box to choose the ranking type -->
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <label for="chart-data"> Display: </label>
+                        <p>add "Q1" after the year, try and align the text and buttons, make button smaller if possiblfa</p>
+                        <div class="col-sm-6" id="leftside">
+                            <h2 class="text-left">Stock Prices</h2>
 
-                            <select class="form-control" id="chart-data" onchange="updateStocks()">
-                                <option value="AAPL">AAPL</option>
-                                <option value="AMZN">AMZN</option>
-                                <option value="FB">FB</option>
-                                <option value="GOOG">GOOG</option>
-                                <option value="MSFT">MSFT</option>
-                                <option value="SP500">S&P500</option>
-                                <option value="VGT">VGT</option>
+                            <!-- Select box to choose the ranking type -->
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="chart-data"> Display: </label>
 
-                            </select>
+                                    <select class="form-control" id="chart-data" onchange="updateStocks()">
+                                        <option value="AAPL">AAPL</option>
+                                        <option value="AMZN">AMZN</option>
+                                        <option value="FB">FB</option>
+                                        <option value="GOOG">GOOG</option>
+                                        <option value="MSFT">MSFT</option>
+                                        <option value="SP500">S&P500</option>
+                                        <option value="VGT">VGT</option>
+
+                                    </select>
+                                </div>
+                            </form>
                         </div>
-                    </form>
-
-
-                    <!--				<form id="myForm">-->
-                    <!--					Time period (within 1930-2014): <input type="text" name="fromDate" id="fromDate" size="4">-->
-                    <!--					- <input type="text" name="todate" id="toDate" size="4">-->
-                    <!--					<input type="button" onclick="updateDate()" value="Update">-->
-                    <!--				</form>-->
-
-
+                    </div>
                     <div id="stockchart-area"></div>
+
+
+
                 </div>
 
 
-
-
-                <!--                    <div id="map-US"></div>-->
-                <br><br>
+            </div>
+        </div>
 
             </div>
         </div>
