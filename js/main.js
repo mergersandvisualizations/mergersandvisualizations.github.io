@@ -2,6 +2,7 @@
 var forceData = {"nodes":[], "links":[]};
 
 var time, time2, pause, pause2, toggle = false;
+var stockchart;
 
 queue()
     .defer(d3.json, "data/states-10m.json")
@@ -14,7 +15,7 @@ queue()
     .defer(d3.csv, "data/pyramid.csv")
     .defer(d3.json, "data/breakupBarchart.json")
     .defer(d3.csv, "data/stockchart.csv")
-    .await(function(error, mapTopoUs, citiesTopo, byYearMC, acqData, ret, comp_feel, mono_feel, pyr, breakup_barchart, stockchart) {
+    .await(function(error, mapTopoUs, citiesTopo, byYearMC, acqData, ret, comp_feel, mono_feel, pyr, breakup_barchart, stkcht) {
 
         var MyEventHandler = {};
 
@@ -50,7 +51,7 @@ queue()
         var pyramid = new Pyramid("pyramid-area", pyr)
         var piechart = new Piechart("pie-area", [14,31,22,15,18], [45, 37, 18])
         var breakupBarchart = new BreakupBarchart("breakup-barchart", breakup_barchart);
-        // var stockchart = new stockchart("stockchart-area", stockchart);
+        stockchart = new Stockchart("stockchart-area", stkcht);
 
 
         // inspiration from https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518
@@ -174,6 +175,10 @@ queue()
             }
         })
     });
+
+function updateStocks() {
+    stockchart.updateVis()
+}
 
 
 

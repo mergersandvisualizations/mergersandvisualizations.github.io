@@ -1268,3 +1268,8 @@ img{
 html {
     scroll-behavior: smooth;
 }
+
+.line {
+    fill: none;
+    stroke: #000;
+}

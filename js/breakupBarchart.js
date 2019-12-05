@@ -17,8 +17,6 @@ BreakupBarchart.prototype.initVis = function(){
     vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right - 200;
     vis.height = 450 - vis.margin.top - vis.margin.bottom;
 
-    console.log(vis.data);
-
     // SVG drawing area
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
         .attr("width", vis.width + vis.margin.left + vis.margin.right)
