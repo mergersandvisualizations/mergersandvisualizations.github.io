@@ -113,8 +113,6 @@ Stockchart.prototype.updateVis = function(){
         return (value["YEAR"] >= vis.parseDate(vis.fromDate)) && (value["YEAR"] <= vis.parseDate(vis.toDate)) ;
     });
 
-    console.log(vis.selectedChartData)
-
 
     vis.x.domain([vis.parseDate(vis.fromDate), vis.parseDate(vis.toDate)]);
     vis.y.domain([0, d3.max(vis.filteredData, function(d) { return d[vis.selectedChartData]; })]);
@@ -180,53 +178,9 @@ Stockchart.prototype.updateVis = function(){
             return d.ID
         });
 
-    vis.circle.exit().remove();
+    // vis.circle.exit().remove();
 
     vis.circle.enter().append("circle")
-        .attr("fill", function(d){
-            if (d[vis.selectedChartData] == ''){
-                return "transparent"
-            } else if (vis.selectedChartData == 'AAPL'){
-                return "#7d7d7d"
-            } else if (vis.selectedChartData == 'AMZN'){
-                return "#ff9900"
-            } else if (vis.selectedChartData == 'MSFT'){
-                return "black"
-            } else if (vis.selectedChartData == 'FB'){
-                return "#3b5998"
-            } else if (vis.selectedChartData == 'GOOG'){
-                return "#3cba54"
-            } else if (vis.selectedChartData == 'S&P500'){
-                return "#ff0000"
-            } else if (vis.selectedChartData == 'VGT'){
-                return "#21A0DF"
-            } else {
-                return "blue"
-            }})
-        .attr("stroke", function(d){
-            if (d[vis.selectedChartData] == ''){
-                return "transparent"
-            } else if (vis.selectedChartData == 'AAPL'){
-                return "#7d7d7d"
-            } else if (vis.selectedChartData == 'AMZN'){
-                return "#ff9900"
-            } else if (vis.selectedChartData == 'MSFT'){
-                return "black"
-            } else if (vis.selectedChartData == 'FB'){
-                return "#3b5998"
-            } else if (vis.selectedChartData == 'GOOG'){
-                return "#3cba54"
-            } else if (vis.selectedChartData == 'S&P500'){
-                return "#ff0000"
-            } else if (vis.selectedChartData == 'VGT'){
-                return "#21A0DF"
-            } else {
-                return "blue"
-            }})
-        .attr("class", "circle")
-        .attr("cx", function(d) { return vis.x(d["YEAR"]); })
-        .attr("cy", function(d) { return vis.y(d[vis.selectedChartData]); })
-        .attr("r", 3)
         .merge(vis.circle)
         .transition()
         .duration(800)
@@ -273,7 +227,7 @@ Stockchart.prototype.updateVis = function(){
             }})
         .attr("cx", function(d) { return vis.x(d["YEAR"]); })
         .attr("cy", function(d) { return vis.y(d[vis.selectedChartData]); })
-        .attr("r", 3)
+        .attr("r", 4)
 
     vis.circle
         .on("mouseover", vis.tool_tip.show)
