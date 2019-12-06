@@ -95,6 +95,16 @@ BarchartMC.prototype.initVis = function(){
 
     vis.svg.call(vis.tool_tip);
 
+    // vis.svg.append("text")
+    //     .attr("class", "axis-title")
+    //     .attr("x", 0)
+    //     .attr("y", -20)
+    //     .attr("font-size", 15)
+    //     .attr("dy", ".1em")
+    //     // .style("text-anchor", "end")
+    //     .text("Market Capitalization")
+    //     .attr("fill", "black");
+
     // (Filter, aggregate, modify data)
     vis.wrangleData();
 }

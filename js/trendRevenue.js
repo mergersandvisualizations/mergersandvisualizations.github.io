@@ -133,12 +133,12 @@ d3.csv("data/trendRevenue.csv", function(error, csv) {
 
     fundingChart.append("text")
         .attr("class", "axis-title")
-        .attr("x", 0)
+        .attr("x", 125)
         .attr("y", -20)
         .attr("font-size", 15)
         .attr("dy", ".1em")
         // .style("text-anchor", "end")
-        .text("Revenue of tech verticals grows with chip computing power and big data")
+        .text("Revenue of Tech Verticals")
         .attr("fill", "black");
 
     fundingChart.append("text")
