@@ -1,8 +1,8 @@
 // Source: http://bl.ocks.org/wdickerson/64535aff478e8a9fd9d9facccfef8929
 
 var margin = {top: 50, bottom: 60, left: 60, right: 130};
-var width2 = 800 - margin.left - margin.right;
-var height2 = 500 - margin.top - margin.bottom;
+var width2 = 700 - margin.left - margin.right;
+var height2 = 300 - margin.top - margin.bottom;
 
 
 var industries = {
@@ -175,6 +175,8 @@ function drawTooltip() {
         return b.funding.find(h => h.year == year).amount - a.funding.find(h => h.year == year).amount;
     });
 
+    barchartMC.onSelectionChange(year)
+
 
     tooltipLine.attr('stroke', '#515254')
         .attr('x1', x(year))
@@ -184,7 +186,7 @@ function drawTooltip() {
         .attr('stroke-width', 2);
 
     tooltip.html('<b>' + "Year" + '</b>' + ": " + year)
-        .style('color', "white")
+        .style('color', "black")
         .style('display', 'block')
         .style('left', d3.event.pageX)
         .style('top', d3.event.pageY)

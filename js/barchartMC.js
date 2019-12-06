@@ -17,8 +17,11 @@ BarchartMC.prototype.initVis = function(){
     var vis = this;
 
     vis.margin = {top: 20, bottom: 60, left: 100, right: 130};
-    vis.width = $("#" + vis.parentElement).width() - 50 - vis.margin.left - vis.margin.right;
-    vis.height = vis.width * 0.4 - vis.margin.top - vis.margin.bottom;
+    // vis.width = $("#" + vis.parentElement).width() - 50 - vis.margin.left - vis.margin.right;
+    // vis.height = vis.width - vis.margin.top - vis.margin.bottom;
+
+    vis.width = 700 - vis.margin.left - vis.margin.right;
+    vis.height = 200 - vis.margin.top - vis.margin.bottom;
 
     // SVG drawing area
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -189,7 +192,15 @@ BarchartMC.prototype.updateVis = function(){
 
      vis.rect
         .on('mouseover', vis.tool_tip.show)
-        .on('mouseout', vis.tool_tip.hide);
+        .on('mouseout', vis.tool_tip.hide)
+        .on('click', function(d) {
+            if (d[0] == 'googl') {
+                stockchart.onSelectionChange('GOOG')
+            } else {
+                stockchart.onSelectionChange(d[0].toUpperCase())
+            }
+
+        });
 
     vis.rect.exit().remove();
 
@@ -199,7 +210,13 @@ BarchartMC.prototype.updateVis = function(){
 BarchartMC.prototype.onSelectionChange = function(selection){
     var vis = this;
 
+    if (selection > 2019) {
+        selection = 2019
+    }
+
     vis.row = vis.data[selection - 1979]
+
+    d3.select('.value-time').text(selection);
 
     vis.wrangleData();
 }

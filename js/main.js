@@ -2,7 +2,7 @@
 var forceData = {"nodes":[], "links":[]};
 
 var time, time2, pause, pause2, toggle = false;
-var stockchart;
+var stockchart, barchartMC;
 var count = 0;
 
 queue()
@@ -60,7 +60,7 @@ queue()
         });
 
         var mapVis = new MapVis("map-US", mapTopoUs, citiesTopo);
-        var barchartMC = new BarchartMC("MC-barchart", byYearMC)
+        barchartMC = new BarchartMC("MC-barchart", byYearMC)
         var acquisitionForce = new AcquisitionForce("acq-force", acqData, ret)
         var perception = new Perception("perception-area", comp_feel, mono_feel)
         var pyramid = new Pyramid("pyramid-area", pyr)
