@@ -219,7 +219,11 @@ queue()
     });
 
 function updateStocks() {
-    stockchart.updateVis()
+    var chartData = document.getElementById("chart-data");
+    var selectedChartData = chartData.options[chartData.selectedIndex].value;
+    d3.select('#stock-ind').text(selectedChartData);
+    // d3.select("#chart-data").option(selectedChartData);
+    stockchart.onSelectionChange(selectedChartData)
 }
 
 function sortResults(data, prop, asc) {

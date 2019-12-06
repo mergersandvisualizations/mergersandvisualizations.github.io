@@ -196,6 +196,7 @@ BarchartMC.prototype.updateVis = function(){
         .on('mouseout', vis.tool_tip.hide)
         .on('click', function(d) {
             d3.select('#stock-ind').text(d[0].toUpperCase());
+            // d3.select("#chart-data").option(d[0].toUpperCase());
             if (d[0] == 'googl') {
                 stockchart.onSelectionChange('GOOG', vis.year)
             } else {
