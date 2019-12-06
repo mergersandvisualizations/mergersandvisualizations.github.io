@@ -138,8 +138,18 @@ d3.csv("data/trendRevenue.csv", function(error, csv) {
         .attr("font-size", 15)
         .attr("dy", ".1em")
         // .style("text-anchor", "end")
-        .text("Revenue ($ Bil USD) of Tech Verticals grows with chip computing power and big data")
+        .text("Revenue of tech verticals grows with chip computing power and big data")
         .attr("fill", "black");
+
+    fundingChart.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left + 25)
+        .attr("x", 0 - (height / 2) + 125)
+        .attr("dy", "1em")
+        .style("font-size", "10px")
+        .style("text-anchor", "middle")
+        .text("Revenue ($ Bil USD)");
+
 
     // fundingChart.append("text")
     //     .attr("class", "axis-title")
