@@ -235,7 +235,7 @@
                             <b>Market Trends:</b> Early growth of Semiconductors and Consumer Electronics <br> precedes explosion of software and data-driven trends</h6>
                     </div>
                     <div class="card-body">
-                        <p style="align=justify"><b>Instructions </b> <br><b>Mouse over</b> the chart with revenue of tech verticals and watch the market caps of the largest tech companies change. <br> <b>Click</b> on a company’s market cap bar for more information on its stock prices. </p>
+                        <p align="justify"><b>Instructions </b> <br><b>Mouse over</b> the chart with revenue of tech verticals and watch the market caps of the largest tech companies change. <br> <b>Click</b> on a company’s market cap bar for more information on its stock prices. </p>
                         <div class="row">
                             <button type="button" class="btn btn-success btn-outline btn-sm" id="playbutton">Play</button>&nbsp
                             <h2 class="value-time"></h2>
@@ -251,8 +251,21 @@
                                 <div id="MC-barchart"></div>
                             </div>
                             <div class="col-md-5">
-                                Stock Price
-<!--                                <p id="stock-ind">AAPL</p>-->
+                                <form class="form-inline">
+                                    <div class="form-group">
+<!--                                        <label for="chart-data"> Select Stock: </label>-->
+                                        <select class="form-control" id="chart-data" onchange="updateStocks()">
+                                            <option value="AAPL">AAPL</option>
+                                            <option value="AMZN">AMZN</option>
+                                            <option value="FB">FB</option>
+                                            <option value="GOOG">GOOG</option>
+                                            <option value="MSFT">MSFT</option>
+                                            <option value="SP500">S&P500</option>
+                                            <option value="VGT">VGT</option>
+                                        </select>
+                                    </div>
+                                </form>
+                                Stock Price of <p style="display:inline" id="stock-ind">AAPL</p>
                                 <div id="stockchart-area"></div>
                             </div>
                         </div>

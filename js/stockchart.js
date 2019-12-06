@@ -328,7 +328,7 @@ Stockchart.prototype.updateVis = function(){
 }
 
 
-Stockchart.prototype.onSelectionChange = function(selection, year){
+Stockchart.prototype.onSelectionChange = function(selection){
     var vis = this;
 
     vis.selectedChartData = selection
