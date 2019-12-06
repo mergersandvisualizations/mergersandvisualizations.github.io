@@ -265,6 +265,8 @@ AcquisitionForce.prototype.updateVis = function(){
 AcquisitionForce.prototype.forceTogether = function(){
     var vis = this;
 
+    vis.force.restart()
+
     if (vis.switch) {
         vis.force.force("link", d3.forceLink(vis.data.links).distance(20))
             // .force("link", d3.forceLink(vis.return).distance(60))
@@ -297,6 +299,8 @@ AcquisitionForce.prototype.onSelectionChange = function(selection){
             vis.update.push({"target": vis.data.nodes[i].id, "source": 0})
         }
     }
+
+    vis.force.restart()
 
     vis.force.force("link", d3.forceLink(vis.update).distance(20))
         .force("center", d3.forceCenter().x(vis.width/2).y(vis.height/2))
