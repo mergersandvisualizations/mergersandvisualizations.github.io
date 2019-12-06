@@ -18,7 +18,7 @@ Perception.prototype.initVis = function(){
 
     vis.margin = {top: 10, bottom: 20, left: 100, right: 120};
     vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
-    vis.height = vis.width - vis.margin.top - vis.margin.bottom;
+    vis.height = vis.width + 50 - vis.margin.top - vis.margin.bottom;
     // vis.width = 350;
     // vis.height = 220;
 
@@ -73,7 +73,7 @@ Perception.prototype.initVis = function(){
 
     vis.svg.append("g")
         .attr("class", "legend")
-        .attr("transform", "translate(" + (vis.width + 10) + ",100)");
+        .attr("transform", "translate(" + (vis.width + 10) + ",80)");
 
     vis.legend = d3.legendColor()
         .labels(["Very Positive", "Rather Positive", "Neutral", "Rather Negative", "Very Negative", 'Not Answered'])
@@ -142,7 +142,7 @@ Perception.prototype.updateVis = function(){
     vis.svg.append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 0 - margin.left + 30)
-        .attr("x", 0 - (height / 2) + 30)
+        .attr("x", 0 - (height / 2) + 90)
         .attr("dy", "1em")
         .style("font-size", "10px")
         .style("text-anchor", "middle")

@@ -69,7 +69,7 @@ queue()
         var acquisitionForce = new AcquisitionForce("acq-force", acqData, ret)
         var perception = new Perception("perception-area", comp_feel, mono_feel)
         var pyramid = new Pyramid("pyramid-area", pyr)
-        var piechart = new Piechart("pie-area", [14,31,22,15,18], [45, 37, 18])
+        var piechart = new Piechart("pie-area", [15,22,31,14,18], [37, 45, 18])
         var breakupBarchart = new BreakupBarchart("breakup-barchart", breakup_barchart);
         stockchart = new Stockchart("stockchart-area", stkcht);
 

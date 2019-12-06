@@ -30,12 +30,12 @@ Piechart.prototype.initVis = function(){
         .attr("transform", "translate(" + (vis.width * (2/5)) + "," + (vis.height / 2) + ")");
 
     vis.colorScale = d3.scaleOrdinal()
-        .domain(['very_worried','concerned','dont_feel_good','dont_care','dont_know', 'positive', 'negative'])
-        .range(['#d7191c','#fdae61','#a6d96a','#1a9641', '#D3D3D3', '#a50026','#006837']);
+        .domain(['dont_care', 'dont_feel_good','concerned', 'very_worried','dont_know', '',  'positive','negative'])
+        .range(['#1a9641','#a6d96a','#fdae61', '#d7191c', '#D3D3D3', 'white', '#006837','#a50026']);
 
     vis.colorScale2 = d3.scaleOrdinal()
-        .domain(['very_worried','dont_care','dont_know'])
-        .range(['#a50026','#006837', '#D3D3D3']);
+        .domain(['positive','negative','dont_know'])
+        .range(['#006837','#a50026', '#D3D3D3']);
 
     vis.pie = d3.pie()
         .sort(null)
@@ -53,7 +53,7 @@ Piechart.prototype.initVis = function(){
         .attr("transform", "translate(" + (vis.width * (3/10)) + "," + (-50) + ")");
 
     vis.legend = d3.legendColor()
-        .labels(["Very Worried", "Concerned", "Don't Feel Good", "Don't Care", "Don't Know", 'Negative', 'Positive'])
+        .labels(["Don't Care","Don't Feel Good","Concerned","Very Worried", "Don't Know", '', 'Positive', 'Negative',])
         .shapeWidth(20);
 
     vis.legend
@@ -91,6 +91,7 @@ Piechart.prototype.wrangleData = function(){
     vis.path.enter().append("path")
         .attr("class", "path1")
         .attr("fill", function(d, i) {
+            console.log(d)
             return vis.colorScale(i)
         })
         .attr("d", vis.arc)
