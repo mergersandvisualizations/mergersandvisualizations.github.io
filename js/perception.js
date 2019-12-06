@@ -16,11 +16,11 @@ Perception = function(_parentElement, _comp, _mono){
 Perception.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = {top: 10, bottom: 30, left: 100, right: 120};
-    // vis.width = $("#" + vis.parentElement).width() - 200 - vis.margin.left - vis.margin.right;
-    // vis.height = vis.width - 300 - vis.margin.top - vis.margin.bottom;
-    vis.width = 350;
-    vis.height = 220;
+    vis.margin = {top: 10, bottom: 20, left: 100, right: 120};
+    vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
+    vis.height = vis.width - vis.margin.top - vis.margin.bottom;
+    // vis.width = 350;
+    // vis.height = 220;
 
     // SVG drawing area
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
