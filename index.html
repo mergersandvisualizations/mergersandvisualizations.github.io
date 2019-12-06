@@ -271,26 +271,23 @@
                     <div class="card-body">
 
                         <div class="row">
+                            <button type="button" class="btn btn-success" id="playbutton">Play</button>&nbsp
+                            <h2 class="value-time"></h2>
+                            <div class="slider-time"></div>
+                        </div>
+                        <div class="row">
                             <div id="funding-chart"></div>
                             <div id='tooltip' style='padding:2px'></div>
                         </div>
-                        <h3 class="value-time"></h3>
-                        <br>
                         <div class="row">
                             <div class="col-md-7">
                                 Market Capitalization
                                 <div id="MC-barchart"></div>
                             </div>
                             <div class="col-md-5">
-                                Stock Price
+                                Stock Price: <p id="stock-ind">AAPL</p>
                                 <div id="stockchart-area"></div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <button type="button" class="btn btn-success" id="playbutton">Play</button>&nbsp
-                            <div class="slider-time"></div> <p id="stock-ind">AAPL</p>
-<!--                            <p>Select Start Year: </p>-->
-
                         </div>
 
                         <div class="row">
@@ -439,8 +436,7 @@
                                 <button type="button" class="btn btn-success" id="force-together">Scatter</button>&nbsp&nbsp
                                 <div class="col-sm"><div class="slider-time2"></div></div>
                             </div>
-
-                        <p class="value-time2"></p>
+                        <h3 class="value-time2"></h3>
                         <div id="acq-force"></div>
 
                         <i class="text-left" style="font-size: 10px;">Source: PitchBook, Deals Data</i>
