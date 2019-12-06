@@ -74,8 +74,12 @@ BarchartMC.prototype.initVis = function(){
             }
         });
 
+    vis.format = function(d){
+        return "$" + (d / 1000000000) + "B"
+    }
+
     vis.yAxis = d3.axisTop()
-        .tickFormat(d3.format("$.2s"))
+        .tickFormat(vis.format)
         // .ticks(9)
         // .tickValues([0, 100, 200, 300, 400, 500, 600, 700, 800])
         .scale(vis.y);
