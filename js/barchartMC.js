@@ -192,7 +192,7 @@ BarchartMC.prototype.updateVis = function(){
         })
 
      vis.rect
-        .on('mouseover', vis.tool_tip.show)
+        .on('mouseover', function(d){vis.tool_tip.show; this.style.cursor = 'pointer';})
         .on('mouseout', vis.tool_tip.hide)
         .on('click', function(d) {
             d3.select('#stock-ind').text(d[0].toUpperCase());
