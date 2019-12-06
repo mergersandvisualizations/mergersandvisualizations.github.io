@@ -45,6 +45,9 @@ Stockchart.prototype.initVis = function(){
         .append("path")
         .attr("class", "line");
 
+    // vis.tip_path = vis.svg.append("g")
+    //     .append("path")
+    //     .attr("class", "tip_line")
 
     vis.tool_tip = d3.tip()
         .attr("class", "d3-tip")
@@ -86,6 +89,19 @@ Stockchart.prototype.initVis = function(){
     //     .attr('y1', 0)
     //     .attr('y2', vis.height)
     //     .attr('stroke-width', 2);
+
+    // vis.svg.append('line')
+    //     .attr("class", "vert")
+    //     .attr('x1', vis.x(vis.parseDate("12/01/00")))
+    //     .attr('x2', vis.x(vis.parseDate("12/01/00")))
+    //     .attr('y1', 0)
+    //     .attr('y2', vis.height)
+    //     .attr('stroke-width', 2);
+
+    // vis.tip_line = d3.line()
+    //     .curve(d3.curveLinear)
+    //     .x(function(d) { return vis.x(vis.parseDate("12/01/00")); })
+    //     .y(function(d) { return vis.y(d.ID - 227); });
 
   // (Filter, aggregate, modify data)
     vis.wrangleData();
@@ -210,7 +226,8 @@ Stockchart.prototype.updateVis = function(){
                 return .5;
             }});
 
-    console.log(vis.filteredData)
+    // vis.tip_path.datum(vis.filteredData)
+    //     .attr("d", vis.tip_line)
 
     vis.circle = vis.svg.selectAll("circle")
         .data(vis.filteredData, function(d){

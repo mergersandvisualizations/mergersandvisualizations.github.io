@@ -75,12 +75,12 @@ queue()
 
 
         // inspiration from https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518
-        var dataTime = d3.range(0, 41).map(function(d) {
-            return 1979 + d;
+        var dataTime = d3.range(0, 22).map(function(d) {
+            return 1998 + d;
         });
 
-        var dataStepTime = d3.range(0, 41, 5).map(function(d) {
-            return 1980 + d;
+        var dataStepTime = d3.range(0, 22, 5).map(function(d) {
+            return 1998 + d;
         });
 
         var sliderTime = d3
