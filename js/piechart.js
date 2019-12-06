@@ -31,11 +31,11 @@ Piechart.prototype.initVis = function(){
 
     vis.colorScale = d3.scaleOrdinal()
         .domain(['dont_care', 'dont_feel_good','concerned', 'very_worried','dont_know', '',  'positive','negative'])
-        .range(['#1a9641','#a6d96a','#fdae61', '#d7191c', '#D3D3D3', 'white', '#006837','#a50026']);
+        .range(['#4dac26','#b8e186','#f1b6da','#d01c8b', '#D3D3D3', 'white', '#4d9221','#c51b7d']);
 
     vis.colorScale2 = d3.scaleOrdinal()
         .domain(['positive','negative','dont_know'])
-        .range(['#006837','#a50026', '#D3D3D3']);
+        .range(['#4d9221','#c51b7d', '#D3D3D3']);
 
     vis.pie = d3.pie()
         .sort(null)
@@ -53,7 +53,7 @@ Piechart.prototype.initVis = function(){
         .attr("transform", "translate(" + (vis.width * (3/10)) + "," + (-50) + ")");
 
     vis.legend = d3.legendColor()
-        .labels(["Don't Care","Don't Feel Good","Concerned","Very Worried", "Don't Know", '', 'Positive', 'Negative',])
+        .labels(["Don't Care","Don't Feel Good","Concerned","Very Worried", "Don't Know", 'Overall Sentiment', 'Indifferent', 'Disturbed',])
         .shapeWidth(20);
 
     vis.legend
