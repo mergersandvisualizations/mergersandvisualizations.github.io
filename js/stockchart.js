@@ -125,7 +125,7 @@ Stockchart.prototype.updateVis = function(){
 
 
     vis.x.domain([vis.parseDate(vis.fromDate), vis.parseDate(vis.toDate)]);
-    vis.y.domain([0, d3.max(vis.filteredData, function(d) { return d[vis.selectedChartData]; })]);
+    vis.y.domain([0, d3.max(vis.filteredData, function(d) { return +d[vis.selectedChartData]; })]);
 
     vis.line = d3.line()
         .curve(d3.curveMonotoneX)
@@ -136,46 +136,64 @@ Stockchart.prototype.updateVis = function(){
         .transition()
         .duration(800)
         .attr("d", vis.line)
-        .attr("stroke", function(d){
-            if (d[vis.selectedChartData] == ''){
+        .attr("stroke", function(d) {
+                if (d[vis.selectedChartData] == '') {
+                    return "transparent"
+                } else if (vis.selectedChartData == 'AAPL') {
+                    return "#7d7d7d"
+                } else if (vis.selectedChartData == 'AMZN') {
+                    return "#ff9900"
+                } else if (vis.selectedChartData == 'MSFT') {
+                    return "black"
+                } else if (vis.selectedChartData == 'FB') {
+                    return "#3b5998"
+                } else if (vis.selectedChartData == 'GOOG') {
+                    return "#3cba54"
+                } else if (vis.selectedChartData == 'S&P500') {
+                    return "#ff0000"
+                } else if (vis.selectedChartData == 'VGT') {
+                    return "#21A0DF"
+                } else if (vis.selectedChartData == 'ADBE') {
+                    return "#ff0000"
+                } else if (vis.selectedChartData == 'CSCO') {
+                    return "#C5112E"
+                } else if (vis.selectedChartData == 'IBM') {
+                    return "#1F70C1"
+                } else if (vis.selectedChartData == 'INTC') {
+                    return "#0071c5"
+                } else if (vis.selectedChartData == 'CRM') {
+                    return "#21A0DF"
+                }
+            })
+        .attr("fill", function(d) {
+            if (d[vis.selectedChartData] == '') {
                 return "transparent"
-            } else if (vis.selectedChartData == 'AAPL'){
+            } else if (vis.selectedChartData == 'AAPL') {
                 return "#7d7d7d"
-            } else if (vis.selectedChartData == 'AMZN'){
+            } else if (vis.selectedChartData == 'AMZN') {
                 return "#ff9900"
-            } else if (vis.selectedChartData == 'MSFT'){
+            } else if (vis.selectedChartData == 'MSFT') {
                 return "black"
-            } else if (vis.selectedChartData == 'FB'){
+            } else if (vis.selectedChartData == 'FB') {
                 return "#3b5998"
-            } else if (vis.selectedChartData == 'GOOG'){
+            } else if (vis.selectedChartData == 'GOOG') {
                 return "#3cba54"
-            } else if (vis.selectedChartData == 'S&P500'){
+            } else if (vis.selectedChartData == 'S&P500') {
                 return "#ff0000"
-            } else if (vis.selectedChartData == 'VGT'){
+            } else if (vis.selectedChartData == 'VGT') {
                 return "#21A0DF"
-            } else {
-                return "blue"
-            }})
-        .attr("fill", function(d){
-            if (d[vis.selectedChartData] == ''){
-                return "transparent"
-            } else if (vis.selectedChartData == 'AAPL'){
-                return "#7d7d7d"
-            } else if (vis.selectedChartData == 'AMZN'){
-                return "#ff9900"
-            } else if (vis.selectedChartData == 'MSFT'){
-                return "black"
-            } else if (vis.selectedChartData == 'FB'){
-                return "#3b5998"
-            } else if (vis.selectedChartData == 'GOOG'){
-                return "#3cba54"
-            } else if (vis.selectedChartData == 'S&P500'){
+            } else if (vis.selectedChartData == 'ADBE') {
                 return "#ff0000"
-            } else if (vis.selectedChartData == 'VGT'){
+            } else if (vis.selectedChartData == 'CSCO') {
+                return "#C5112E"
+            } else if (vis.selectedChartData == 'IBM') {
+                return "#1F70C1"
+            } else if (vis.selectedChartData == 'INTC') {
+                return "#0071c5"
+            } else if (vis.selectedChartData == 'CRM') {
                 return "#21A0DF"
-            } else {
-                return "blue"
-            }})
+            }
+        })
         .attr("stroke-width", function(d){
             if (d[vis.selectedChartData] == ''){
                 return 0;
@@ -195,46 +213,64 @@ Stockchart.prototype.updateVis = function(){
         .transition()
         .duration(800)
         .attr("class", "circle")
-        .attr("fill", function(d){
-            if (d[vis.selectedChartData] == ''){
+        .attr("fill", function(d) {
+            if (d[vis.selectedChartData] == '') {
                 return "transparent"
-            } else if (vis.selectedChartData == 'AAPL'){
+            } else if (vis.selectedChartData == 'AAPL') {
                 return "#7d7d7d"
-            } else if (vis.selectedChartData == 'AMZN'){
+            } else if (vis.selectedChartData == 'AMZN') {
                 return "#ff9900"
-            } else if (vis.selectedChartData == 'MSFT'){
+            } else if (vis.selectedChartData == 'MSFT') {
                 return "black"
-            } else if (vis.selectedChartData == 'FB'){
+            } else if (vis.selectedChartData == 'FB') {
                 return "#3b5998"
-            } else if (vis.selectedChartData == 'GOOG'){
+            } else if (vis.selectedChartData == 'GOOG') {
                 return "#3cba54"
-            } else if (vis.selectedChartData == 'S&P500'){
+            } else if (vis.selectedChartData == 'S&P500') {
                 return "#ff0000"
-            } else if (vis.selectedChartData == 'VGT'){
+            } else if (vis.selectedChartData == 'VGT') {
                 return "#21A0DF"
-            } else {
-                return "blue"
-            }})
-        .attr("stroke", function(d){
-            if (d[vis.selectedChartData] == ''){
+            } else if (vis.selectedChartData == 'ADBE') {
+                return "#ff0000"
+            } else if (vis.selectedChartData == 'CSCO') {
+                return "#C5112E"
+            } else if (vis.selectedChartData == 'IBM') {
+                return "#1F70C1"
+            } else if (vis.selectedChartData == 'INTC') {
+                return "#0071c5"
+            } else if (vis.selectedChartData == 'CRM') {
+                return "#21A0DF"
+            }
+        })
+        .attr("stroke", function(d) {
+            if (d[vis.selectedChartData] == '') {
                 return "transparent"
-            } else if (vis.selectedChartData == 'AAPL'){
+            } else if (vis.selectedChartData == 'AAPL') {
                 return "#7d7d7d"
-            } else if (vis.selectedChartData == 'AMZN'){
+            } else if (vis.selectedChartData == 'AMZN') {
                 return "#ff9900"
-            } else if (vis.selectedChartData == 'MSFT'){
+            } else if (vis.selectedChartData == 'MSFT') {
                 return "black"
-            } else if (vis.selectedChartData == 'FB'){
+            } else if (vis.selectedChartData == 'FB') {
                 return "#3b5998"
-            } else if (vis.selectedChartData == 'GOOG'){
+            } else if (vis.selectedChartData == 'GOOG') {
                 return "#3cba54"
-            } else if (vis.selectedChartData == 'S&P500'){
+            } else if (vis.selectedChartData == 'S&P500') {
                 return "#ff0000"
-            } else if (vis.selectedChartData == 'VGT'){
+            } else if (vis.selectedChartData == 'VGT') {
                 return "#21A0DF"
-            } else {
-                return "blue"
-            }})
+            } else if (vis.selectedChartData == 'ADBE') {
+                return "#ff0000"
+            } else if (vis.selectedChartData == 'CSCO') {
+                return "#C5112E"
+            } else if (vis.selectedChartData == 'IBM') {
+                return "#1F70C1"
+            } else if (vis.selectedChartData == 'INTC') {
+                return "#0071c5"
+            } else if (vis.selectedChartData == 'CRM') {
+                return "#21A0DF"
+            }
+        })
         .attr("cx", function(d) { return vis.x(d["YEAR"]); })
         .attr("cy", function(d) { return vis.y(d[vis.selectedChartData]); })
         .attr("r", .7)
