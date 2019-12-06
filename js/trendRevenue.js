@@ -139,7 +139,8 @@ d3.csv("data/trendRevenue.csv", function(error, csv) {
         .attr("dy", ".1em")
         // .style("text-anchor", "end")
         .text("Revenue of tech verticals grows with chip computing power and big data")
-        .attr("fill", "black");
+        .attr("fill", "dimgrey")
+        .attr("font-family", "'Catamaran', 'Helvetica', 'Arial', 'sans-serif'");
 
     fundingChart.append("text")
         .attr("transform", "rotate(-90)")
