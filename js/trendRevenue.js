@@ -18,7 +18,7 @@ var industries = {
 
 // x y scales
 var x = d3.scaleLinear()
-    .domain([1998, 2022])
+    .domain([1998, 2020])
     .range([0, width2]);
 
 var y = d3.scaleLinear()
@@ -72,7 +72,7 @@ d3.csv("data/trendRevenue.csv", function(error, csv) {
             {
                 "source": d["sector"],
                 "color": colors[index],
-                "2022_funding": +d["2022"],
+                "2020_funding": +d["2020"],
                 "funding": [
                     {"year": 1998, "amount": +d["1998"]},
                     {"year": 1999, "amount": +d["1999"]},
@@ -96,9 +96,7 @@ d3.csv("data/trendRevenue.csv", function(error, csv) {
                     {"year": 2017, "amount": +d["2017"]},
                     {"year": 2018, "amount": +d["2018"]},
                     {"year": 2019, "amount": +d["2019"]},
-                    {"year": 2020, "amount": +d["2020"]},
-                    {"year": 2021, "amount": +d["2021"]},
-                    {"year": 2022, "amount": +d["2022"]}
+                    {"year": 2020, "amount": +d["2020"]}
                 ]
             }
         );
@@ -125,10 +123,10 @@ d3.csv("data/trendRevenue.csv", function(error, csv) {
         .attr('dx', '.2em')
         .attr('y', function(d){
                 if (d["source"] == "digitalmarket"){
-                    return y(d["2022_funding"]) + 4;
+                    return y(d["2020_funding"]) + 4;
                 }
                 else{
-                    return y(d["2022_funding"]) ;
+                    return y(d["2020_funding"]) ;
                 }
                 })
         .attr('font-size', 13);
