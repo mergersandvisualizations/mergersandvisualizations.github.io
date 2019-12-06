@@ -14,12 +14,12 @@ Stockchart = function(_parentElement, _data){
 Stockchart.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = {top: 10, bottom: 20, left: 50, right: 10};
+    vis.margin = {top: 10, bottom: 20, left: 50, right: 0};
     // vis.width = 600 - vis.margin.left - vis.margin.right;
-    // vis.width = $("#" + vis.parentElement).width() - 100 - vis.margin.left - vis.margin.right;
-    //     // vis.height = vis.width - 400 - vis.margin.top - vis.margin.bottom;
-    vis.width = 500;
-    vis.height = 250;
+    vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
+    vis.height = vis.width - vis.margin.top - vis.margin.bottom;
+    // vis.width = 500;
+    // vis.height = 250;
 
     // SVG drawing area
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
