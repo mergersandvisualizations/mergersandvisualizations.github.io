@@ -72,6 +72,12 @@ Stockchart.prototype.initVis = function(){
 
     vis.selectedChartData = "AAPL"
 
+    // vis.tip_line = vis.svg.append('line')
+    //     .attr("class", "x-hover-line hover-line")
+    //     .attr("class", "y-hover-line hover-line")
+    //     .append("circle")
+    //     .attr("r", 7.5);
+
   // (Filter, aggregate, modify data)
     vis.wrangleData();
 }
@@ -258,10 +264,20 @@ Stockchart.prototype.updateVis = function(){
 }
 
 
-Stockchart.prototype.onSelectionChange = function(selection){
+Stockchart.prototype.onSelectionChange = function(selection, year){
     var vis = this;
 
     vis.selectedChartData = selection
+
+    // if (vis.tip_line) vis.tip_line.attr('stroke', 'none');
+    //
+    // vis.tip_line.attr('stroke', '#515254')
+    //     .attr('x1', vis.x(year))
+    //     .attr('x2', vis.x(year))
+    //     .attr('y1', 0)
+    //     .attr('y2', vis.height)
+    //     .attr('stroke-width', 2);
+
 
     vis.wrangleData();
 }

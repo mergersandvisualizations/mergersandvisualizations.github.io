@@ -4,6 +4,7 @@ BarchartMC = function(_parentElement, _data){
     this.data = _data;
     this.row = this.data[0]
     this.filteredData = this.data;
+    this.year = 1979
 
     this.initVis();
 }
@@ -196,9 +197,9 @@ BarchartMC.prototype.updateVis = function(){
         .on('click', function(d) {
             d3.select('#stock-ind').text(d[0].toUpperCase());
             if (d[0] == 'googl') {
-                stockchart.onSelectionChange('GOOG')
+                stockchart.onSelectionChange('GOOG', vis.year)
             } else {
-                stockchart.onSelectionChange(d[0].toUpperCase())
+                stockchart.onSelectionChange(d[0].toUpperCase(), vis.year)
             }
 
         });
@@ -210,6 +211,8 @@ BarchartMC.prototype.updateVis = function(){
 
 BarchartMC.prototype.onSelectionChange = function(selection){
     var vis = this;
+
+    vis.year = selection;
 
     if (selection > 2019) {
         selection = 2019

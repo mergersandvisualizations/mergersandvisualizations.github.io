@@ -1,6 +1,6 @@
 // Source: http://bl.ocks.org/wdickerson/64535aff478e8a9fd9d9facccfef8929
 
-var margin = {top: 50, bottom: 60, left: 60, right: 130};
+var margin = {top: 50, bottom: 40, left: 60, right: 130};
 var width2 = 700 - margin.left - margin.right;
 var height2 = 300 - margin.top - margin.bottom;
 
@@ -143,15 +143,15 @@ d3.csv("data/trendRevenue.csv", function(error, csv) {
         .text("Revenue ($ Bil USD) of Tech Verticals grows with chip computing power and big data")
         .attr("fill", "black");
 
-    fundingChart.append("text")
-        .attr("class", "axis-title")
-        .attr("x", 300)
-        .attr("y", height2 + 40)
-        .attr("font-size", 15)
-        .attr("dy", ".1em")
-        // .style("text-anchor", "end")
-        .text("Year")
-        .attr("fill", "black");
+    // fundingChart.append("text")
+    //     .attr("class", "axis-title")
+    //     .attr("x", 300)
+    //     .attr("y", height2 + 40)
+    //     .attr("font-size", 15)
+    //     .attr("dy", ".1em")
+    //     // .style("text-anchor", "end")
+    //     .text("Year")
+    //     .attr("fill", "black");
 
     tipBox = fundingChart.append('rect')
         .attr('width', width2)
@@ -194,7 +194,6 @@ function drawTooltip() {
         .data(fundingData).enter()
         .append('div')
         .style('color', d => d.color)
-
         .html(d =>
             "<div class=\"tg-wrap\"><table class=\"tg\">\n" +
             "  <tr>\n" +

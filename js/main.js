@@ -93,6 +93,39 @@ queue()
                 clearInterval(time)
                 barchartMC.onSelectionChange(val)
                 d3.select('.value-time').text(val);
+
+                if (val < 1998) {
+                    val = 1998
+                }
+
+                if (tooltip) tooltip.style('display', 'none');
+                if (tooltipLine) tooltipLine.attr('stroke', 'none');
+
+                tooltipLine.attr('stroke', '#515254')
+                    .attr('x1', x(val))
+                    .attr('x2', x(val))
+                    .attr('y1', 0)
+                    .attr('y2', height2)
+                    .attr('stroke-width', 2);
+
+                tooltip.html('<b>' + "Year" + '</b>' + ": " + val)
+                    .style('color', "white")
+                    .style('display', 'block')
+                    .style('left', d3.event.pageX)
+                    .style('top', d3.event.pageY)
+                    .selectAll()
+                    .data(fundingData).enter()
+                    .append('div')
+                    .style('color', d => d.color)
+                    .html(d =>
+                        "<div class=\"tg-wrap\"><table class=\"tg\">\n" +
+                        "  <tr>\n" +
+                        "    <td class=\"tg-0a7q\">" + "<b>" + industries[d.source] + "</b>" +"</td>\n" +
+                        "    <td class=\"tg-0a7q\">" + ': $' + d.funding.find(h => h.year == val).amount + ' Bil USD' + "</td>\n" +
+                        "  </tr>\n" +
+                        "</table></div>"
+                    )
+                    .attr('stroke', d => d.color)
             });
 
         var sliderTime2 = d3
