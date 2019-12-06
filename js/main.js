@@ -83,6 +83,14 @@ queue()
             return 1998 + d;
         });
 
+        var dataTime2 = d3.range(0, 41).map(function(d) {
+            return 1979 + d;
+        });
+
+        var dataStepTime2 = d3.range(0, 41, 5).map(function(d) {
+            return 1980 + d;
+        });
+        
         var sliderTime = d3
             .sliderBottom()
             .min(d3.min(dataTime))
@@ -108,8 +116,8 @@ queue()
 
         var sliderTime2 = d3
             .sliderBottom()
-            .min(d3.min(dataTime))
-            .max(d3.max(dataTime))
+            .min(d3.min(dataTime2))
+            .max(d3.max(dataTime2))
             // .step(1000 * 60 * 60 * 24 * 365)
             .step(1)
             .width(700)
