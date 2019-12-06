@@ -828,9 +828,8 @@ img{
 }
 
 .hover-line {
-    stroke: #69b3a2;
+    stroke: dimgrey;
     stroke-width: 2px;
-    stroke-dasharray: 3,3;
 }
 
 .legend {
@@ -1316,4 +1315,8 @@ hr {
 
 hr.light {
     border-color: white;
+}
+
+#value-time {
+    color: dimgrey;
 }

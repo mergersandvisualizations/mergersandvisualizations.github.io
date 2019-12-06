@@ -149,7 +149,9 @@ d3.csv("data/trendRevenue.csv", function(error, csv) {
         .attr("dy", "1em")
         .style("font-size", "10px")
         .style("text-anchor", "middle")
-        .text("Revenue ($ Bil USD)");
+        .text("Revenue ($ Bil USD)")
+        .attr("fill", "dimgrey")
+        .attr("font-family", "'Catamaran', 'Helvetica', 'Arial', 'sans-serif'");
 
     // fundingChart.append("text")
     //     .attr("class", "axis-title")
@@ -200,6 +202,7 @@ function drawTooltip() {
         .style('display', 'block')
         .style('left', d3.event.pageX)
         .style('top', d3.event.pageY)
+        .attr("font-family", "'Catamaran', 'Helvetica', 'Arial', 'sans-serif'")
         .selectAll()
         .data(fundingData).enter()
         .append('div')
