@@ -152,15 +152,18 @@ queue()
                 pause = !pause
                 $("#playbutton").html("Pause").css("background-color", "red")
                 time = setInterval(function(){
-                    count += 1
+                    if (count >= 2019) {
+                        clearInterval(time)
+                    }
+                    if (count <= 2018) {
+                        count += 1
+                    }
                     // year = new Date(count, 0, 1)
                     sliderTime.default(count)
                     barchartMC.onSelectionChange(count)
                     d3.select('.value-time').text(count);
 
-                    if (count >= 2019) {
-                        clearInterval(time)
-                    }
+
 
                     if (count > 1997){
                         updateLines(count)
