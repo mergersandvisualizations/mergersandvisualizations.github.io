@@ -2,7 +2,6 @@
 Pyramid = function(_parentElement, _data){
     this.parentElement = _parentElement;
     this.data = _data;
-
     this.initVis();
 }
 
@@ -28,11 +27,17 @@ Pyramid.prototype.initVis = function(){
     vis.color = d3.scaleOrdinal()
         .range(["#255aee","#3a6fff","#4f84ff","rgb(101,154,302)","rgb(122,175,323)", "rgb(144,197,345)", "rgb(165,218,366)"]);
 
+    vis.tool_tip = d3.tip()
+        .attr("class", "d3-tip")
+    // .offset([-8, 0]);
+
+    vis.tool_tip.html(function(d) {return (d.population*100).toFixed(0) + "%" });
+
+    vis.svg.call(vis.tool_tip);
 
     // (Filter, aggregate, modify data)
     vis.wrangleData();
 }
-
 
 
 /*
@@ -41,9 +46,6 @@ Pyramid.prototype.initVis = function(){
 
 Pyramid.prototype.wrangleData = function(){
     var vis = this;
-
-
-
     vis.updateVis();
 }
 
@@ -69,11 +71,14 @@ Pyramid.prototype.updateVis = function(){
     vis.g = vis.svg.selectAll(".pyramid-group")
         .data(vis.pyramid(vis.data))
         .enter().append("g")
-        .attr("class", "pyramid-group");
+        .attr("class", "pyramid-group")
+        ;
 
     vis.g.append("path")
-        .attr("d", function (d){ return vis.line(d.coordinates); })
-        .style("fill", function(d) { return vis.color(d.region); });
+        .attr("d", function (d){ console.log(vis.line(d.coordinates)); return vis.line(d.coordinates); })
+        .style("fill", function(d) { return vis.color(d.region); })
+        .on('mouseover', vis.tool_tip.show)
+        .on('mouseout', vis.tool_tip.hide);
 
     vis.g.append("text")
         .attr("y", function (d) {
