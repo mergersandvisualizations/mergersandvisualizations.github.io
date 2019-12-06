@@ -84,7 +84,7 @@ queue()
             .max(d3.max(dataTime))
             // .step(1000 * 60 * 60 * 24 * 365)
             .step(1)
-            .width(500)
+            .width(700)
             // .tickFormat(d3.timeFormat('%Y'))
             .tickFormat(d3.format("d"))
             // .tickValues(dataStepTime)
@@ -179,8 +179,40 @@ queue()
                     sliderTime.default(count)
                     barchartMC.onSelectionChange(count)
                     d3.select('.value-time').text(count);
+
                     if (count >= 2019) {
                         clearInterval(time)
+                    }
+
+                    if (count > 1997){
+                        if (tooltip) tooltip.style('display', 'none');
+                        if (tooltipLine) tooltipLine.attr('stroke', 'none');
+
+                        tooltipLine.attr('stroke', '#515254')
+                            .attr('x1', x(count))
+                            .attr('x2', x(count))
+                            .attr('y1', 0)
+                            .attr('y2', height2)
+                            .attr('stroke-width', 2);
+
+                        tooltip.html('<b>' + "Year" + '</b>' + ": " + count)
+                            .style('color', "white")
+                            .style('display', 'block')
+                            .style('left', d3.event.pageX)
+                            .style('top', d3.event.pageY)
+                            .selectAll()
+                            .data(fundingData).enter()
+                            .append('div')
+                            .style('color', d => d.color)
+                            .html(d =>
+                                "<div class=\"tg-wrap\"><table class=\"tg\">\n" +
+                                "  <tr>\n" +
+                                "    <td class=\"tg-0a7q\">" + "<b>" + industries[d.source] + "</b>" +"</td>\n" +
+                                "    <td class=\"tg-0a7q\">" + ': $' + d.funding.find(h => h.year == count).amount + ' Bil USD' + "</td>\n" +
+                                "  </tr>\n" +
+                                "</table></div>"
+                            )
+                            .attr('stroke', d => d.color)
                     }
                 }, 500)
             } else {

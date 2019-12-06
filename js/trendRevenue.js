@@ -176,6 +176,7 @@ function drawTooltip() {
     });
 
     barchartMC.onSelectionChange(year)
+    clearInterval(time)
 
 
     tooltipLine.attr('stroke', '#515254')
