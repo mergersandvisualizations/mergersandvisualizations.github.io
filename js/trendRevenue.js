@@ -133,7 +133,7 @@ d3.csv("data/trendRevenue.csv", function(error, csv) {
 
     fundingChart.append("text")
         .attr("class", "axis-title")
-        .attr("x", 125)
+        .attr("x", 0)
         .attr("y", -20)
         .attr("font-size", 15)
         .attr("dy", ".1em")
