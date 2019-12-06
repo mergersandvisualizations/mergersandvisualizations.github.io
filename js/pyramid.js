@@ -75,7 +75,10 @@ Pyramid.prototype.updateVis = function(){
         ;
 
     vis.g.append("path")
-        .attr("d", function (d){ console.log(vis.line(d.coordinates)); return vis.line(d.coordinates); })
+        .attr("d", function (d){
+            // console.log(vis.line(d.coordinates));
+            return vis.line(d.coordinates);
+        })
         .style("fill", function(d) { return vis.color(d.region); })
         .on('mouseover', vis.tool_tip.show)
         .on('mouseout', vis.tool_tip.hide);

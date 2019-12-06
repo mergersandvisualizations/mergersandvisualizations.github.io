@@ -177,6 +177,7 @@ function drawTooltip() {
 
     barchartMC.onSelectionChange(year)
     clearInterval(time)
+    d3.select('.value-time').text(year);
 
 
     tooltipLine.attr('stroke', '#515254')

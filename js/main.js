@@ -53,6 +53,11 @@ queue()
             d.MSFT = +d.MSFT;
             d.FB = +d.FB;
             d.GOOG = +d.GOOG;
+            d.INTC = +d.INTC;
+            d.ADBE = +d.ADBE;
+            d.CRM = +d.CRM;
+            d.IBM = +d.IBM;
+            d.CSCO = +d.CSCO;
             d.SP500 = +d.SP500;
             d.VGT = +d.VGT;
             d.ID = count;
@@ -98,34 +103,7 @@ queue()
                     val = 1998
                 }
 
-                if (tooltip) tooltip.style('display', 'none');
-                if (tooltipLine) tooltipLine.attr('stroke', 'none');
-
-                tooltipLine.attr('stroke', '#515254')
-                    .attr('x1', x(val))
-                    .attr('x2', x(val))
-                    .attr('y1', 0)
-                    .attr('y2', height2)
-                    .attr('stroke-width', 2);
-
-                tooltip.html('<b>' + "Year" + '</b>' + ": " + val)
-                    .style('color', "white")
-                    .style('display', 'block')
-                    .style('left', d3.event.pageX)
-                    .style('top', d3.event.pageY)
-                    .selectAll()
-                    .data(fundingData).enter()
-                    .append('div')
-                    .style('color', d => d.color)
-                    .html(d =>
-                        "<div class=\"tg-wrap\"><table class=\"tg\">\n" +
-                        "  <tr>\n" +
-                        "    <td class=\"tg-0a7q\">" + "<b>" + industries[d.source] + "</b>" +"</td>\n" +
-                        "    <td class=\"tg-0a7q\">" + ': $' + d.funding.find(h => h.year == val).amount + ' Bil USD' + "</td>\n" +
-                        "  </tr>\n" +
-                        "</table></div>"
-                    )
-                    .attr('stroke', d => d.color)
+                updateLines(val)
             });
 
         var sliderTime2 = d3
@@ -185,34 +163,7 @@ queue()
                     }
 
                     if (count > 1997){
-                        if (tooltip) tooltip.style('display', 'none');
-                        if (tooltipLine) tooltipLine.attr('stroke', 'none');
-
-                        tooltipLine.attr('stroke', '#515254')
-                            .attr('x1', x(count))
-                            .attr('x2', x(count))
-                            .attr('y1', 0)
-                            .attr('y2', height2)
-                            .attr('stroke-width', 2);
-
-                        tooltip.html('<b>' + "Year" + '</b>' + ": " + count)
-                            .style('color', "white")
-                            .style('display', 'block')
-                            .style('left', d3.event.pageX)
-                            .style('top', d3.event.pageY)
-                            .selectAll()
-                            .data(fundingData).enter()
-                            .append('div')
-                            .style('color', d => d.color)
-                            .html(d =>
-                                "<div class=\"tg-wrap\"><table class=\"tg\">\n" +
-                                "  <tr>\n" +
-                                "    <td class=\"tg-0a7q\">" + "<b>" + industries[d.source] + "</b>" +"</td>\n" +
-                                "    <td class=\"tg-0a7q\">" + ': $' + d.funding.find(h => h.year == count).amount + ' Bil USD' + "</td>\n" +
-                                "  </tr>\n" +
-                                "</table></div>"
-                            )
-                            .attr('stroke', d => d.color)
+                        updateLines(count)
                     }
                 }, 500)
             } else {
@@ -269,6 +220,37 @@ function sortResults(data, prop, asc) {
         }
     });
     return newData
+}
+
+function updateLines(year) {
+    if (tooltip) tooltip.style('display', 'none');
+    if (tooltipLine) tooltipLine.attr('stroke', 'none');
+
+    tooltipLine.attr('stroke', '#515254')
+        .attr('x1', x(year))
+        .attr('x2', x(year))
+        .attr('y1', 0)
+        .attr('y2', height2)
+        .attr('stroke-width', 2);
+
+    tooltip.html('<b>' + "Year" + '</b>' + ": " + year)
+        .style('color', "white")
+        .style('display', 'block')
+        .style('left', d3.event.pageX)
+        .style('top', d3.event.pageY)
+        .selectAll()
+        .data(fundingData).enter()
+        .append('div')
+        .style('color', d => d.color)
+        .html(d =>
+            "<div class=\"tg-wrap\"><table class=\"tg\">\n" +
+            "  <tr>\n" +
+            "    <td class=\"tg-0a7q\">" + "<b>" + industries[d.source] + "</b>" +"</td>\n" +
+            "    <td class=\"tg-0a7q\">" + ': $' + d.funding.find(h => h.year == year).amount + ' Bil USD' + "</td>\n" +
+            "  </tr>\n" +
+            "</table></div>"
+        )
+        .attr('stroke', d => d.color)
 }
 
 

@@ -1553,6 +1553,10 @@ html {
     fill: none;
 }
 
+.bar:hover {
+    fill: orangered;
+}
+
 
 .btn-outline {
     color: white;
