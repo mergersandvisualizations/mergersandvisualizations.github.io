@@ -1,6 +1,6 @@
 // Source: http://bl.ocks.org/wdickerson/64535aff478e8a9fd9d9facccfef8929
 
-var margin = {top: 50, bottom: 40, left: 60, right: 130};
+var margin = {top: 50, bottom: 40, left: 110, right: 130};
 var width2 = 700 - margin.left - margin.right;
 var height2 = 300 - margin.top - margin.bottom;
 
@@ -140,6 +140,15 @@ d3.csv("data/trendRevenue.csv", function(error, csv) {
         // .style("text-anchor", "end")
         .text("Revenue ($ Bil USD) of Tech Verticals grows with chip computing power and big data")
         .attr("fill", "black");
+
+    fundingChart.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -40)
+        .attr("x", 0 - (height2 / 2))
+        .attr("dy", "1em")
+        .style("font-size", "10px")
+        .style("text-anchor", "middle")
+        .text("Revenue ($ Bil USD)");
 
     // fundingChart.append("text")
     //     .attr("class", "axis-title")
