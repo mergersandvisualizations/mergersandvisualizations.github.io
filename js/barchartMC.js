@@ -21,7 +21,7 @@ BarchartMC.prototype.initVis = function(){
     // vis.width = $("#" + vis.parentElement).width() - 50 - vis.margin.left - vis.margin.right;
     // vis.height = vis.width - vis.margin.top - vis.margin.bottom;
 
-    vis.width = 700 - vis.margin.left - vis.margin.right;
+    vis.width = 650 - vis.margin.left - vis.margin.right;
     vis.height = 220 - vis.margin.top - vis.margin.bottom;
 
     // SVG drawing area

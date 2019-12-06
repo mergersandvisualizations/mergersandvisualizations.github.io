@@ -636,6 +636,11 @@ header.masthead .device-container .screen img {
     margin-top: 0;
 }
 
+#team {
+    background: url("../img/bg-pattern.png"), linear-gradient(to left, #7b4397, #dc2430);
+    color: white;
+}
+
 section#contact {
     background-color: #212529;
     background-image: url("../img/map-image.png");
@@ -1288,7 +1293,6 @@ html {
 }
 
 .bg-primary {
-
     background: #FDB901;
     background: linear-gradient(#fdcc52, #fdc539);
 }
@@ -1304,6 +1308,10 @@ hr {
     margin: 25px auto 0;
     border-width: 1px;
     border-color: rgba(34, 34, 34, 0.4);
+}
+
+#whitehr {
+    border-color: white;
 }
 
 hr.light {

@@ -1,8 +1,8 @@
 // Source: http://bl.ocks.org/wdickerson/64535aff478e8a9fd9d9facccfef8929
 
-var margin = {top: 50, bottom: 40, left: 60, right: 130};
+var margin = {top: 20, bottom: 0, left: 100, right: 130};
 var width2 = 700 - margin.left - margin.right;
-var height2 = 300 - margin.top - margin.bottom;
+var height2 = 220 - margin.top - margin.bottom;
 
 
 var industries = {
