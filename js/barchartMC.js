@@ -16,12 +16,12 @@ BarchartMC = function(_parentElement, _data){
 BarchartMC.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = {top: 20, bottom: 60, left: 100, right: 130};
+    vis.margin = {top: 20, bottom: 0, left: 100, right: 130};
     // vis.width = $("#" + vis.parentElement).width() - 50 - vis.margin.left - vis.margin.right;
     // vis.height = vis.width - vis.margin.top - vis.margin.bottom;
 
     vis.width = 700 - vis.margin.left - vis.margin.right;
-    vis.height = 200 - vis.margin.top - vis.margin.bottom;
+    vis.height = 220 - vis.margin.top - vis.margin.bottom;
 
     // SVG drawing area
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -194,6 +194,7 @@ BarchartMC.prototype.updateVis = function(){
         .on('mouseover', vis.tool_tip.show)
         .on('mouseout', vis.tool_tip.hide)
         .on('click', function(d) {
+            d3.select('#stock-ind').text(d[0].toUpperCase());
             if (d[0] == 'googl') {
                 stockchart.onSelectionChange('GOOG')
             } else {

@@ -17,7 +17,7 @@ Stockchart.prototype.initVis = function(){
     vis.margin = {top: 10, bottom: 20, left: 50, right: 0};
     // vis.width = 600 - vis.margin.left - vis.margin.right;
     vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
-    vis.height = vis.width * 0.4 - vis.margin.top - vis.margin.bottom;
+    vis.height = vis.width * 0.6 - vis.margin.top - vis.margin.bottom;
     // vis.width = 500;
     // vis.height = 250;
 
@@ -64,7 +64,7 @@ Stockchart.prototype.initVis = function(){
     vis.svg.append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 0 - margin.left + 25)
-        .attr("x", 0 - (height / 2) + 20)
+        .attr("x", 0 - (height / 2) + 125)
         .attr("dy", "1em")
         .style("font-size", "10px")
         .style("text-anchor", "middle")
