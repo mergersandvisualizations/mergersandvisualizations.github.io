@@ -17,8 +17,8 @@ BarchartMC.prototype.initVis = function(){
     var vis = this;
 
     vis.margin = {top: 20, bottom: 60, left: 100, right: 130};
-    vis.width = $("#" + vis.parentElement).width() - 100 - vis.margin.left - vis.margin.right;
-    vis.height = vis.width - 300 - vis.margin.top - vis.margin.bottom;
+    vis.width = $("#" + vis.parentElement).width() - 50 - vis.margin.left - vis.margin.right;
+    vis.height = vis.width * 0.4 - vis.margin.top - vis.margin.bottom;
 
     // SVG drawing area
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
