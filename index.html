@@ -250,10 +250,11 @@
 <!--                                <p class="text-left">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMarket Capitalization</p>-->
                                 <div id="MC-barchart"></div>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-5 text-left">
+                                Stock Price of <p style="display:inline" id="stock-ind">AAPL</p>
                                 <form class="form-inline">
                                     <div class="form-group">
-<!--                                        <label for="chart-data"> Select Stock: </label>-->
+                                        <!--                                        <label for="chart-data"> Select Stock: </label>-->
                                         <select class="form-control" id="chart-data" onchange="updateStocks()">
                                             <option value="AAPL">AAPL</option>
                                             <option value="AMZN">AMZN</option>
@@ -270,7 +271,6 @@
                                         </select>
                                     </div>
                                 </form>
-                                Stock Price of <p style="display:inline" id="stock-ind">AAPL</p>
                                 <div id="stockchart-area"></div>
                             </div>
                         </div>

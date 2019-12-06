@@ -199,7 +199,7 @@ function drawTooltip() {
         .attr('stroke-width', 2);
 
     tooltip
-        .html('<b>' + "Year" + '</b>' + ": " + year)
+        .html('<b>' + "Year" + '</b>' + ": " + year + "<br><br><br>")
         .style('color', "white")
         .style('display', 'block')
         .style('left', d3.event.pageX)
