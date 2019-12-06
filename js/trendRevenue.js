@@ -138,7 +138,7 @@ d3.csv("data/trendRevenue.csv", function(error, csv) {
         .attr("font-size", 15)
         .attr("dy", ".1em")
         // .style("text-anchor", "end")
-        .text("Revenue of tech verticals grows with chip computing power and big data")
+        .text("Revenue of Tech Verticals")
         .attr("fill", "dimgrey")
         .attr("font-family", "'Catamaran', 'Helvetica', 'Arial', 'sans-serif'");
 

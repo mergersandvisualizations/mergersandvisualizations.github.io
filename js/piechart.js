@@ -91,7 +91,6 @@ Piechart.prototype.wrangleData = function(){
     vis.path.enter().append("path")
         .attr("class", "path1")
         .attr("fill", function(d, i) {
-            console.log(d)
             return vis.colorScale(i)
         })
         .attr("d", vis.arc)
