@@ -17,7 +17,7 @@ BarchartMC = function(_parentElement, _data){
 BarchartMC.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = {top: 20, bottom: 0, left: 100, right: 130};
+    vis.margin = {top: 60, bottom: 0, left: 100, right: 130};
     // vis.width = $("#" + vis.parentElement).width() - 50 - vis.margin.left - vis.margin.right;
     // vis.height = vis.width - vis.margin.top - vis.margin.bottom;
 
@@ -95,15 +95,16 @@ BarchartMC.prototype.initVis = function(){
 
     vis.svg.call(vis.tool_tip);
 
-    // vis.svg.append("text")
-    //     .attr("class", "axis-title")
-    //     .attr("x", 0)
-    //     .attr("y", -20)
-    //     .attr("font-size", 15)
-    //     .attr("dy", ".1em")
-    //     // .style("text-anchor", "end")
-    //     .text("Market Capitalization")
-    //     .attr("fill", "black");
+    vis.svg.append("text")
+        .attr("class", "axis-title")
+        .attr("x", 0)
+        .attr("y", -35)
+        .attr("font-size", 15)
+        .attr("dy", ".1em")
+        // .style("text-anchor", "end")
+        .text("Market Capitalization")
+        .attr("stroke", 1)
+        .attr("font-family", "'Catamaran', 'Helvetica', 'Arial', 'sans-serif'");
 
     // (Filter, aggregate, modify data)
     vis.wrangleData();

@@ -118,6 +118,7 @@ d3.csv("data/trendRevenue.csv", function(error, csv) {
         .html(d => industries[d.source])
         .attr('fill', d => d.color)
         .attr('stroke', d => d.color)
+        .attr("stroke", 1)
         .attr('alignment-baseline', 'middle')
         .attr('x', width2)
         .attr('dx', '.2em')
@@ -139,7 +140,7 @@ d3.csv("data/trendRevenue.csv", function(error, csv) {
         .attr("dy", ".1em")
         // .style("text-anchor", "end")
         .text("Revenue of Tech Verticals")
-        .attr("fill", "dimgrey")
+        .attr("stroke", 1)
         .attr("font-family", "'Catamaran', 'Helvetica', 'Arial', 'sans-serif'");
 
     fundingChart.append("text")
@@ -197,16 +198,18 @@ function drawTooltip() {
         .attr('y2', height2)
         .attr('stroke-width', 2);
 
-    tooltip.html('<b>' + "Year" + '</b>' + ": " + year)
+    tooltip
+        .html('<b>' + "Year" + '</b>' + ": " + year)
         .style('color', "white")
         .style('display', 'block')
         .style('left', d3.event.pageX)
         .style('top', d3.event.pageY)
-        .attr("font-family", "'Catamaran', 'Helvetica', 'Arial', 'sans-serif'")
         .selectAll()
         .data(fundingData).enter()
         .append('div')
         .style('color', d => d.color)
+        .attr("stroke", 1)
+        .attr("font-family", "'Catamaran', 'Helvetica', 'Arial', 'sans-serif'")
         .html(d =>
             "<div class=\"tg-wrap\"><table class=\"tg\">\n" +
             "  <tr>\n" +
