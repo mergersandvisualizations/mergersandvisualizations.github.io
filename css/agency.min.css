@@ -1233,6 +1233,11 @@ img{
     background: #cbe7f8;
     /*text-decoration:underline;*/
 }
+
+#recommendationlist a:hover{
+    background: white;
+    /*text-decoration:underline;*/
+}
 /*.numberlist a:before{*/
 /*    content: counter(li);*/
 /*    counter-increment: li;*/
