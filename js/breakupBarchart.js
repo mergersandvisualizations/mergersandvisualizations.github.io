@@ -119,7 +119,7 @@ BreakupBarchart.prototype.initVis = function(){
 
     //Legend
     vis.legend = vis.svg.selectAll(".legend")
-        .data(vis.data[0].values.map(function(d) { return d.rate; }).reverse())
+        .data(vis.data[0].values.map(function(d) { return d.rate; }))
         .enter().append("g")
         .attr("class", "legend")
         .attr("transform", function(d,i) { return "translate(0," + i * 20 + ")"; })
