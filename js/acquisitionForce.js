@@ -18,7 +18,7 @@ var idMap = {"Microsoft": 1, "Apple": 2, "Amazon": 3, "Alphabet": 4, "Google": 4
 AcquisitionForce.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = { top: 0, right: 20, bottom: 50, left: 100 };
+    vis.margin = { top: 60, right: 20, bottom: 50, left: 100 };
 
     vis.width = $("#" + vis.parentElement).width() - 200 - vis.margin.left - vis.margin.right,
         vis.height = vis.width * 0.8 - vis.margin.top - vis.margin.bottom;
@@ -36,15 +36,15 @@ AcquisitionForce.prototype.initVis = function(){
         .range([3,30])
 
     vis.colorScale = d3.scaleOrdinal()
-        .domain(['saas', 'hardware', 'social', 'content', 'commerce', 'media', 'analytics', 'chips', 'security', 'search'])
-        .range(['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a'])
+        .domain(['ai', 'analytics', 'chips', 'commerce', 'content', 'hardware', 'media', 'saas', 'search', 'security', 'social'])
+        .range(['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99'])
 
     vis.svg.append("g")
         .attr("class", "legend")
         .attr("transform", "translate(" + (-80) + ",80)");
 
     vis.legend = d3.legendColor()
-        .labels(["SaaS", "Hardware", "Social", "Content", "Commerce", 'Media', 'Analytics', 'Chips', 'Security', 'Search'])
+        .labels(['AI', 'Analytics', 'Chips', 'Commerce', 'Content', 'Hardware', 'Media', 'SaaS', 'Search', 'Security', 'Social'])
         .shapeWidth(20);
 
     vis.legend
@@ -96,6 +96,15 @@ AcquisitionForce.prototype.initVis = function(){
 AcquisitionForce.prototype.wrangleData = function(){
     var vis = this;
 
+    // vis.sortedData =
+    // vis.data.nodes.sort(function(a,b) {
+    //     return (a.category > b.category) ? 1 : ((a.category < b.category) ? -1 : 0);
+    // })
+
+    // vis.sortedData = sortResults(vis.data, "category", true)
+
+    // console.log(vis.sortedData)
+
     vis.updateVis();
 }
 
@@ -114,9 +123,47 @@ AcquisitionForce.prototype.updateVis = function(){
 
     vis.force = d3.forceSimulation(vis.data.nodes)
         .force("charge", d3.forceManyBody().strength(-15))
-        .force("link", d3.forceLink(vis.return).distance(40))
+        // .force("link", d3.forceLink(vis.return).distance(40))
         // .force('collision', d3.forceCollide())
-        .force("center", d3.forceCenter().x(vis.width/2).y(vis.height/2))
+        // .force("center", d3.forceCenter().x(function(d) {
+        //     return vis.width / 2
+        // })
+        //     .y(function(d) {
+        //         return vis.height / 2
+        //     }))
+        .force("x", d3.forceX().x(function(d) {
+            return vis.width / 2
+        }).strength(0.9))
+        .force("y", d3.forceY().y(function(d) {
+            if (d.category == "ai") {
+                return vis.height * 3 / 20
+            } else if (d.category == "analytics") {
+                return vis.height * 4 / 20
+            } else if (d.category == "chips") {
+                return vis.height * 5 / 20
+            } else if (d.category == "commerce") {
+                return vis.height * 6 / 20
+            } else if (d.category == "content") {
+                return vis.height * 7 / 20
+            } else if (d.category == "hardware") {
+                return vis.height * 8 / 20
+            } else if (d.category == "media") {
+                return vis.height * 9 / 20
+            } else if (d.category == "saas") {
+                return vis.height * 10 / 20
+            } else if (d.category == "search") {
+                return vis.height * 11 / 20
+            } else if (d.category == "security") {
+                return vis.height * 12 / 20
+            } else if (d.category == "social") {
+                return vis.height * 13 / 20
+            } else {
+                return vis.height / 2
+            }
+        }).strength(0.9))
+
+
+
         // .force("x", d3.forceX().x(vis.width/2).strength(0.2))
         // .force("y", d3.forceY().y(vis.height/2).strength(0.02));
 
@@ -302,8 +349,39 @@ AcquisitionForce.prototype.onSelectionChange = function(selection){
 
     vis.force.restart()
 
-    vis.force.force("link", d3.forceLink(vis.update).distance(20))
-        .force("center", d3.forceCenter().x(vis.width/2).y(vis.height/2))
+    vis.force
+        .force("link", d3.forceLink(vis.update).distance(20))
+        // .force("center", d3.forceCenter().x(vis.width/2).y(vis.height/2))
+        .force("x", d3.forceX().x(function(d) {
+            return vis.width / 2
+        }))
+        .force("y", d3.forceY().y(function(d) {
+            if (d.category == "ai") {
+                return vis.height * -20 / 20
+            } else if (d.category == "analytics") {
+                return vis.height * -15 / 20
+            } else if (d.category == "chips") {
+                return vis.height * -10 / 20
+            } else if (d.category == "commerce") {
+                return vis.height * -5 / 20
+            } else if (d.category == "content") {
+                return vis.height * 0 / 20
+            } else if (d.category == "hardware") {
+                return vis.height * 5 / 20
+            } else if (d.category == "media") {
+                return vis.height * 10 / 20
+            } else if (d.category == "saas") {
+                return vis.height * 15 / 20
+            } else if (d.category == "search") {
+                return vis.height * 20 / 20
+            } else if (d.category == "security") {
+                return vis.height * 25 / 20
+            } else if (d.category == "social") {
+                return vis.height * 30 / 20
+            } else {
+                return vis.height / 2
+            }
+        }))
         .alpha(0.2);
 
     // vis.wrangleData();
