@@ -174,7 +174,7 @@ Stockchart.prototype.updateVis = function(){
                     return "#3b5998"
                 } else if (vis.selectedChartData == 'GOOG') {
                     return "#3cba54"
-                } else if (vis.selectedChartData == 'S&P500') {
+                } else if (vis.selectedChartData == 'SP500') {
                     return "#ff0000"
                 } else if (vis.selectedChartData == 'VGT') {
                     return "#21A0DF"
@@ -203,7 +203,7 @@ Stockchart.prototype.updateVis = function(){
                 return "#3b5998"
             } else if (vis.selectedChartData == 'GOOG') {
                 return "#3cba54"
-            } else if (vis.selectedChartData == 'S&P500') {
+            } else if (vis.selectedChartData == 'SP500') {
                 return "#ff0000"
             } else if (vis.selectedChartData == 'VGT') {
                 return "#21A0DF"
@@ -254,7 +254,7 @@ Stockchart.prototype.updateVis = function(){
                 return "#3b5998"
             } else if (vis.selectedChartData == 'GOOG') {
                 return "#3cba54"
-            } else if (vis.selectedChartData == 'S&P500') {
+            } else if (vis.selectedChartData == 'SP500') {
                 return "#ff0000"
             } else if (vis.selectedChartData == 'VGT') {
                 return "#21A0DF"
@@ -283,7 +283,7 @@ Stockchart.prototype.updateVis = function(){
                 return "#3b5998"
             } else if (vis.selectedChartData == 'GOOG') {
                 return "#3cba54"
-            } else if (vis.selectedChartData == 'S&P500') {
+            } else if (vis.selectedChartData == 'SP500') {
                 return "#ff0000"
             } else if (vis.selectedChartData == 'VGT') {
                 return "#21A0DF"
