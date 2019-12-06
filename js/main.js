@@ -97,7 +97,7 @@ queue()
             .max(d3.max(dataTime))
             // .step(1000 * 60 * 60 * 24 * 365)
             .step(1)
-            .width(700)
+            .width(650)
             // .tickFormat(d3.timeFormat('%Y'))
             .tickFormat(d3.format("d"))
             // .tickValues(dataStepTime)
@@ -120,7 +120,7 @@ queue()
             .max(d3.max(dataTime2))
             // .step(1000 * 60 * 60 * 24 * 365)
             .step(1)
-            .width(700)
+            .width(750)
             // .tickFormat(d3.timeFormat('%Y'))
             .tickFormat(d3.format("d"))
             // .tickValues(dataStepTime)
@@ -158,7 +158,7 @@ queue()
             if (!pause) {
                 var count = sliderTime.value()
                 pause = !pause
-                $("#playbutton").html("Pause").css("background-color", "red")
+                $("#playbutton").html("Stop").css("background-color", "red")
                 time = setInterval(function(){
                     if (count >= 2019) {
                         clearInterval(time)
@@ -199,7 +199,7 @@ queue()
             if (!pause2) {
                 var count2 = sliderTime2.value()
                 pause2 = !pause2
-                $("#playbutton2").html("Pause").css("background-color", "red")
+                $("#playbutton2").html("Stop").css("background-color", "red")
                 time2 = setInterval(function(){
                     count2 += 1
                     // year = new Date(count, 0, 1)
