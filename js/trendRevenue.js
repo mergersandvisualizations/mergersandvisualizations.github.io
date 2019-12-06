@@ -1,6 +1,6 @@
 // Source: http://bl.ocks.org/wdickerson/64535aff478e8a9fd9d9facccfef8929
 
-var margin = {top: 50, bottom: 40, left: 110, right: 130};
+var margin = {top: 50, bottom: 40, left: 115, right: 130};
 var width2 = 700 - margin.left - margin.right;
 var height2 = 300 - margin.top - margin.bottom;
 
@@ -171,7 +171,7 @@ d3.csv("data/trendRevenue.csv", function(error, csv) {
 // Source: http://bl.ocks.org/wdickerson/64535aff478e8a9fd9d9facccfef8929
 
 function removeTooltip() {
-    if (tooltip) tooltip.style('display', 'none');
+    // if (tooltip) tooltip.style('display', 'none');
     if (tooltipLine) tooltipLine.attr('stroke', 'none');
 }
 
