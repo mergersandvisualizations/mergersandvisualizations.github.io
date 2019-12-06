@@ -17,7 +17,7 @@ Stockchart.prototype.initVis = function(){
     vis.margin = {top: 10, bottom: 20, left: 50, right: 0};
     // vis.width = 600 - vis.margin.left - vis.margin.right;
     vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
-    vis.height = vis.width - vis.margin.top - vis.margin.bottom;
+    vis.height = vis.width * 0.4 - vis.margin.top - vis.margin.bottom;
     // vis.width = 500;
     // vis.height = 250;
 
@@ -70,6 +70,8 @@ Stockchart.prototype.initVis = function(){
         .style("text-anchor", "middle")
         .text("Price ($ USD)");
 
+    vis.selectedChartData = "AAPL"
+
   // (Filter, aggregate, modify data)
     vis.wrangleData();
 }
@@ -96,8 +98,8 @@ Stockchart.prototype.updateVis = function(){
     var vis = this;
 
 
-    vis.chartData = document.getElementById("chart-data");
-    vis.selectedChartData = vis.chartData.options[vis.chartData.selectedIndex].value;
+    // vis.chartData = document.getElementById("chart-data");
+    // vis.selectedChartData = vis.chartData.options[vis.chartData.selectedIndex].value;
 
     if (vis.selectedChartData == "AAPL") {
         vis.fromDate = "12/01/80";
@@ -258,5 +260,8 @@ Stockchart.prototype.updateVis = function(){
 
 Stockchart.prototype.onSelectionChange = function(selection){
     var vis = this;
+
+    vis.selectedChartData = selection
+
     vis.wrangleData();
 }
