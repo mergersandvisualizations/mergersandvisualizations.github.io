@@ -37,6 +37,10 @@ Piechart.prototype.initVis = function(){
         .domain(['positive','negative','dont_know'])
         .range(['#4d9221','#c51b7d', '#D3D3D3']);
 
+    vis.colorScale3 = d3.scaleOrdinal()
+        .domain(['positive','dont_care', 'dont_feel_good', 'dont_know','concerned', 'very_worried',  'negative'])
+        .range(['#4d9221','#4dac26','#b8e186','#D3D3D3','#f1b6da','#d01c8b', '#c51b7d']);
+
     vis.pie = d3.pie()
         .sort(null)
 
@@ -53,13 +57,13 @@ Piechart.prototype.initVis = function(){
         .attr("transform", "translate(" + (vis.width * (3/10)) + "," + (-50) + ")");
 
     vis.legend = d3.legendColor()
-        .labels(["Don't Care","Don't Feel Good","Concerned","Very Worried", "Don't Know", 'Overall Sentiment', 'Indifferent', 'Disturbed',])
+        .labels(['Indifferent',"Don't Care","Don't Feel Good","Don't Know","Concerned","Very Worried", 'Disturbed',])
         .shapeWidth(20);
 
     vis.legend
         .title("Feeling")
         .labelFormat(d3.format(".2s"))
-        .scale(vis.colorScale);
+        .scale(vis.colorScale3);
 
     vis.svg.select(".legend")
         .call(vis.legend);
