@@ -106,7 +106,7 @@ BarchartMC.prototype.initVis = function(){
         .attr("font-size", 15)
         .attr("dy", ".1em")
         // .style("text-anchor", "end")
-        .text("Market Capitalization")
+        .text("Market Capitalization: click on bar to see stock chart")
         .attr("stroke", 1)
         .attr("font-family", "'Catamaran', 'Helvetica', 'Arial', 'sans-serif'");
 

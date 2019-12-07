@@ -139,7 +139,7 @@ d3.csv("data/trendRevenue.csv", function(error, csv) {
         .attr("font-size", 15)
         .attr("dy", ".1em")
         // .style("text-anchor", "end")
-        .text("Revenue of Tech Verticals")
+        .text("Revenue of Tech Verticals: mouse over the trend lines")
         .attr("stroke", 1)
         .attr("font-family", "'Catamaran', 'Helvetica', 'Arial', 'sans-serif'");
 
