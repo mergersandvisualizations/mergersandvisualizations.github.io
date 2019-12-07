@@ -1326,3 +1326,7 @@ hr.light {
 #value-time {
     color: dimgrey;
 }
+
+#chart-data {
+    cursor: pointer;
+}
