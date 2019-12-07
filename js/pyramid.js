@@ -15,7 +15,7 @@ Pyramid.prototype.initVis = function(){
 
     vis.margin = {top: 10, bottom: 10, left: 10, right: 10};
     vis.width = $("#" + vis.parentElement).width() - 500 - vis.margin.left - vis.margin.right;
-    vis.height = 450 - vis.margin.top - vis.margin.bottom;
+    vis.height = 420 - vis.margin.top - vis.margin.bottom;
 
     vis.svgwidth = vis.width + vis.margin.left + vis.margin.right
 
@@ -60,8 +60,6 @@ Pyramid.prototype.initVis = function(){
         .attr("x", function(d, i) {return (vis.svgwidth/2)-85;})
         .attr("y", function(d, i) {return (i)*55 + 65;})
         .text( function (d) { return d.region; })
-                   //   .attr("font-family", "sans-serif")
-                   // .attr("font-size", "20px")
         .attr("fill", "white");
 
 
