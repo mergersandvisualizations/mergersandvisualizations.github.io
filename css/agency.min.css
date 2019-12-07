@@ -1268,6 +1268,7 @@ html {
 
 .bar:hover {
     fill: gold;
+    cursor: pointer;
 }
 
 
