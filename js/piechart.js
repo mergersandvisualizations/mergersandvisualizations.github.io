@@ -54,7 +54,7 @@ Piechart.prototype.initVis = function(){
 
     vis.svg.append("g")
         .attr("class", "legend")
-        .attr("transform", "translate(" + (vis.width * (3/10)) + "," + (-50) + ")");
+        .attr("transform", "translate(" + (vis.width * (3/10)) + "," + (vis.height - 250) + ")");
 
     vis.legend = d3.legendColor()
         .labels(['Indifferent',"Don't Care","Don't Feel Good","Don't Know","Concerned","Very Worried", 'Disturbed',])

@@ -73,7 +73,7 @@ Perception.prototype.initVis = function(){
 
     vis.svg.append("g")
         .attr("class", "legend")
-        .attr("transform", "translate(" + (vis.width + 10) + ",80)");
+        .attr("transform", "translate(" + (vis.width + 10) + "," + (vis.height - 120) + ")");
 
     vis.legend = d3.legendColor()
         .labels(["Very Positive", "Rather Positive", "Neutral", "Rather Negative", "Very Negative", 'Not Answered'])
